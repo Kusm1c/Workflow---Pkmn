@@ -25,9 +25,15 @@ public class MapGenerator : MonoBehaviour
     private GameObject blockedTileParent;
     
     private GameObject actionTileParent;
+    
+    public MapGenerator Instance { get; private set; }
 
     private void Awake()
     {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
         GenerateMap();
         SpawnPlayer();
     }

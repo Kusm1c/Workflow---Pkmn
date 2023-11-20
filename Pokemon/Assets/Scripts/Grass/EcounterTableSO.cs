@@ -6,4 +6,5 @@ using UnityEngine;
 public class EcounterTableSO : ScriptableObject
 {
     [field:SerializeField] List<PokemonEcounter> pokemonList;
+    [field:SerializeField] List<Vector3> grassPositions;
 }
