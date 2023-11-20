@@ -6,23 +6,27 @@ using UnityEngine.UI;
 
 public class MainMenuAnimation : MonoBehaviour
 {
+    [Header("Anim 1")]
+    public GameObject anim1;
     public GameObject tmScreen,
         background1Up, background1Down,
         star, lilStar,bigStar,
         logoText,logoImage;
-    
+    [Header("Anim 2")]
+    public GameObject anim2;
     void Start()
     {
-        StartCoroutine(StartAnimation());
+        StartCoroutine(StartAnimation1());
     }
     
-    IEnumerator StartAnimation()
+    IEnumerator StartAnimation1()
     {
+        anim1.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         tmScreen.GetComponent<Image>().DOColor(Color.clear, 1f);                                                //premier ecran des trademarks
         yield return new WaitForSeconds(1f);
-        background1Down.transform.DOMove(background1Down.transform.position+Vector3.down*160, 0.2f);      //l'ecran se sépare en deux et forme des bordures
-        background1Up.transform.DOMove(background1Up.transform.position+Vector3.up*160, 0.2f);
+        background1Down.transform.DOMove(background1Down.transform.position+Vector3.down*155, 0.2f);      //l'ecran se sépare en deux et forme des bordures
+        background1Up.transform.DOMove(background1Up.transform.position+Vector3.up*155, 0.2f);
         yield return new WaitForSeconds(0.1f);
         star.transform.DOMove(new Vector3(-30, 210, 0), 1f).SetEase(Ease.Linear);                   //l'etoile jaune se déplace
         for (int i = 0; i < 50; i++) //des petites etoiles apparaissent dans le chemin de l'etoile jaune
@@ -41,7 +45,7 @@ public class MainMenuAnimation : MonoBehaviour
         for (int i = 0; i < 40; i++)                                                                                     //des petites etoiles apparaissent dans la ou il y a le logo
         {
             Vector3 pos = logoText.transform.position;
-            pos.x += Random.Range(-200, 200);
+            pos.x += Random.Range(-220, 220);
             pos.y += Random.Range(0, 20);
             GameObject st = Instantiate(lilStar, pos, Quaternion.identity, star.transform.parent);
             st.GetComponent<Rigidbody2D>().gravityScale = 5f;
@@ -52,7 +56,7 @@ public class MainMenuAnimation : MonoBehaviour
         for (int i = 0; i < 40; i++)                                                                                     //des petites etoiles apparaissent dans la ou il y a le logo
         {
             Vector3 pos = logoText.transform.position;
-            pos.x += Random.Range(-200, 200);
+            pos.x += Random.Range(-220, 220);
             pos.y += Random.Range(-20, 20);
             GameObject st = Instantiate(lilStar, pos, Quaternion.identity, star.transform.parent);
             st.GetComponent<Rigidbody2D>().gravityScale = 5f;
@@ -60,7 +64,7 @@ public class MainMenuAnimation : MonoBehaviour
             if (i % 5 == 0)                                                                                             // faire apparaitre des grosses etoiles
             {
                 Vector3 pos2 = logoText.transform.position;
-                pos.x += Random.Range(-200, 200);
+                pos.x += Random.Range(-150, 150);
                 pos.y += Random.Range(-20, 20);
                 GameObject st2 = Instantiate(bigStar, pos, Quaternion.identity, star.transform.parent);
                 Destroy(st2,1f);
@@ -68,8 +72,21 @@ public class MainMenuAnimation : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
         logoImage.GetComponent<Image>().DOColor(Color.white, 2f); 
+        yield return new WaitForSeconds(2.5f);
+        logoText.GetComponent<Image>().DOColor(Color.clear, 1f);
+        logoImage.GetComponent<Image>().DOColor(Color.clear, 1f);
+        yield return new WaitForSeconds(1f);
+        anim1.SetActive(false);
+        StartCoroutine(StartAnimation2());
     }
 
+    IEnumerator StartAnimation2()
+    {
+        anim2.SetActive(true);
+        yield return null;
+    }
+    
+    
     IEnumerator StarDeath(GameObject st,Image img, float timeToLive)
     {
         yield return new WaitForSeconds(timeToLive - 0.5f);
