@@ -10,25 +10,47 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b45bd5d52479d645bbe3c8642af60da, type: 3}
-  m_Name: TEst
+  m_Name: Pokemon
   m_EditorClassIdentifier: 
   <Name>k__BackingField: 
   <ID>k__BackingField: 0
+  <Gender>k__BackingField: 0
+  <Level>k__BackingField: 0
+  <Nature>k__BackingField: 0
   <Type>k__BackingField: 0
   <Type2>k__BackingField: 0
-  <HP>k__BackingField: 0
-  <Attack>k__BackingField: 0
-  <Defense>k__BackingField: 0
-  <SpAttack>k__BackingField: 0
-  <SpDefense>k__BackingField: 0
-  <Speed>k__BackingField: 0
-  <Total>k__BackingField: 0
+  <BaseStats>k__BackingField:
+    HP: 0
+    Attack: 0
+    Defense: 0
+    SpAttack: 0
+    SpDefense: 0
+    Speed: 0
+  <EVs>k__BackingField:
+    HP: 0
+    Attack: 0
+    Defense: 0
+    SpAttack: 0
+    SpDefense: 0
+    Speed: 0
+  <IVs>k__BackingField:
+    HP: 0
+    Attack: 0
+    Defense: 0
+    SpAttack: 0
+    SpDefense: 0
+    Speed: 0
+  <TotalStats>k__BackingField:
+    HP: 0
+    Attack: 0
+    Defense: 0
+    SpAttack: 0
+    SpDefense: 0
+    Speed: 0
   <CatchRate>k__BackingField: 0
   <BaseXP>k__BackingField: 0
   <EVYield>k__BackingField: 0
   <BaseFriendship>k__BackingField: 0
   <GrowthRate>k__BackingField: 0
   <Exp>k__BackingField: 0
-  <EggCycles>k__BackingField: 0
-  <EVs>k__BackingField: 0
-  <Abilities>k__BackingField: 
+  <LearnableMoves>k__BackingField: []

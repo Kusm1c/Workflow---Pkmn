@@ -1,7 +1,6 @@
-namespace Pokemon
+public enum Target
 {
-    public enum Target
-    {
-        
-    }
+      Self,
+      Opponent,
+      EntireField,
 }
