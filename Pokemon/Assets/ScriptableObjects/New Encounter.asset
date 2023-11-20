@@ -12,3 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc90a26773fd8f444a221507fd8c4c4a, type: 3}
   m_Name: New Encounter
   m_EditorClassIdentifier: 
+  pokemonList:
+  - pokemon: {fileID: 0}
+    minLevel: 0
+    maxLevel: 0
+    rarity: 0
