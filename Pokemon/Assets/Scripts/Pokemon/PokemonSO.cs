@@ -28,28 +28,13 @@ public class PokemonSO : ScriptableObject
     public void SetTotalStats()
     {
         var totalStats = TotalStats;
-        
-        totalStats.HP = Mathf.FloorToInt((
-            (BaseStats.HP + IVs.HP)
-            * 2 + Mathf.FloorToInt
-            (
-                Mathf.CeilToInt(
-                    Mathf.Sqrt(EVs.HP) / 4)
-            ) * Level) / 100f) + Level + 10;
-        
-        totalStats.Attack =
-            Mathf.FloorToInt((2 * BaseStats.Attack + IVs.Attack + Mathf.FloorToInt(EVs.Attack / 4)) * Level / 100f) + 5;
-        totalStats.Defense =
-            Mathf.FloorToInt((2 * BaseStats.Defense + IVs.Defense + Mathf.FloorToInt(EVs.Defense / 4)) * Level / 100f) +
-            5;
-        totalStats.SpAttack =
-            Mathf.FloorToInt(
-                (2 * BaseStats.SpAttack + IVs.SpAttack + Mathf.FloorToInt(EVs.SpAttack / 4)) * Level / 100f) + 5;
-        totalStats.SpDefense =
-            Mathf.FloorToInt((2 * BaseStats.SpDefense + IVs.SpDefense + Mathf.FloorToInt(EVs.SpDefense / 4)) * Level /
-                             100f) + 5;
-        totalStats.Speed =
-            Mathf.FloorToInt((2 * BaseStats.Speed + IVs.Speed + Mathf.FloorToInt(EVs.Speed / 4)) * Level / 100f) + 5;
+
+        totalStats.HP = Mathf.FloorToInt((((BaseStats.HP + IVs.HP) * 2 + Mathf.Floor(Mathf.Ceil(Mathf.Sqrt(EVs.HP)) / 4f)) * Level) / 100f) + Level + 10;
+        totalStats.Attack = Mathf.FloorToInt(((BaseStats.Attack + IVs.Attack) * 2 + Mathf.Floor(Mathf.Ceil(Mathf.Sqrt(EVs.Attack))/4))*Level / 100f) + 5;
+        totalStats.Defense = Mathf.FloorToInt(((BaseStats.Defense + IVs.Defense) * 2 + Mathf.Floor(Mathf.Ceil(Mathf.Sqrt(EVs.Defense))/4))*Level / 100f) + 5;
+        totalStats.SpAttack = Mathf.FloorToInt(((BaseStats.SpAttack + IVs.SpAttack) * 2 + Mathf.Floor(Mathf.Ceil(Mathf.Sqrt(EVs.SpAttack))/4))*Level / 100f) + 5;
+        totalStats.SpDefense = Mathf.FloorToInt(((BaseStats.SpDefense + IVs.SpDefense) * 2 + Mathf.Floor(Mathf.Ceil(Mathf.Sqrt(EVs.SpDefense))/4))*Level / 100f) + 5;
+        totalStats.Speed = Mathf.FloorToInt(((BaseStats.Speed + IVs.Speed) * 2 + Mathf.Floor(Mathf.Ceil(Mathf.Sqrt(EVs.Speed))/4))*Level / 100f) + 5;
         TotalStats = totalStats;
     }
 
