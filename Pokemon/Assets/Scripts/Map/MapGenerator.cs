@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
-    [SerializeField] private List<Sprite> mapSprites;
+    [SerializeField] private Sprite mapSprite;
     [SerializeField] private GameObject player;
     [SerializeField] private Vector3 playerSpawnPosition;
 
@@ -21,12 +21,8 @@ public class MapGenerator : MonoBehaviour
 
     private void GenerateMap()
     {
-        for (int i = 0; i < mapSprites.Count; i++)
-        {
-            GameObject mapTile = new GameObject("MapTile_" + i);
-            mapTile.transform.SetParent(transform);
-            mapTile.transform.position = new Vector3(i % 10, i / 10, 0);
-            mapTile.AddComponent<SpriteRenderer>().sprite = mapSprites[i];
-        }
+        GameObject map = new GameObject("Map");
+        map.AddComponent<SpriteRenderer>().sprite = mapSprite;
+        map.transform.position = Vector3.zero;
     }
 }
