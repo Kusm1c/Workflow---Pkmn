@@ -1,0 +1,1433 @@
+fileFormatVersion: 2
+guid: d5964ebba62e0314ba6af3cbf846ed0d
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 818
+        width: 166
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8094c77995f627f4cb0df0b6afb8cf4c
+      internalID: -1790170569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_1
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 818
+        width: 166
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2496965f84922f4ebde82a3b8b8558e
+      internalID: -1759779059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_2
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 817
+        width: 166
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69cbc4811ec704c4288c99b965b4a09e
+      internalID: -299104149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_3
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 783
+        width: 110
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22b9ce154810990438c258909070fe65
+      internalID: -1079203096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_6
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 752
+        width: 166
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4ba8e654161db3438e59a799b284961
+      internalID: -717925547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_7
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 753
+        width: 166
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdf0aa5005fb62241aa2b51119c8523a
+      internalID: 1925201944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_8
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 753
+        width: 166
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5b3015b9f04a5441be543aae890cad5
+      internalID: -604635320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_9
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 702
+        width: 22
+        height: 76
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 856aa563b34b4cd4e96576dc2118b408
+      internalID: 937650103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_10
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 766
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 403218525b37d5a40821fdc17cc82367
+      internalID: 417213038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_11
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 767
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15afaf50df8b9b04ab11f8958ce8c22c
+      internalID: 1692725082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_12
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 766
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2e1d4ffa2b965f4cad60c23c1248997
+      internalID: 1277706291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_13
+      rect:
+        serializedVersion: 2
+        x: 623
+        y: 770
+        width: 9
+        height: 3
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a50505302d30a34488aab237ca263af8
+      internalID: 1812189572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_14
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 770
+        width: 32
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94fa2b1f87f162f45bd1ecbd0578fb7d
+      internalID: -443419780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_15
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 707
+        width: 95
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa43d1557d3c6c84c82e8c97d3459f7c
+      internalID: 1588408757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_17
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 727
+        width: 144
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5855a998000863940ba8e062a06e2ced
+      internalID: -1764885293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_18
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 193
+        width: 24
+        height: 56
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e59f9915372cdc34c9d4acdf422f9dc9
+      internalID: -1811468051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_19
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 723
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cc575d696e32714c9da9c8762970f40
+      internalID: -625774661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_20
+      rect:
+        serializedVersion: 2
+        x: 474
+        y: 704
+        width: 60
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 406ff260876475a4c8a83c43027e4547
+      internalID: -1285285328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_21
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 710
+        width: 148
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e517d0f58cd2ff43a3b0944a165c1cd
+      internalID: -334116470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_23
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 707
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97390bcec9dd45346afc7b545d99aae8
+      internalID: 131976114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_24
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 716
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8788ee2a36bf1bb4a9cb15d81e00ea21
+      internalID: -2016269184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_25
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 711
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 598f86f88b6257c4ba4cbe97a554a2cc
+      internalID: -2077987588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_26
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 707
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c40535e9a890b1d48abc6119a1b61b0a
+      internalID: 2080486500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_27
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 706
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69e999856c9bf0345ba2e5b621152dd7
+      internalID: 552276987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_28
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 710
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c14cee8c6e1325348b2246ef0bc4001b
+      internalID: 1629395650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_32
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 706
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52595638fe49d2b4b890ca7b0c88e205
+      internalID: 1875860697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_33
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 707
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d080c07f909027f4f96b1af51605271b
+      internalID: 1413428690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_35
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 539
+        width: 240
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f9a14f62a6929c4c9c977ad1ffd3130
+      internalID: -1671026277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_36
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 539
+        width: 240
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d81698ef2301ecd40942c1d2545d227e
+      internalID: 1984389446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_37
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 539
+        width: 240
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6179ac0f55783074e9fa9ea8a6572666
+      internalID: -1485079433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_38
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 539
+        width: 240
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9a634e785dee044ea9644e8ccf990b0
+      internalID: -317612924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_39
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 375
+        width: 240
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28b81ae81eacd674c88bfa6e1386ae2d
+      internalID: 1257895718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_40
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 375
+        width: 240
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60dbc407d2154e34cab81840c5971256
+      internalID: -1278707469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_41
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 375
+        width: 240
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dce1e0bcd0322f4ea1f71e6bac75c15
+      internalID: -405214533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_42
+      rect:
+        serializedVersion: 2
+        x: 735
+        y: 375
+        width: 240
+        height: 160
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ed34fb616495ac478a8abea8b3cc11e
+      internalID: -1474915543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_43
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 287
+        width: 61
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2faf62736980c4b49b48d94651606471
+      internalID: 1434071812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_44
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 284
+        width: 83
+        height: 78
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea22481d50fce714da445e67684602cd
+      internalID: 1342585172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_45
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 284
+        width: 83
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d51354a4bab1ef8408d2de7d5231d13e
+      internalID: 1762369735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_46
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 283
+        width: 82
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95cd5f21eee97cd48851b543cd02cec4
+      internalID: 648999911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_47
+      rect:
+        serializedVersion: 2
+        x: 344
+        y: 283
+        width: 95
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17d0e2576d048c54695d76e918af0e91
+      internalID: 710395300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_48
+      rect:
+        serializedVersion: 2
+        x: 450
+        y: 294
+        width: 93
+        height: 69
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fce8e7fbf73506d408f956b07faec431
+      internalID: -64446037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_49
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 279
+        width: 110
+        height: 85
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd1b57934c98bdf42b7a8e22d16be763
+      internalID: 1979353940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_50
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 219
+        width: 52
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e8c4607e9d4df64faecf407dfc53419
+      internalID: 805067787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_51
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 216
+        width: 63
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4443714181bd554e8908fa3baca1118
+      internalID: 573322090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_52
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 217
+        width: 62
+        height: 51
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 040062acf6e992040b0a55b7edf98842
+      internalID: 948474473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_53
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 217
+        width: 62
+        height: 54
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92b87a18bd9e26246b4aab08d6bfa56e
+      internalID: 243250477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_54
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 215
+        width: 62
+        height: 62
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ce4482d94c966c42b98a14d1f81697e
+      internalID: 784823280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_55
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 214
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2b7d9fe3bf94794bae65f62d039b657
+      internalID: 1145970930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_56
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 189
+        width: 110
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22b77ca301cde384ebc5e882198114ea
+      internalID: -396529155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_57
+      rect:
+        serializedVersion: 2
+        x: 642
+        y: 228
+        width: 32
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d391f1c1e836b64394bb2aeedc3bfa5
+      internalID: 881465945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_58
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 766
+        width: 2
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c92fcbba24ede614cb6b9fe858c39af8
+      internalID: 892756199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_59
+      rect:
+        serializedVersion: 2
+        x: 636
+        y: 770
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 864c44b57903c2544a4870b21b2fc903
+      internalID: -1767789510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      PokemonFireRedLeafGreen-Intro_0: -1790170569
+      PokemonFireRedLeafGreen-Intro_1: -1759779059
+      PokemonFireRedLeafGreen-Intro_10: 417213038
+      PokemonFireRedLeafGreen-Intro_100: -377952643
+      PokemonFireRedLeafGreen-Intro_101: -374952484
+      PokemonFireRedLeafGreen-Intro_102: 58082027
+      PokemonFireRedLeafGreen-Intro_103: 57437381
+      PokemonFireRedLeafGreen-Intro_104: 369802101
+      PokemonFireRedLeafGreen-Intro_105: 1304539165
+      PokemonFireRedLeafGreen-Intro_106: 782407556
+      PokemonFireRedLeafGreen-Intro_107: 168858053
+      PokemonFireRedLeafGreen-Intro_108: 864808957
+      PokemonFireRedLeafGreen-Intro_109: -1098930987
+      PokemonFireRedLeafGreen-Intro_11: 1692725082
+      PokemonFireRedLeafGreen-Intro_110: 154781170
+      PokemonFireRedLeafGreen-Intro_111: 1522391378
+      PokemonFireRedLeafGreen-Intro_112: -1270570534
+      PokemonFireRedLeafGreen-Intro_113: -191824620
+      PokemonFireRedLeafGreen-Intro_114: -1165337541
+      PokemonFireRedLeafGreen-Intro_115: -1388658660
+      PokemonFireRedLeafGreen-Intro_116: -212560020
+      PokemonFireRedLeafGreen-Intro_117: -372156896
+      PokemonFireRedLeafGreen-Intro_118: -623510968
+      PokemonFireRedLeafGreen-Intro_119: -61820302
+      PokemonFireRedLeafGreen-Intro_12: 1277706291
+      PokemonFireRedLeafGreen-Intro_120: -559600231
+      PokemonFireRedLeafGreen-Intro_121: 520189422
+      PokemonFireRedLeafGreen-Intro_122: 1052295660
+      PokemonFireRedLeafGreen-Intro_123: -252263190
+      PokemonFireRedLeafGreen-Intro_124: 1919614077
+      PokemonFireRedLeafGreen-Intro_125: -229679909
+      PokemonFireRedLeafGreen-Intro_126: 205081161
+      PokemonFireRedLeafGreen-Intro_127: 1650971545
+      PokemonFireRedLeafGreen-Intro_128: 1179816917
+      PokemonFireRedLeafGreen-Intro_129: 1407473193
+      PokemonFireRedLeafGreen-Intro_13: 1812189572
+      PokemonFireRedLeafGreen-Intro_130: -160835365
+      PokemonFireRedLeafGreen-Intro_131: -1253333075
+      PokemonFireRedLeafGreen-Intro_132: -1892075701
+      PokemonFireRedLeafGreen-Intro_133: -361294615
+      PokemonFireRedLeafGreen-Intro_134: -451244428
+      PokemonFireRedLeafGreen-Intro_135: -1440004114
+      PokemonFireRedLeafGreen-Intro_136: -712723155
+      PokemonFireRedLeafGreen-Intro_137: -2110116544
+      PokemonFireRedLeafGreen-Intro_138: 757583892
+      PokemonFireRedLeafGreen-Intro_139: 1889635353
+      PokemonFireRedLeafGreen-Intro_14: -443419780
+      PokemonFireRedLeafGreen-Intro_140: -393580653
+      PokemonFireRedLeafGreen-Intro_141: -248892814
+      PokemonFireRedLeafGreen-Intro_142: -1116597361
+      PokemonFireRedLeafGreen-Intro_143: -1896153123
+      PokemonFireRedLeafGreen-Intro_144: 125168448
+      PokemonFireRedLeafGreen-Intro_145: 193424097
+      PokemonFireRedLeafGreen-Intro_146: 541884055
+      PokemonFireRedLeafGreen-Intro_147: -1651734197
+      PokemonFireRedLeafGreen-Intro_148: -882012947
+      PokemonFireRedLeafGreen-Intro_149: -1251746827
+      PokemonFireRedLeafGreen-Intro_15: 1588408757
+      PokemonFireRedLeafGreen-Intro_150: 512034099
+      PokemonFireRedLeafGreen-Intro_151: -811105341
+      PokemonFireRedLeafGreen-Intro_152: 2119891895
+      PokemonFireRedLeafGreen-Intro_153: -1030424484
+      PokemonFireRedLeafGreen-Intro_154: -1353731518
+      PokemonFireRedLeafGreen-Intro_155: 472150301
+      PokemonFireRedLeafGreen-Intro_156: -499631395
+      PokemonFireRedLeafGreen-Intro_157: -2075019486
+      PokemonFireRedLeafGreen-Intro_158: -392389615
+      PokemonFireRedLeafGreen-Intro_159: 1669732456
+      PokemonFireRedLeafGreen-Intro_16: -508926212
+      PokemonFireRedLeafGreen-Intro_160: 1180084090
+      PokemonFireRedLeafGreen-Intro_161: 920998873
+      PokemonFireRedLeafGreen-Intro_162: -694758437
+      PokemonFireRedLeafGreen-Intro_163: 1318297963
+      PokemonFireRedLeafGreen-Intro_164: 1578511892
+      PokemonFireRedLeafGreen-Intro_165: -1260904812
+      PokemonFireRedLeafGreen-Intro_166: -2011030872
+      PokemonFireRedLeafGreen-Intro_167: -1079265973
+      PokemonFireRedLeafGreen-Intro_168: 691387608
+      PokemonFireRedLeafGreen-Intro_169: -2113181202
+      PokemonFireRedLeafGreen-Intro_17: -1764885293
+      PokemonFireRedLeafGreen-Intro_170: -289398962
+      PokemonFireRedLeafGreen-Intro_171: -1552892616
+      PokemonFireRedLeafGreen-Intro_172: 480152858
+      PokemonFireRedLeafGreen-Intro_173: -987771910
+      PokemonFireRedLeafGreen-Intro_174: -1686391852
+      PokemonFireRedLeafGreen-Intro_175: -600379318
+      PokemonFireRedLeafGreen-Intro_176: 30174651
+      PokemonFireRedLeafGreen-Intro_177: 2116253207
+      PokemonFireRedLeafGreen-Intro_178: 1128346697
+      PokemonFireRedLeafGreen-Intro_179: 958177712
+      PokemonFireRedLeafGreen-Intro_18: -1811468051
+      PokemonFireRedLeafGreen-Intro_180: 2080598363
+      PokemonFireRedLeafGreen-Intro_181: -1728054210
+      PokemonFireRedLeafGreen-Intro_182: -160553594
+      PokemonFireRedLeafGreen-Intro_183: -1859746037
+      PokemonFireRedLeafGreen-Intro_184: -1530906961
+      PokemonFireRedLeafGreen-Intro_185: -198522316
+      PokemonFireRedLeafGreen-Intro_186: -330407010
+      PokemonFireRedLeafGreen-Intro_187: 1997425272
+      PokemonFireRedLeafGreen-Intro_188: 1727201680
+      PokemonFireRedLeafGreen-Intro_189: -1490167984
+      PokemonFireRedLeafGreen-Intro_19: -625774661
+      PokemonFireRedLeafGreen-Intro_190: 1886394595
+      PokemonFireRedLeafGreen-Intro_191: 1581924668
+      PokemonFireRedLeafGreen-Intro_192: 536362735
+      PokemonFireRedLeafGreen-Intro_193: -2104312167
+      PokemonFireRedLeafGreen-Intro_194: -159321272
+      PokemonFireRedLeafGreen-Intro_195: -921610851
+      PokemonFireRedLeafGreen-Intro_196: 1395183518
+      PokemonFireRedLeafGreen-Intro_197: 23335814
+      PokemonFireRedLeafGreen-Intro_198: -1679522416
+      PokemonFireRedLeafGreen-Intro_199: -1471626363
+      PokemonFireRedLeafGreen-Intro_2: -299104149
+      PokemonFireRedLeafGreen-Intro_20: -1285285328
+      PokemonFireRedLeafGreen-Intro_200: 1823179513
+      PokemonFireRedLeafGreen-Intro_21: -334116470
+      PokemonFireRedLeafGreen-Intro_22: 333546701
+      PokemonFireRedLeafGreen-Intro_23: 131976114
+      PokemonFireRedLeafGreen-Intro_24: -2016269184
+      PokemonFireRedLeafGreen-Intro_25: -2077987588
+      PokemonFireRedLeafGreen-Intro_26: 2080486500
+      PokemonFireRedLeafGreen-Intro_27: 552276987
+      PokemonFireRedLeafGreen-Intro_28: 1629395650
+      PokemonFireRedLeafGreen-Intro_29: 259719836
+      PokemonFireRedLeafGreen-Intro_3: -1079203096
+      PokemonFireRedLeafGreen-Intro_30: 1687263919
+      PokemonFireRedLeafGreen-Intro_31: 1867924620
+      PokemonFireRedLeafGreen-Intro_32: 1875860697
+      PokemonFireRedLeafGreen-Intro_33: 1413428690
+      PokemonFireRedLeafGreen-Intro_34: 529438709
+      PokemonFireRedLeafGreen-Intro_35: -1671026277
+      PokemonFireRedLeafGreen-Intro_36: 1984389446
+      PokemonFireRedLeafGreen-Intro_37: -1485079433
+      PokemonFireRedLeafGreen-Intro_38: -317612924
+      PokemonFireRedLeafGreen-Intro_39: 1257895718
+      PokemonFireRedLeafGreen-Intro_4: -1368626528
+      PokemonFireRedLeafGreen-Intro_40: -1278707469
+      PokemonFireRedLeafGreen-Intro_41: -405214533
+      PokemonFireRedLeafGreen-Intro_42: -1474915543
+      PokemonFireRedLeafGreen-Intro_43: 1434071812
+      PokemonFireRedLeafGreen-Intro_44: 1342585172
+      PokemonFireRedLeafGreen-Intro_45: 1762369735
+      PokemonFireRedLeafGreen-Intro_46: 648999911
+      PokemonFireRedLeafGreen-Intro_47: 710395300
+      PokemonFireRedLeafGreen-Intro_48: -64446037
+      PokemonFireRedLeafGreen-Intro_49: 1979353940
+      PokemonFireRedLeafGreen-Intro_5: -1361917442
+      PokemonFireRedLeafGreen-Intro_50: 805067787
+      PokemonFireRedLeafGreen-Intro_51: 573322090
+      PokemonFireRedLeafGreen-Intro_52: 948474473
+      PokemonFireRedLeafGreen-Intro_53: 243250477
+      PokemonFireRedLeafGreen-Intro_54: 784823280
+      PokemonFireRedLeafGreen-Intro_55: 1145970930
+      PokemonFireRedLeafGreen-Intro_56: -396529155
+      PokemonFireRedLeafGreen-Intro_57: 881465945
+      PokemonFireRedLeafGreen-Intro_58: 892756199
+      PokemonFireRedLeafGreen-Intro_59: -1767789510
+      PokemonFireRedLeafGreen-Intro_6: -717925547
+      PokemonFireRedLeafGreen-Intro_60: -1928825847
+      PokemonFireRedLeafGreen-Intro_61: 618989314
+      PokemonFireRedLeafGreen-Intro_62: 1105740480
+      PokemonFireRedLeafGreen-Intro_63: -643229684
+      PokemonFireRedLeafGreen-Intro_64: 909592188
+      PokemonFireRedLeafGreen-Intro_65: -588351463
+      PokemonFireRedLeafGreen-Intro_66: -1627005086
+      PokemonFireRedLeafGreen-Intro_67: -1510374491
+      PokemonFireRedLeafGreen-Intro_68: 1399616484
+      PokemonFireRedLeafGreen-Intro_69: 1483824922
+      PokemonFireRedLeafGreen-Intro_7: 1925201944
+      PokemonFireRedLeafGreen-Intro_70: -311626782
+      PokemonFireRedLeafGreen-Intro_71: 1308714033
+      PokemonFireRedLeafGreen-Intro_72: -922873555
+      PokemonFireRedLeafGreen-Intro_73: 112299741
+      PokemonFireRedLeafGreen-Intro_74: 1179726013
+      PokemonFireRedLeafGreen-Intro_75: 491398320
+      PokemonFireRedLeafGreen-Intro_76: 1004258559
+      PokemonFireRedLeafGreen-Intro_77: -1629048300
+      PokemonFireRedLeafGreen-Intro_78: 1708324755
+      PokemonFireRedLeafGreen-Intro_79: 477734275
+      PokemonFireRedLeafGreen-Intro_8: -604635320
+      PokemonFireRedLeafGreen-Intro_80: 159095140
+      PokemonFireRedLeafGreen-Intro_81: 1893078807
+      PokemonFireRedLeafGreen-Intro_82: 663711627
+      PokemonFireRedLeafGreen-Intro_83: -1353989800
+      PokemonFireRedLeafGreen-Intro_84: -1329556828
+      PokemonFireRedLeafGreen-Intro_85: -991356291
+      PokemonFireRedLeafGreen-Intro_86: 900112184
+      PokemonFireRedLeafGreen-Intro_87: 2038204046
+      PokemonFireRedLeafGreen-Intro_88: -1175066552
+      PokemonFireRedLeafGreen-Intro_89: 1990303666
+      PokemonFireRedLeafGreen-Intro_9: 937650103
+      PokemonFireRedLeafGreen-Intro_90: -2102147079
+      PokemonFireRedLeafGreen-Intro_91: 597089263
+      PokemonFireRedLeafGreen-Intro_92: 976170227
+      PokemonFireRedLeafGreen-Intro_93: 269162825
+      PokemonFireRedLeafGreen-Intro_94: 1417127906
+      PokemonFireRedLeafGreen-Intro_95: -521835808
+      PokemonFireRedLeafGreen-Intro_96: -1289950528
+      PokemonFireRedLeafGreen-Intro_97: 1082019617
+      PokemonFireRedLeafGreen-Intro_98: 432793922
+      PokemonFireRedLeafGreen-Intro_99: -141720668
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
