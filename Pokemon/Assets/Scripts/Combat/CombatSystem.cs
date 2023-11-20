@@ -16,16 +16,16 @@ public class CombatSystem : MonoBehaviour
     private bool onePlaysFirst = true;
     private bool nextStep = false;
     
-    private PlayerControls input;
+    // private PlayerControls input;
     
     private void Awake()
     {
-        input = new();
+        // input = new();
     }
 
     private void OnEnable()
     {
-        input.Menu.Enable();
+        // input.Menu.Enable();
     }
 
     private void TestFunction()
@@ -102,7 +102,7 @@ public class CombatSystem : MonoBehaviour
     {
         while(!nextStep)
         {
-            if (input.Menu.Validate.triggered) nextStep = true;
+            // if (input.Menu.Validate.triggered) nextStep = true;
         }
 
         nextStep = false;

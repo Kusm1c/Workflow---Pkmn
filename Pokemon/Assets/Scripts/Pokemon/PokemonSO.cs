@@ -23,6 +23,7 @@ public class PokemonSO : ScriptableObject
     [field: SerializeField] public int GrowthRate { get; private set; }
     [field: SerializeField] public int Exp { get; private set; }
     [field: SerializeField] public List<LearnableMove> LearnableMoves { get; private set; }
+    [field: SerializeField] public List<MoveSO> Moves { get; private set; }
 
     //set the total stats of the pokemon when the value of base stats, evs, ivs, level, and nature changes
     public void SetTotalStats()
