@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MainMenuAnimation : MonoBehaviour
 {
@@ -164,7 +165,7 @@ public class MainMenuAnimation : MonoBehaviour
         gengarAtack.SetActive(false);
         yield return new WaitForSeconds(0.5f);
         fourthAct.SetActive(false);
-        mainMenuPanel.SetActive(true);
+        SceneManager.LoadScene("MainMenuButtons");
         
         yield return null;
     }
