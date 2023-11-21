@@ -152,17 +152,7 @@ public class PlayerMvmnt : MonoBehaviour
             isMoving = false;
             return true;
         }
-
-        if (MapGenerator.Instance.doorsPositions.Any(pos =>
-                Mathf.Abs(transform.position.x - pos.x) < tolerance.x &&
-                Mathf.Abs(transform.position.y - pos.y) < tolerance.y))
-        {
-            UseDoor(MapGenerator.Instance.doorsPositions.First(pos =>
-                Mathf.Abs(transform.position.x - pos.x) < tolerance.x &&
-                Mathf.Abs(transform.position.y - pos.y) < tolerance.y));
-            return false;
-        }
-
+        
         foreach (var pos in MapGenerator.Instance.blockedFromBelowPositions)
         {
             if (direction == Vector3.down) return false;
@@ -173,13 +163,13 @@ public class PlayerMvmnt : MonoBehaviour
                 return true;
             }
         }
-
         return false;
     }
 
     private void UseDoor(Vector3 doorPosition)
     {
-        
+        int nextDoor = Doors.nextDoorFromPosition[doorPosition];
+        transform.position = new Vector3(Doors.positionFromDoor[nextDoor].x + lastDirection.x * tileSize, Doors.positionFromDoor[nextDoor].y +lastDirection.y * tileSize, -0.1f);
     }
 
     private IEnumerator Move(Vector3 direction)
@@ -245,6 +235,19 @@ public class PlayerMvmnt : MonoBehaviour
 
         currentAnimationFrame = (currentAnimationFrame + 1) % 4;
         player.transform.position = targetPos;
+        CheckForDoor();
         isMoving = false;
+    }
+
+    private void CheckForDoor()
+    {
+        if (MapGenerator.Instance.doorsPositions.Any(pos =>
+                Mathf.Abs(transform.position.x - pos.x) < tolerance.x &&
+                Mathf.Abs(transform.position.y - pos.y) < tolerance.y))
+        {
+            UseDoor(MapGenerator.Instance.doorsPositions.First(pos =>
+                Mathf.Abs(transform.position.x - pos.x) < tolerance.x &&
+                Mathf.Abs(transform.position.y - pos.y) < tolerance.y));
+        }
     }
 }
