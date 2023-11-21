@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b45bd5d52479d645bbe3c8642af60da, type: 3}
-  m_Name: Pokemon
+  m_Name: Pokemon 2
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: 
+  <Name>k__BackingField: idiot
   <ID>k__BackingField: 0
   <Gender>k__BackingField: 0
-  <Level>k__BackingField: 0
+  <Level>k__BackingField: 1
   <Nature>k__BackingField: 0
-  <Type>k__BackingField: 0
+  <Type>k__BackingField: 3
   <Type2>k__BackingField: 0
   <BaseStats>k__BackingField:
     HP: 0
@@ -41,7 +41,7 @@ MonoBehaviour:
     SpDefense: 0
     Speed: 0
   <TotalStats>k__BackingField:
-    HP: 10
+    HP: 11
     Attack: 5
     Defense: 5
     SpAttack: 5
@@ -54,4 +54,8 @@ MonoBehaviour:
   <GrowthRate>k__BackingField: 0
   <Exp>k__BackingField: 0
   <LearnableMoves>k__BackingField: []
-  <Moves>k__BackingField: []
+  <Moves>k__BackingField:
+  - {fileID: 11400000, guid: 601421bd93565ab45b8a94428f8d48d9, type: 2}
+  - {fileID: 11400000, guid: 601421bd93565ab45b8a94428f8d48d9, type: 2}
+  - {fileID: 11400000, guid: 601421bd93565ab45b8a94428f8d48d9, type: 2}
+  - {fileID: 11400000, guid: 601421bd93565ab45b8a94428f8d48d9, type: 2}
