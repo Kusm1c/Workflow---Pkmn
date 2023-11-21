@@ -16,16 +16,16 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] private GameObject flowerTileSample;
     [SerializeField] private List<GameObject> waterTileSamples;
 
-    [SerializeField] private List<Vector3> blockedPositions;
+    public List<Vector3> blockedPositions;
     [SerializeField] private List<GameObject> blockedTiles;
 
-    [SerializeField] private List<Vector3> doorsPositions;
-    [SerializeField] private List<GameObject> doorsTiles;
+    public List<Vector3> doorsPositions;
+    public List<GameObject> doorsTiles;
 
-    [SerializeField] private List<Vector3> interactablePositions;
+    public List<Vector3> interactablePositions;
     [SerializeField] private List<GameObject> interactableTiles;
 
-    [SerializeField] private List<Vector3> blockedFromBelowPositions;
+    public List<Vector3> blockedFromBelowPositions;
     [SerializeField] private List<GameObject> blockedFromBelowTiles;
 
     private GameObject grassTileParent;
@@ -40,7 +40,7 @@ public class MapGenerator : MonoBehaviour
 
     [SerializeField] private List<GameObject> TilesToDelete;
 
-    public MapGenerator Instance { get; private set; }
+    public static MapGenerator Instance { get; private set; }
 
     private void Awake()
     {
@@ -50,6 +50,10 @@ public class MapGenerator : MonoBehaviour
         }
 
         GenerateMap();
+    }
+
+    private void Start()
+    {
         SpawnPlayer();
     }
 

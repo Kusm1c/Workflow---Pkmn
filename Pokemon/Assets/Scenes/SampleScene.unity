@@ -542,6 +542,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6435091884904267190, guid: 730dc467a93b88746b455990ad648daa,
         type: 3}
+      propertyPath: TilesToDelete.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6435091884904267190, guid: 730dc467a93b88746b455990ad648daa,
+        type: 3}
+      propertyPath: TilesToDelete.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6435091884904267190, guid: 730dc467a93b88746b455990ad648daa,
+        type: 3}
+      propertyPath: TilesToDelete.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6435091884904267190, guid: 730dc467a93b88746b455990ad648daa,
+        type: 3}
+      propertyPath: TilesToDelete.Array.data[3]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6435091884904267190, guid: 730dc467a93b88746b455990ad648daa,
+        type: 3}
       propertyPath: blockedTiles.Array.data[10]
       value: 
       objectReference: {fileID: 0}
