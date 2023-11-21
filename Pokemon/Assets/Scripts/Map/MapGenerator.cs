@@ -15,17 +15,31 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] private GameObject grassTileSample;
     [SerializeField] private GameObject flowerTileSample;
     [SerializeField] private List<GameObject> waterTileSamples;
-    
+
     [SerializeField] private List<Vector3> blockedPositions;
     [SerializeField] private List<GameObject> blockedTiles;
+
+    [SerializeField] private List<Vector3> doorsPositions;
+    [SerializeField] private List<GameObject> doorsTiles;
+
+    [SerializeField] private List<Vector3> interactablePositions;
+    [SerializeField] private List<GameObject> interactableTiles;
+
+    [SerializeField] private List<Vector3> blockedFromBelowPositions;
+    [SerializeField] private List<GameObject> blockedFromBelowTiles;
 
     private GameObject grassTileParent;
     private GameObject flowerTileParent;
     private GameObject waterTileParent;
+    private GameObject doorsTileParent;
+    private GameObject interactableTileParent;
     private GameObject blockedTileParent;
-    
+    private GameObject blockedFromBelowTileParent;
+
     private GameObject actionTileParent;
-    
+
+    [SerializeField] private List<GameObject> TilesToDelete;
+
     public MapGenerator Instance { get; private set; }
 
     private void Awake()
@@ -34,6 +48,7 @@ public class MapGenerator : MonoBehaviour
         {
             Instance = this;
         }
+
         GenerateMap();
         SpawnPlayer();
     }
@@ -43,13 +58,20 @@ public class MapGenerator : MonoBehaviour
         player = Instantiate(player, playerSpawnPosition, Quaternion.identity);
     }
 
+    private GameObject map;
     [ContextMenu("Generate Map")]
     private void GenerateMap()
     {
-        GameObject map = new GameObject("Map");
-        map.AddComponent<SpriteRenderer>().sprite = mapSprite;
-        map.transform.position = Vector3.zero;
+        if (map == null)
+        {
+            map = CreateMap();
+        }
+        
+        GenerateTiles(map);
+    }
 
+    private void GenerateTiles(GameObject map)
+    {
         CreateParent(map);
 
         Vector2 sizeOfMap = mapSprite.bounds.size;
@@ -62,7 +84,7 @@ public class MapGenerator : MonoBehaviour
             {
                 Color pixelColor = mapSprite.texture.GetPixelBilinear((x - bottomLeft.x) / sizeOfMap.x,
                     (y - bottomLeft.y) / sizeOfMap.y);
-                
+
                 foreach (var tile in from deepWaterTileSample in waterTileSamples
                          where Math.Abs(pixelColor.r - deepWaterTileSample.GetComponent<SpriteRenderer>().color.r) <
                                0.0001f &&
@@ -74,12 +96,12 @@ public class MapGenerator : MonoBehaviour
                 {
                     tile.GetComponent<SpriteRenderer>().color = pixelColor;
                     tile.GetComponent<SpriteRenderer>().color = new Color(tile.GetComponent<SpriteRenderer>().color.r,
-                        tile.GetComponent<SpriteRenderer>().color.g, tile.GetComponent<SpriteRenderer>().color.b, 0.3f);
+                        tile.GetComponent<SpriteRenderer>().color.g, tile.GetComponent<SpriteRenderer>().color.b, 0.6f);
                     tile.name = "Deep Water";
                     tile.transform.parent = waterTileParent.transform;
                     continue;
                 }
-                
+
                 if (Math.Abs(pixelColor.r - grassTileSample.GetComponent<SpriteRenderer>().color.r) < 0.004f &&
                     Math.Abs(pixelColor.g - grassTileSample.GetComponent<SpriteRenderer>().color.g) < 0.004f &&
                     Math.Abs(pixelColor.b - grassTileSample.GetComponent<SpriteRenderer>().color.b) < 0.004f)
@@ -87,7 +109,7 @@ public class MapGenerator : MonoBehaviour
                     GameObject tile = Instantiate(actionTile, new Vector3(x, y, 0), Quaternion.identity);
                     tile.GetComponent<SpriteRenderer>().color = pixelColor;
                     tile.GetComponent<SpriteRenderer>().color = new Color(tile.GetComponent<SpriteRenderer>().color.r,
-                        tile.GetComponent<SpriteRenderer>().color.g, tile.GetComponent<SpriteRenderer>().color.b, 0.3f);
+                        tile.GetComponent<SpriteRenderer>().color.g, tile.GetComponent<SpriteRenderer>().color.b, 0.6f);
                     tile.name = "Grass";
                     tile.transform.parent = grassTileParent.transform;
                 }
@@ -98,7 +120,7 @@ public class MapGenerator : MonoBehaviour
                     GameObject tile = Instantiate(actionTile, new Vector3(x, y, 0), Quaternion.identity);
                     tile.GetComponent<SpriteRenderer>().color = pixelColor;
                     tile.GetComponent<SpriteRenderer>().color = new Color(tile.GetComponent<SpriteRenderer>().color.r,
-                        tile.GetComponent<SpriteRenderer>().color.g, tile.GetComponent<SpriteRenderer>().color.b, 0.3f);
+                        tile.GetComponent<SpriteRenderer>().color.g, tile.GetComponent<SpriteRenderer>().color.b, 0.6f);
                     tile.name = "Flower";
                     tile.transform.parent = flowerTileParent.transform;
                 }
@@ -107,9 +129,36 @@ public class MapGenerator : MonoBehaviour
                     GameObject tile = Instantiate(actionTile, new Vector3(x, y, 0), Quaternion.identity);
                     tile.GetComponent<SpriteRenderer>().color = Color.red;
                     tile.GetComponent<SpriteRenderer>().color = new Color(tile.GetComponent<SpriteRenderer>().color.r,
-                        tile.GetComponent<SpriteRenderer>().color.g, tile.GetComponent<SpriteRenderer>().color.b, 0.9f);
+                        tile.GetComponent<SpriteRenderer>().color.g, tile.GetComponent<SpriteRenderer>().color.b, 0.6f);
                     tile.name = "Blocked";
                     tile.transform.parent = blockedTileParent.transform;
+                }
+                else if (blockedFromBelowPositions.Contains(new Vector3(x, y, 0)))
+                {
+                    GameObject tile = Instantiate(actionTile, new Vector3(x, y, 0), Quaternion.identity);
+                    tile.GetComponent<SpriteRenderer>().color = Color.magenta;
+                    tile.GetComponent<SpriteRenderer>().color = new Color(tile.GetComponent<SpriteRenderer>().color.r,
+                        tile.GetComponent<SpriteRenderer>().color.g, tile.GetComponent<SpriteRenderer>().color.b, 0.6f);
+                    tile.name = "Blocked From Below";
+                    tile.transform.parent = blockedFromBelowTileParent.transform;
+                }
+                else if (doorsPositions.Contains(new Vector3(x, y, 0)))
+                {
+                    GameObject tile = Instantiate(actionTile, new Vector3(x, y, 0), Quaternion.identity);
+                    tile.GetComponent<SpriteRenderer>().color = Color.black;
+                    tile.GetComponent<SpriteRenderer>().color = new Color(tile.GetComponent<SpriteRenderer>().color.r,
+                        tile.GetComponent<SpriteRenderer>().color.g, tile.GetComponent<SpriteRenderer>().color.b, 0.6f);
+                    tile.transform.parent = doorsTileParent.transform;
+                    tile.name = "Door" + tile.transform.parent.childCount;
+                }
+                else if (interactablePositions.Contains(new Vector3(x, y, 0)))
+                {
+                    GameObject tile = Instantiate(actionTile, new Vector3(x, y, 0), Quaternion.identity);
+                    tile.GetComponent<SpriteRenderer>().color = Color.yellow;
+                    tile.GetComponent<SpriteRenderer>().color = new Color(tile.GetComponent<SpriteRenderer>().color.r,
+                        tile.GetComponent<SpriteRenderer>().color.g, tile.GetComponent<SpriteRenderer>().color.b, 0.6f);
+                    tile.name = "Interactable";
+                    tile.transform.parent = interactableTileParent.transform;
                 }
                 else if (pixelColor != Color.white)
                 {
@@ -121,6 +170,14 @@ public class MapGenerator : MonoBehaviour
                 }
             }
         }
+    }
+
+    private GameObject CreateMap()
+    {
+        GameObject map = new GameObject("Map");
+        map.AddComponent<SpriteRenderer>().sprite = mapSprite;
+        map.transform.position = Vector3.zero;
+        return map;
     }
 
     private void CreateParent(GameObject map)
@@ -157,6 +214,30 @@ public class MapGenerator : MonoBehaviour
                 parent = map.transform
             }
         };
+        blockedFromBelowTileParent = new GameObject("Blocked From Below Tiles")
+        {
+            name = "Blocked From Below Tiles",
+            transform =
+            {
+                parent = map.transform
+            }
+        };
+        doorsTileParent = new GameObject("Doors Tiles")
+        {
+            name = "Doors Tiles",
+            transform =
+            {
+                parent = map.transform
+            }
+        };
+        interactableTileParent = new GameObject("Interactable Tiles")
+        {
+            name = "Interactable Tiles",
+            transform =
+            {
+                parent = map.transform
+            }
+        };
         actionTileParent = new GameObject("Action Tiles")
         {
             name = "Action Tiles",
@@ -166,7 +247,7 @@ public class MapGenerator : MonoBehaviour
             }
         };
     }
-    
+
     [ContextMenu("Generate Blocked Positions")]
     public void GenerateBlockedPositions()
     {
@@ -176,5 +257,328 @@ public class MapGenerator : MonoBehaviour
         {
             blockedPositions.Add(blockedTile.transform.position);
         }
+    }
+
+    [ContextMenu("Generate Blocked Tile")]
+    public void GenerateBlockedTile()
+    {
+        blockedTiles = new List<GameObject>();
+        foreach (var tile in grassTileParent.GetComponentsInChildren<Transform>())
+        {
+            if (tile.name == "Blocked")
+            {
+                blockedTiles.Add(tile.gameObject);
+            }
+        }
+
+        foreach (var tile in flowerTileParent.GetComponentsInChildren<Transform>())
+        {
+            if (tile.name == "Blocked")
+            {
+                blockedTiles.Add(tile.gameObject);
+            }
+        }
+
+        foreach (var tile in waterTileParent.GetComponentsInChildren<Transform>())
+        {
+            if (tile.name == "Blocked")
+            {
+                blockedTiles.Add(tile.gameObject);
+            }
+        }
+
+        foreach (var tile in actionTileParent.GetComponentsInChildren<Transform>())
+        {
+            if (tile.name == "Blocked")
+            {
+                blockedTiles.Add(tile.gameObject);
+            }
+        }
+
+        foreach (var tile in blockedTileParent.GetComponentsInChildren<Transform>())
+        {
+            if (tile.name == "Blocked")
+            {
+                blockedTiles.Add(tile.gameObject);
+            }
+        }
+    }
+
+    [ContextMenu("Generate Blocked From Below Positions")]
+    public void GenerateBlockedFromBelowPositions()
+    {
+        blockedFromBelowPositions = new List<Vector3>();
+        foreach (var blockedTile in blockedFromBelowTiles.Where(blockedTile =>
+                     !blockedFromBelowPositions.Contains(blockedTile.transform.position)))
+        {
+            blockedFromBelowPositions.Add(blockedTile.transform.position);
+        }
+    }
+
+    [ContextMenu("Generate Blocked From Below Tile")]
+    public void GenerateBlockedFromBelowTile()
+    {
+        blockedFromBelowTiles = new List<GameObject>();
+        foreach (var tile in grassTileParent.GetComponentsInChildren<Transform>())
+        {
+            if (tile.name == "Blocked From Below")
+            {
+                blockedFromBelowTiles.Add(tile.gameObject);
+            }
+        }
+
+        foreach (var tile in flowerTileParent.GetComponentsInChildren<Transform>())
+        {
+            if (tile.name == "Blocked From Below")
+            {
+                blockedFromBelowTiles.Add(tile.gameObject);
+            }
+        }
+
+        foreach (var tile in waterTileParent.GetComponentsInChildren<Transform>())
+        {
+            if (tile.name == "Blocked From Below")
+            {
+                blockedFromBelowTiles.Add(tile.gameObject);
+            }
+        }
+
+        foreach (var tile in actionTileParent.GetComponentsInChildren<Transform>())
+        {
+            if (tile.name == "Blocked From Below")
+            {
+                blockedFromBelowTiles.Add(tile.gameObject);
+            }
+        }
+
+        foreach (var tile in blockedFromBelowTileParent.GetComponentsInChildren<Transform>())
+        {
+            if (tile.name == "Blocked From Below")
+            {
+                blockedFromBelowTiles.Add(tile.gameObject);
+            }
+        }
+    }
+
+    [ContextMenu("Generate Doors Positions")]
+    public void GenerateDoorsPositions()
+    {
+        doorsPositions = new List<Vector3>();
+        foreach (var doorsTile in doorsTiles.Where(doorsTile =>
+                     !doorsPositions.Contains(doorsTile.transform.position)))
+        {
+            doorsPositions.Add(doorsTile.transform.position);
+        }
+    }
+
+    [ContextMenu("Generate Doors Tile")]
+    public void GenerateDoorsTile()
+    {
+        doorsTiles = new List<GameObject>();
+        foreach (var tile in grassTileParent.GetComponentsInChildren<Transform>())
+        {
+            if (tile.name == "Door")
+            {
+                doorsTiles.Add(tile.gameObject);
+            }
+        }
+
+        foreach (var tile in flowerTileParent.GetComponentsInChildren<Transform>())
+        {
+            if (tile.name == "Door")
+            {
+                doorsTiles.Add(tile.gameObject);
+            }
+        }
+
+        foreach (var tile in waterTileParent.GetComponentsInChildren<Transform>())
+        {
+            if (tile.name == "Door")
+            {
+                doorsTiles.Add(tile.gameObject);
+            }
+        }
+
+        foreach (var tile in actionTileParent.GetComponentsInChildren<Transform>())
+        {
+            if (tile.name == "Door")
+            {
+                doorsTiles.Add(tile.gameObject);
+            }
+        }
+
+        foreach (var tile in doorsTileParent.GetComponentsInChildren<Transform>())
+        {
+            if (tile.name == "Door")
+            {
+                doorsTiles.Add(tile.gameObject);
+            }
+        }
+    }
+
+    [ContextMenu("Generate Interactable Positions")]
+    public void GenerateInteractablePositions()
+    {
+        interactablePositions = new List<Vector3>();
+        foreach (var interactableTile in interactableTiles.Where(interactableTile =>
+                     !interactablePositions.Contains(interactableTile.transform.position)))
+        {
+            interactablePositions.Add(interactableTile.transform.position);
+        }
+    }
+
+    [ContextMenu("Generate Interactable Tile")]
+    public void GenerateInteractableTile()
+    {
+        interactableTiles = new List<GameObject>();
+        foreach (var tile in grassTileParent.GetComponentsInChildren<Transform>())
+        {
+            if (tile.name == "Interactable")
+            {
+                interactableTiles.Add(tile.gameObject);
+            }
+        }
+
+        foreach (var tile in flowerTileParent.GetComponentsInChildren<Transform>())
+        {
+            if (tile.name == "Interactable")
+            {
+                interactableTiles.Add(tile.gameObject);
+            }
+        }
+
+        foreach (var tile in waterTileParent.GetComponentsInChildren<Transform>())
+        {
+            if (tile.name == "Interactable")
+            {
+                interactableTiles.Add(tile.gameObject);
+            }
+        }
+
+        foreach (var tile in actionTileParent.GetComponentsInChildren<Transform>())
+        {
+            if (tile.name == "Interactable")
+            {
+                interactableTiles.Add(tile.gameObject);
+            }
+        }
+
+        foreach (var tile in interactableTileParent.GetComponentsInChildren<Transform>())
+        {
+            if (tile.name == "Interactable")
+            {
+                interactableTiles.Add(tile.gameObject);
+            }
+        }
+    }
+
+    [ContextMenu("PosToDelete")]
+    public void PosToDelete()
+    {
+        foreach (var tile in TilesToDelete)
+        {
+            if (blockedPositions.Contains(tile.transform.position))
+            {
+                blockedPositions.Remove(tile.transform.position);
+            }
+
+            if (blockedFromBelowPositions.Contains(tile.transform.position))
+            {
+                blockedFromBelowPositions.Remove(tile.transform.position);
+            }
+
+            if (doorsPositions.Contains(tile.transform.position))
+            {
+                doorsPositions.Remove(tile.transform.position);
+            }
+
+            if (interactablePositions.Contains(tile.transform.position))
+            {
+                interactablePositions.Remove(tile.transform.position);
+            }
+        }
+    }
+
+    [ContextMenu("Generate save file of all positions")]
+    public void GenerateSaveFile()
+    {
+        //make a file for each List of positions
+        string path = Application.dataPath + "/Resources/SaveFiles/";
+        string fileName = "BlockedPositions.txt";
+        string fileName2 = "BlockedFromBelowPositions.txt";
+        string fileName3 = "DoorsPositions.txt";
+        string fileName4 = "InteractablePositions.txt";
+
+        //write the positions in the file
+        System.IO.File.WriteAllLines(path + fileName, blockedPositions.Select(pos => pos.ToString()).ToArray());
+        System.IO.File.WriteAllLines(path + fileName2,
+            blockedFromBelowPositions.Select(pos => pos.ToString()).ToArray());
+        System.IO.File.WriteAllLines(path + fileName3, doorsPositions.Select(pos => pos.ToString()).ToArray());
+        System.IO.File.WriteAllLines(path + fileName4, interactablePositions.Select(pos => pos.ToString()).ToArray());
+    }
+
+    //load the positions from the file
+    [SerializeField] private TextAsset blockedPositionsFile;
+    [SerializeField] private TextAsset blockedFromBelowPositionsFile;
+    [SerializeField] private TextAsset doorsPositionsFile;
+    [SerializeField] private TextAsset interactablePositionsFile;
+
+    [ContextMenu("Load save file of all positions")]
+    public void LoadSaveFile()
+    {
+        //make a file for each List of positions
+        string path = Application.dataPath + "/Resources/SaveFiles/";
+        string fileName = "BlockedPositions.txt";
+        string fileName2 = "BlockedFromBelowPositions.txt";
+        string fileName3 = "DoorsPositions.txt";
+        string fileName4 = "InteractablePositions.txt";
+
+        //write the positions in the file
+        blockedPositions = new List<Vector3>();
+        blockedFromBelowPositions = new List<Vector3>();
+        doorsPositions = new List<Vector3>();
+        interactablePositions = new List<Vector3>();
+        foreach (var pos in System.IO.File.ReadAllLines(path + fileName))
+        {
+            blockedPositions.Add(StringToVector3(pos));
+        }
+
+        foreach (var pos in System.IO.File.ReadAllLines(path + fileName2))
+        {
+            blockedFromBelowPositions.Add(StringToVector3(pos));
+        }
+
+        foreach (var pos in System.IO.File.ReadAllLines(path + fileName3))
+        {
+            doorsPositions.Add(StringToVector3(pos));
+        }
+
+        foreach (var pos in System.IO.File.ReadAllLines(path + fileName4))
+        {
+            interactablePositions.Add(StringToVector3(pos));
+        }
+    }
+
+
+    private Vector3 StringToVector3(string pos)
+    {
+        string[] posSplit = pos.Split(',');
+        return new Vector3(float.Parse(posSplit[0].Substring(1)), float.Parse(posSplit[1]),
+            float.Parse(posSplit[2].Substring(0, posSplit[2].Length - 1)));
+    }
+    
+    [ContextMenu("UpdateMap")]
+    public void UpdateMap()
+    {
+        DestroyImmediate(actionTileParent);
+        DestroyImmediate(interactableTileParent);
+        DestroyImmediate(doorsTileParent);
+        DestroyImmediate(blockedTileParent);
+        DestroyImmediate(blockedFromBelowTileParent);
+        DestroyImmediate(waterTileParent);
+        DestroyImmediate(flowerTileParent);
+        DestroyImmediate(grassTileParent);
+        
+        GenerateMap();
     }
 }
