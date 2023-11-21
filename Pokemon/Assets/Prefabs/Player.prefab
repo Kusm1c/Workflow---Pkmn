@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2416166498315707105}
   - component: {fileID: 7376640948444822799}
+  - component: {fileID: -5767671171976461981}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 428756569155622775}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.0693007, y: 1.7589517, z: -4.3291683}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -84,3 +85,114 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-5767671171976461981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 428756569155622775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f6731183f8032f448a371cf72b83e9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileSize: 0.16
+  speed: 10
+  acceptKey: 108
+  cancelKey: 109
+  menuKey: 107
+  runKey: 113
+  interactKey: 101
+  upKey: 119
+  downKey: 115
+  leftKey: 97
+  rightKey: 100
+  walkUpSprites:
+  - {fileID: -1326748680, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: -1384862498, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: -1484608961, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: -1384862498, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: -44193600, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  - {fileID: 1664966372, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  - {fileID: 955117374, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  - {fileID: -1143091703, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  walkDownSprites:
+  - {fileID: -1661408072, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: 1170403797, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: 1376317799, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: 1170403797, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: 677280357, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  - {fileID: -316022965, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  - {fileID: 1174260885, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  - {fileID: -656791887, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  walkRightSprites:
+  - {fileID: -491114400, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: 457154730, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: 1999580892, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: -491113431, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: 1532942897, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  - {fileID: -775436207, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  - {fileID: -1037192401, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  - {fileID: 255014246, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  runUpSprites:
+  - {fileID: -462610264, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: 1992825920, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: 1246582163, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: -1841262996, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: 2050941941, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  - {fileID: 415791169, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  - {fileID: -1228388191, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  - {fileID: 1202305455, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  runDownSprites:
+  - {fileID: 547613330, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: 1779591815, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: -1678679814, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: -1874611935, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: 2143782238, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  - {fileID: -1977144085, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  - {fileID: -17176379, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  - {fileID: 1449207907, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  runRightSprites:
+  - {fileID: 1999580892, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: -1524863024, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: -229685038, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: 583359213, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: -1336815699, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  - {fileID: -1725466557, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  - {fileID: 120395881, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  - {fileID: 286106224, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  bikeUpSprites:
+  - {fileID: 359014957, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: 399385081, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: 1049580459, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: 399385081, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: 2065661779, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  - {fileID: 1237437571, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  - {fileID: 1804864965, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  - {fileID: 1836582304, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  bikeDownSprites:
+  - {fileID: -105523021, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: -1835018110, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: -1668847174, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: -1835018110, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: -1529799749, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  - {fileID: -483304669, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  - {fileID: 1374150244, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  - {fileID: 1001366623, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  bikeRightSprites:
+  - {fileID: -2075847807, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: -1307537111, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: -1707729302, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: -1307537111, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: -249577848, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  - {fileID: 1836901237, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  - {fileID: -1339963212, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  - {fileID: -1604558281, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  notMovingSprites:
+  - {fileID: 1170403797, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: -1384862498, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: -491114400, guid: 3f72182c57d5f914d975d115b4b4d1e3, type: 3}
+  - {fileID: 677280357, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  - {fileID: -44193600, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  - {fileID: 1532942897, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}

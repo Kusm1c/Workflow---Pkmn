@@ -16,17 +16,19 @@ public class MapGenerator : MonoBehaviour
     [SerializeField] private GameObject flowerTileSample;
     [SerializeField] private List<GameObject> waterTileSamples;
 
-    [SerializeField] private List<Vector3> blockedPositions;
+    public List<Vector3> blockedPositions;
     [SerializeField] private List<GameObject> blockedTiles;
 
-    [SerializeField] private List<Vector3> doorsPositions;
-    [SerializeField] private List<GameObject> doorsTiles;
+    public List<Vector3> doorsPositions;
+    public List<GameObject> doorsTiles;
 
-    [SerializeField] private List<Vector3> interactablePositions;
+    public List<Vector3> interactablePositions;
     [SerializeField] private List<GameObject> interactableTiles;
 
-    [SerializeField] private List<Vector3> blockedFromBelowPositions;
+    public List<Vector3> blockedFromBelowPositions;
     [SerializeField] private List<GameObject> blockedFromBelowTiles;
+
+    public List<Vector3> grassPositions;
 
     private GameObject grassTileParent;
     private GameObject flowerTileParent;
@@ -40,7 +42,7 @@ public class MapGenerator : MonoBehaviour
 
     [SerializeField] private List<GameObject> TilesToDelete;
 
-    public MapGenerator Instance { get; private set; }
+    public static MapGenerator Instance { get; private set; }
 
     private void Awake()
     {
@@ -50,6 +52,23 @@ public class MapGenerator : MonoBehaviour
         }
 
         GenerateMap();
+        SetGrassPositions();
+    }
+
+    private void SetGrassPositions()
+    {
+        grassPositions = new List<Vector3>();
+        foreach (var grassTile in grassTileParent.GetComponentsInChildren<Transform>())
+        {
+            if (grassTile.name == "Grass")
+            {
+                grassPositions.Add(grassTile.transform.position);
+            }
+        }
+    }
+
+    private void Start()
+    {
         SpawnPlayer();
     }
 
@@ -160,7 +179,7 @@ public class MapGenerator : MonoBehaviour
                     tile.name = "Interactable";
                     tile.transform.parent = interactableTileParent.transform;
                 }
-                else if (pixelColor != Color.white)
+                else /*if (pixelColor != Color.white)*/
                 {
                     GameObject tile = Instantiate(actionTile, new Vector3(x, y, 0), Quaternion.identity);
                     tile.GetComponent<SpriteRenderer>().color = pixelColor;
