@@ -37,6 +37,8 @@ public class MainMenuAnimation : MonoBehaviour
     public Sprite nMouthClosed, nPrepScream, nScream, nJump;
     public Sprite gBase, gPawUp, gPawDown;
     
+    [Header("mainMenu")]
+    public GameObject mainMenuPanel;
     void Start()
     {
         StartCoroutine(StartAnimation1());
@@ -51,7 +53,7 @@ public class MainMenuAnimation : MonoBehaviour
         background1Down.transform.DOMove(background1Down.transform.position+Vector3.down*155, 0.2f);      //l'ecran se sépare en deux et forme des bordures
         background1Up.transform.DOMove(background1Up.transform.position+Vector3.up*155, 0.2f);
         yield return new WaitForSeconds(0.1f);
-        star.transform.DOMove(new Vector3(-30, 210, 0), 1f).SetEase(Ease.Linear);                   //l'etoile jaune se déplace
+        star.transform.DOLocalMove(star.transform.localPosition*-1, 1f).SetEase(Ease.Linear);                   //l'etoile jaune se déplace
         for (int i = 0; i < 50; i++) //des petites etoiles apparaissent dans le chemin de l'etoile jaune
         {
             Vector3 pos = star.transform.position;
@@ -162,7 +164,7 @@ public class MainMenuAnimation : MonoBehaviour
         gengarAtack.SetActive(false);
         yield return new WaitForSeconds(0.5f);
         fourthAct.SetActive(false);
-        
+        mainMenuPanel.SetActive(true);
         
         yield return null;
     }
