@@ -164,7 +164,7 @@ public class MapGenerator : MonoBehaviour
                     tile.name = "Interactable";
                     tile.transform.parent = interactableTileParent.transform;
                 }
-                else if (pixelColor != Color.white)
+                else /*if (pixelColor != Color.white)*/
                 {
                     GameObject tile = Instantiate(actionTile, new Vector3(x, y, 0), Quaternion.identity);
                     tile.GetComponent<SpriteRenderer>().color = pixelColor;

@@ -51,6 +51,7 @@ public class PlayerMvmnt : MonoBehaviour
     {
         player = transform.gameObject;
         player.GetComponent<SpriteRenderer>().sprite = isBoy ? notMovingSprites[0] : notMovingSprites[3];
+        CameraScript.instance.target = player.transform;
     }
     
     void Update()
