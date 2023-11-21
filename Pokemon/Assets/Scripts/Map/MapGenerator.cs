@@ -28,6 +28,8 @@ public class MapGenerator : MonoBehaviour
     public List<Vector3> blockedFromBelowPositions;
     [SerializeField] private List<GameObject> blockedFromBelowTiles;
 
+    public List<Vector3> grassPositions;
+
     private GameObject grassTileParent;
     private GameObject flowerTileParent;
     private GameObject waterTileParent;
@@ -50,6 +52,19 @@ public class MapGenerator : MonoBehaviour
         }
 
         GenerateMap();
+        SetGrassPositions();
+    }
+
+    private void SetGrassPositions()
+    {
+        grassPositions = new List<Vector3>();
+        foreach (var grassTile in grassTileParent.GetComponentsInChildren<Transform>())
+        {
+            if (grassTile.name == "Grass")
+            {
+                grassPositions.Add(grassTile.transform.position);
+            }
+        }
     }
 
     private void Start()

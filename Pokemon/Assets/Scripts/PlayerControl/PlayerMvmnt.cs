@@ -237,7 +237,18 @@ public class PlayerMvmnt : MonoBehaviour
         currentAnimationFrame = (currentAnimationFrame + 1) % 4;
         player.transform.position = targetPos;
         CheckForDoor();
+        CheckForGrass();
         isMoving = false;
+    }
+
+    private void CheckForGrass()
+    {
+        if (MapGenerator.Instance.grassPositions.Any(pos =>
+                Mathf.Abs(transform.position.x - pos.x) < tolerance.x &&
+                Mathf.Abs(transform.position.y - pos.y) < tolerance.y))
+        {
+            Debug.Log("Grass");
+        }
     }
 
     private void CheckForDoor()
