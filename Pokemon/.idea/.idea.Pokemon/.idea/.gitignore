@@ -4,8 +4,8 @@
 # Rider ignored files
 /.idea.Pokemon.iml
 /projectSettingsUpdater.xml
-/contentModel.xml
 /modules.xml
+/contentModel.xml
 # Editor-based HTTP Client requests
 /httpRequests/
 # Datasource local storage ignored files

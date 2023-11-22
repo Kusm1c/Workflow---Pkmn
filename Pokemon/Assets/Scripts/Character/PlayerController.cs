@@ -31,7 +31,6 @@ public class PlayerController : MonoBehaviour
         Move();
     }
 
-    //Improve to keep movement until snap is minimal
     private void GetInput()
     {
         isMoving = playerInput.Movement.Movement.IsPressed();
