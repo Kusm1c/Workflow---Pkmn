@@ -128,12 +128,14 @@ public class CombatSystem : MonoBehaviour
             if(!skipPlayerTurn)
                 Attack(p1Move, pokemonSo1, pokemonSo2, ref p2CurrentStats, ref playerHitLastAction);
         }
+
+        skipPlayerTurn = false;
         nextStep = false;
     }
 
     private void Attack(MoveSO attack, PokemonSO attacker, PokemonSO defender, ref Stats defenderStats, ref bool actorMissed)
     {
-        var attackerDamage = UseMove(attack, pokemonSo1, pokemonSo2, ref actorMissed);
+        var attackerDamage = UseMove(attack, attacker, defender, ref actorMissed);
         
         defenderStats.HP -= attackerDamage;
         defenderStats.HP = (defenderStats.HP < 0 ? 0 : defenderStats.HP);
@@ -232,7 +234,7 @@ public class CombatSystem : MonoBehaviour
         //if (pokemonSo1 == playerPokemons[pokemonIndex]) return;
         
         //Register new stats for leaving pokemon
-        pokemonSo1.TotalStats = p1CurrentStats;
+        //pokemonSo1.TotalStats = p1CurrentStats;
         
         pokemonSo1 = playerPokemons[pokemonIndex];
         p1CurrentStats = pokemonSo1.TotalStats;

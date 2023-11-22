@@ -156,7 +156,6 @@ public class CombatUI : MonoBehaviour
 
     private void DisplayAction()
     {
-        UpdateInfoText();
         switch (menuState)
         {
             case MenuState.Default:
@@ -188,6 +187,7 @@ public class CombatUI : MonoBehaviour
                 break;
             
             case MenuState.PlayerMove:
+                UpdateOpponentInfoText();
                 if(!combatSystem.GetPlayerMove()) 
                     TextBox.text = $"{combatSystem.GetPlayerPokemonName()} used [MOVE]";
                 else
@@ -195,13 +195,13 @@ public class CombatUI : MonoBehaviour
                 break;
             
             case MenuState.PlayerEfficiency:
+                UpdateOpponentInfoText();
                 var playerEfficiency = TypeTable.GetTypeDamageMultiplier(combatSystem.GetPlayerMove().Type,
                     combatSystem.GetOpponentType());
                 if(playerEfficiency < .75f)
                     TextBox.text = "It's not very effective...";
                 else if(playerEfficiency > 1.5f)
                     TextBox.text = "It's very effective !";
-                UpdateInfoText();
                 break;
             
             case MenuState.PlayerMissed:
@@ -209,17 +209,18 @@ public class CombatUI : MonoBehaviour
                 break;
             
             case MenuState.OppenentMove:
+                UpdatePlayerInfoText();
                 TextBox.text = $"{combatSystem.GetOpponentPokemonName()} used {combatSystem.GetOpponentMove().Name}";
                 break;
             
             case MenuState.OpponentEfficiency:
+                UpdatePlayerInfoText();
                 var opponentEfficiency = TypeTable.GetTypeDamageMultiplier(combatSystem.GetOpponentMove().Type,
                     combatSystem.GetPlayerPokemonType());
                 if(opponentEfficiency < .75f)
                     TextBox.text = "It's not very effective...";
                 else if(opponentEfficiency > 1.5f)
                     TextBox.text = "It's very effective !";
-                UpdateInfoText();
                 break;
             
             case MenuState.OpponentMiss:
@@ -295,7 +296,9 @@ public class CombatUI : MonoBehaviour
                 else if (combatSystem.OpponentFainted())
                     menuState = MenuState.OpponentFainted;
                 else
+                {
                     menuState = MenuState.OppenentMove;
+                }
                 break;
             
             case MenuState.PlayerMissed:
@@ -396,9 +399,13 @@ public class CombatUI : MonoBehaviour
         DisplayAction();
     }
 
-    private void UpdateInfoText()
+    private void UpdatePlayerInfoText()
     {
         PlayerInfo.text = $"{combatSystem.GetPlayerPokemonName()} || Lv{combatSystem.GetPlayerPokemonLevel()}\nHP : {combatSystem.GetPlayerPokemonHp()}";
+    }
+
+    private void UpdateOpponentInfoText()
+    {
         OpponentInfo.text = $"{combatSystem.GetOpponentPokemonName()} || Lv{combatSystem.GetOpponentPokemonLevel()}\nHP : {combatSystem.GetOpponentPokemonHp()}";
     }
     
