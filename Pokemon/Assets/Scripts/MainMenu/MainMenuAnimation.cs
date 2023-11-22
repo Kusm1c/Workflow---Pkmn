@@ -58,6 +58,10 @@ public class MainMenuAnimation : MonoBehaviour
     
     public GameObject version;
     public Image versionMask;
+
+    public Transform particleParrent;
+    public GameObject wind;
+    public GameObject leafs;
     
     [Header("mainMenu")]
     public GameObject mainMenuPanel;
@@ -274,8 +278,18 @@ public class MainMenuAnimation : MonoBehaviour
         colorMask.DOColor(Color.clear, 1f);
         yield return new WaitForSeconds(1f);
         
-        yield return new WaitForSeconds(10f);
-        
+        //yield return new WaitForSeconds(30f);
+        for (int i = 0; i < 150; i++)
+        {
+            GameObject w = Instantiate(wind, particleParrent.position+Vector3.up*Random.Range(-120,120), Quaternion.identity, particleParrent);
+            w.GetComponent<Rigidbody2D>().AddForce(Vector2.left*1000, ForceMode2D.Impulse);
+            Destroy(w, 15f);
+            GameObject l = Instantiate(leafs, particleParrent.position+Vector3.up*Random.Range(-120,120), Quaternion.identity, particleParrent);
+            l.GetComponent<Rigidbody2D>().AddForce(Vector2.left*Random.Range(250,750), ForceMode2D.Impulse);
+            GameObject l2 = Instantiate(leafs, particleParrent.position+Vector3.up*Random.Range(-120,120), Quaternion.identity, particleParrent);
+            l2.GetComponent<Rigidbody2D>().AddForce(Vector2.left*Random.Range(250,750), ForceMode2D.Impulse);
+            yield return new WaitForSeconds(0.2f);
+        }
         anim3.SetActive(false);
         SceneManager.LoadScene("MainMenuButtons");
         yield return null;
