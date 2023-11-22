@@ -100,6 +100,7 @@ public class CombatSystem : MonoBehaviour
                 break;
             case PlayerMove.Item:
                 //Implement Later
+                //skipPlayerTurn = true;
                 break;
             case PlayerMove.SwitchPokemon:
                 //Pokemon switch implemented in button
