@@ -3460,9 +3460,9 @@ MonoBehaviour:
   logoMask: {fileID: 220326132}
   version: {fileID: 754505236}
   versionMask: {fileID: 1208982583}
-  particleParrent: {fileID: 0}
-  wind: {fileID: 0}
-  leafs: {fileID: 0}
+  particleParrent: {fileID: 1274152635}
+  wind: {fileID: 8471555203684688922, guid: d3ca3f99dd270c74bb290067d855c595, type: 3}
+  leafs: {fileID: 8471555203684688922, guid: d6fdcf6072331594994266643ff82e62, type: 3}
   mainMenuPanel: {fileID: 0}
 --- !u!1 &1088830110
 GameObject:
