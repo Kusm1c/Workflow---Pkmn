@@ -505,9 +505,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 575
-        y: 710
-        width: 148
-        height: 18
+        y: 721
+        width: 89
+        height: 7
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -622,27 +622,6 @@ TextureImporter:
       bones: []
       spriteID: 69e999856c9bf0345ba2e5b621152dd7
       internalID: 552276987
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PokemonFireRedLeafGreen-Intro_28
-      rect:
-        serializedVersion: 2
-        x: 575
-        y: 710
-        width: 9
-        height: 7
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c14cee8c6e1325348b2246ef0bc4001b
-      internalID: 1629395650
       vertices: []
       indices: 
       edges: []
@@ -1210,6 +1189,27 @@ TextureImporter:
       bones: []
       spriteID: 864c44b57903c2544a4870b21b2fc903
       internalID: -1767789510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PokemonFireRedLeafGreen-Intro_4
+      rect:
+        serializedVersion: 2
+        x: 575
+        y: 710
+        width: 148
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01ef012db7a850144863dba3391e2dfa
+      internalID: -1368626528
       vertices: []
       indices: 
       edges: []

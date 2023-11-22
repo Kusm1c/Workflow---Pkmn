@@ -50,6 +50,15 @@ public class MainMenuAnimation : MonoBehaviour
     public Image bwMask;
     public GameObject greenStripes;
     
+    public GameObject florizarreColor;
+    public Image colorMask;
+
+    public GameObject logo;
+    public Image logoMask;
+    
+    public GameObject version;
+    public Image versionMask;
+    
     [Header("mainMenu")]
     public GameObject mainMenuPanel;
     void Start()
@@ -151,7 +160,7 @@ public class MainMenuAnimation : MonoBehaviour
         treesFourthAct.transform.DOMove(treesFourthAct.transform.position+Vector3.right*1000,1f).SetEase(Ease.Linear);
         yield return new WaitForSeconds(1f);
         lilBushe.transform.DOMove(lilBushe.transform.position+Vector3.left*500,5f).SetEase(Ease.Linear);
-        treesFourthAct.transform.DOMove(treesFourthAct.transform.position+Vector3.right*500,5f).SetEase(Ease.Linear);
+        treesFourthAct.transform.DOMove(treesFourthAct.transform.position+Vector3.right*500,6f).SetEase(Ease.Linear);
         Image nidoranImg = nidoranFourthAct.GetComponent<Image>();
         Image gengarImg = gengarFourthAct.GetComponent<Image>();
         yield return new WaitForSeconds(0.5f);
@@ -250,6 +259,20 @@ public class MainMenuAnimation : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         bwMask.DOColor(Color.clear, 0.1f);
         yield return new WaitForSeconds(0.1f);
+        
+        yield return new WaitForSeconds(0.5f);
+        
+        bwMask.DOColor(Color.white, 0.1f);
+        yield return new WaitForSeconds(0.1f);
+        florizarreColor.SetActive(true);
+        florizarreBW.SetActive(false);
+        
+        logo.SetActive(true);
+        logoMask.DOColor(Color.clear, 1f);
+        version.SetActive(true);
+        versionMask.DOColor(Color.clear, 1f);
+        colorMask.DOColor(Color.clear, 1f);
+        yield return new WaitForSeconds(1f);
         
         yield return new WaitForSeconds(10f);
         
