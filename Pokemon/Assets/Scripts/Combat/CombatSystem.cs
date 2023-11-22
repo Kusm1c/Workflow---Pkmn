@@ -9,13 +9,13 @@ using Random = UnityEngine.Random;
 
 public class CombatSystem : MonoBehaviour
 {
-    [SerializeField] private PokemonSO pokemonSo1;
-    [SerializeField] private PokemonSO pokemonSo2;
+    private PokemonSO pokemonSo1;
+    private PokemonSO pokemonSo2;
 
-    [SerializeField] private PokemonSO[] playerPokemons;
+    private PokemonSO[] playerPokemons;
     
-    [SerializeField] private MoveSO p1Move;
-    [SerializeField] private MoveSO p2Move;
+    private MoveSO p1Move;
+    private MoveSO p2Move;
     
     private Stats p1CurrentStats;
     private Stats p2CurrentStats;
@@ -34,12 +34,13 @@ public class CombatSystem : MonoBehaviour
     
     private void Awake()
     {
-        
+        p1CurrentStats = new();
+        p2CurrentStats = new();
     }
 
     private void OnEnable()
     {
-        StartFight();
+        //StartFight();
     }
 
     private void Update()
@@ -54,26 +55,40 @@ public class CombatSystem : MonoBehaviour
         PlayTurn(nextPlayerMove);
     }
 
+    //Only for testing
     private void StartFight()
     {
-        Debug.LogWarning("Start Fight !");
         //Get copies of pokemon stats
         p1CurrentStats = pokemonSo1.TotalStats;
         p2CurrentStats = pokemonSo2.TotalStats;
         fightOngoing = true;
     }
 
-    private void EndFight()
+    public void StartFight(List<PokemonSO> playerPokemonList, PokemonSO opponentPokemon)
     {
-        Debug.LogWarning("Fight Over !");
-        //pokemonSo1.TotalStats = p1CurrentStats;
-        //pokemonSo2.TotalStats = p2CurrentStats;
+        playerPokemons = playerPokemonList.ToArray();
+        pokemonSo1 = playerPokemons[0];
+        pokemonSo2 = opponentPokemon;
+
+        //Initialize "default moves"
+        p1Move = pokemonSo1.Moves[0];
+        p2Move = pokemonSo2.Moves[0];
+        
+        p1CurrentStats = pokemonSo1.TotalStats;
+        p2CurrentStats = pokemonSo2.TotalStats;
+        fightOngoing = true;
+    }
+    
+    public void EndFight()
+    {
+        //Save stats after fight
+        pokemonSo1.TotalStats = p1CurrentStats;
+        pokemonSo2.TotalStats = p2CurrentStats;
         fightOngoing = false;
     }
     
     private void PlayTurn(PlayerMove playerMove)
     {
-        Debug.Log("Playing turn");
         GetOpponentNextMove(pokemonSo2);
         var p2Damage = 0;
         var p1Damage = 0;
@@ -92,15 +107,9 @@ public class CombatSystem : MonoBehaviour
                 break;
             case PlayerMove.Flee:
                 if (Flee(p1CurrentStats, p2CurrentStats, ref fleeResult))
-                {
-                    Debug.LogWarning("Fled Successfully");
                     EndFight();
-                }
                 else
-                {
-                    Debug.LogWarning("Failed to flee...");
                     skipPlayerTurn = true;
-                }
                 break;
         }
         
@@ -124,9 +133,10 @@ public class CombatSystem : MonoBehaviour
     private void Attack(MoveSO attack, PokemonSO attacker, PokemonSO defender, ref Stats defenderStats, ref bool actorMissed)
     {
         var attackerDamage = UseMove(attack, pokemonSo1, pokemonSo2, ref actorMissed);
+        
         defenderStats.HP -= attackerDamage;
-        Debug.Log($"{attacker.Name} uses {attack.Name}");
-        Debug.Log($"{defender.Name} takes {attackerDamage}");
+        defenderStats.HP = (defenderStats.HP < 0 ? 0 : defenderStats.HP);
+
         if(EndCondition())
             EndFight();
     }
@@ -142,10 +152,7 @@ public class CombatSystem : MonoBehaviour
     private bool AttackHits(MoveSO attack)
     {
         if (attack.Accuracy > Random.Range(0, 100))
-        {
             return true;
-        }
-        Debug.LogWarning("attack missed");
         return false;
     }
     
@@ -156,6 +163,13 @@ public class CombatSystem : MonoBehaviour
     
     private void CalculatePriority()
     {
+        //If player's turn is skipped, order doesnt matter
+        if (skipPlayerTurn)
+        {
+            playerPlaysFirst = true;
+            return;
+        }
+        
         if (p1Move.MoveType == MoveType.Status)
         {
             playerPlaysFirst = true;
@@ -206,7 +220,7 @@ public class CombatSystem : MonoBehaviour
         return p1CurrentStats.HP <= 0 || p2CurrentStats.HP <= 0;
     }
 
-    public void ChooseNextMove(int moveIndex)
+    public void ChoseNextMove(int moveIndex)
     {
         nextStep = true;
         p1Move = pokemonSo1.Moves[moveIndex];
@@ -214,9 +228,11 @@ public class CombatSystem : MonoBehaviour
 
     public void ChoseNewPokemon(int pokemonIndex)
     {
+        //if (pokemonSo1 == playerPokemons[pokemonIndex]) return;
+        
         //Register new stats for leaving pokemon
-        //pokemonSo1.TotalStats = p1CurrentStats; TotalStats is currently readonly
-
+        pokemonSo1.TotalStats = p1CurrentStats;
+        
         pokemonSo1 = playerPokemons[pokemonIndex];
         p1CurrentStats = pokemonSo1.TotalStats;
     }
@@ -337,6 +353,11 @@ public class CombatSystem : MonoBehaviour
     public bool PlayerFled()
     {
         return fleeResult;
+    }
+
+    public bool PlayerPlaysFirst()
+    {
+        return playerPlaysFirst;
     }
     
     #endregion

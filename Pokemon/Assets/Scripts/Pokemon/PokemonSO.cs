@@ -15,7 +15,7 @@ public class PokemonSO : ScriptableObject
     [field: SerializeField] public Stats BaseStats { get; private set; }
     [field: SerializeField] public Stats EVs { get; private set; }
     [field: SerializeField] public Stats IVs { get; private set; }
-    [field: SerializeField] public Stats TotalStats { get; private set; }
+    [field: SerializeField] public Stats TotalStats { get; set; }
     [field: SerializeField] public int CatchRate { get; private set; }
     [field: SerializeField] public int BaseXP { get; private set; }
     [field: SerializeField] public int EVYield { get; private set; }

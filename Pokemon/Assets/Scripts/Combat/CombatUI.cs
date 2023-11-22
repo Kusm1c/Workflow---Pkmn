@@ -3,9 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Mail;
+using System.Net.Mime;
 using TMPro;
 using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime;
+using UnityEditor;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
@@ -29,7 +31,7 @@ public class CombatUI : MonoBehaviour
     
     [SerializeField] private TMP_Text[] MoveNames;
     
-    [SerializeField] private CombatSystem combatSystem;
+    private CombatSystem combatSystem;
 
     private bool nextStep;
     private MenuState menuState;
@@ -59,13 +61,16 @@ public class CombatUI : MonoBehaviour
 
     public void StartCombat()
     {
+        combatSystem = GameManager.instance.combatSystem;
         CombatUICanvas.SetActive(true);
         CardsPannel.SetActive(true);
         ActionPannel.SetActive(true);
         MovePannel.SetActive(false);
-
+        TextBox.text = $"What will {combatSystem.GetPlayerPokemonName()} do ?";
+        
         playerMoveSet = combatSystem.GetPlayerMoveArray();
-        UpdateInfoText();
+        PlayerInfo.text = $"{combatSystem.GetPlayerPokemonName()} || Lv{combatSystem.GetPlayerPokemonLevel()}\nHP : {combatSystem.GetPlayerPokemonHp()}";
+        OpponentInfo.text = $"{combatSystem.GetOpponentPokemonName()} || Lv{combatSystem.GetOpponentPokemonLevel()}\nHP : {combatSystem.GetOpponentPokemonHp()}";
         
         for (int i = 0; i < pokemonSelectionButtons.Length; i++)
         {
@@ -89,13 +94,14 @@ public class CombatUI : MonoBehaviour
     public void OpenActionPanel()
     {
         SwitchMenu(ActionPannel);
-        TextBox.text = $"What will {combatSystem.GetOpponentPokemonName()} do ?";
+        TextBox.text = $"What will {combatSystem.GetPlayerPokemonName()} do ?";
     }
     
     public void OpenMovePanel()
     {
         SwitchMenu(MovePannel);
         TextBox.text = "Select a move.";
+        GameManager.instance.combatSystem.ChoseNextPlayerAction(0);
     }
 
     public void OpenPokemonPanel()
@@ -104,8 +110,27 @@ public class CombatUI : MonoBehaviour
         PlayerCard.SetActive(false);
         OpponentCard.SetActive(false);
         TextBox.text = "Chose a POKéMON.";
+        combatSystem.ChoseNextPlayerAction(2);
     }
 
+    public void TryFlee()
+    {
+        combatSystem.ChoseNextPlayerAction(3);
+        combatSystem.NextStep();
+    }
+
+    public void SelectMove(int moveIndex)
+    {
+        combatSystem.ChoseNextMove(moveIndex);
+        combatSystem.NextStep();
+    }
+
+    public void SelectPokemon(int pokemonIndex)
+    {
+        combatSystem.ChoseNewPokemon(pokemonIndex);
+        combatSystem.NextStep();
+    }
+    
     public void EnterHoverMove(int moveIndex)
     {
         TextBox.text = $"{playerMoveSet[moveIndex].Name} \nPP : {playerMoveSet[moveIndex].PP} \nTYPE : {playerMoveSet[moveIndex].Type}";
@@ -131,6 +156,7 @@ public class CombatUI : MonoBehaviour
 
     private void DisplayAction()
     {
+        UpdateInfoText();
         switch (menuState)
         {
             case MenuState.Default:
@@ -158,7 +184,10 @@ public class CombatUI : MonoBehaviour
                 break;
             
             case MenuState.PlayerMove:
-                TextBox.text = $"{combatSystem.GetPlayerPokemonName()} used {combatSystem.GetPlayerMove().Name}";
+                if(!combatSystem.GetPlayerMove()) 
+                    TextBox.text = $"{combatSystem.GetPlayerPokemonName()} used [MOVE]";
+                else
+                    TextBox.text = $"{combatSystem.GetPlayerPokemonName()} used {combatSystem.GetPlayerMove().Name}";
                 break;
             
             case MenuState.PlayerEfficiency:
@@ -213,15 +242,16 @@ public class CombatUI : MonoBehaviour
 
     private void GoToNextStep()
     {
+        Debug.Log(menuState + "//" + combatSystem.PlayerPlaysFirst());
         switch (menuState)
         {
             case MenuState.Default:
                 if (combatSystem.PlayerTriedFlee())
                     menuState = MenuState.PlayerTriedFlee;
                 else if (combatSystem.PlayerSwitched())
-                    menuState = MenuState.PlayerSwitchedOld;
+                    menuState =  MenuState.PlayerSwitchedOld;
                 else
-                    menuState = MenuState.PlayerMove;
+                    menuState = combatSystem.PlayerPlaysFirst() ? MenuState.PlayerMove : MenuState.OppenentMove;
                 ActionPannel.SetActive(false);
                 break;
             
@@ -233,6 +263,7 @@ public class CombatUI : MonoBehaviour
                 break;
             
             case MenuState.PlayerFled:
+                GameManager.OnFightEnd();
                 break;
             
             case MenuState.PlayerFledFailed:
@@ -261,14 +292,32 @@ public class CombatUI : MonoBehaviour
                 break;
             
             case MenuState.PlayerMissed:
-                menuState = MenuState.OppenentMove;
+                if (combatSystem.PlayerPlaysFirst())
+                {
+                    menuState = MenuState.OppenentMove;
+                }
+                else
+                {
+                    menuState = MenuState.Default;
+                    OpenActionPanel();
+                }
                 break;
             
             case MenuState.PlayerEfficiency:
                 if (combatSystem.OpponentFainted())
                     menuState = MenuState.OpponentFainted;
                 else
-                    menuState = MenuState.OppenentMove;
+                {
+                    if (combatSystem.PlayerPlaysFirst())
+                    {
+                        menuState = MenuState.OppenentMove;
+                    }
+                    else
+                    {
+                        menuState = MenuState.Default;
+                        OpenActionPanel();
+                    }
+                }
                 break;
             
             case MenuState.OppenentMove:
@@ -281,27 +330,43 @@ public class CombatUI : MonoBehaviour
                 else
                 {
                     if (combatSystem.PlayerFainted())
+                    {
                         menuState = MenuState.PlayerFainted;
-                    else
+                        break;
+                    }
+                    if(combatSystem.PlayerPlaysFirst())
                     {
                         menuState = MenuState.Default;
                         OpenActionPanel();
+                        break;
                     }
+                    menuState = MenuState.PlayerMove;
                 }
                 break;
             
             case MenuState.OpponentMiss:
-                menuState = MenuState.Default;
-                OpenActionPanel();
+                if (combatSystem.PlayerPlaysFirst())
+                {
+                    Debug.Log("player first");
+                    menuState = MenuState.Default;
+                    OpenActionPanel();
+                    break;
+                }
+                
+                menuState = MenuState.PlayerMove;
                 break;
             
             case MenuState.OpponentEfficiency:
                 if (combatSystem.PlayerFainted())
                     menuState = MenuState.PlayerFainted;
-                else
+                else if(combatSystem.PlayerPlaysFirst())
                 {
                     menuState = MenuState.Default;
                     OpenActionPanel();
+                }
+                else
+                {
+                    menuState = MenuState.PlayerMove;
                 }
                 break;
             
@@ -314,9 +379,11 @@ public class CombatUI : MonoBehaviour
                 break;
             
             case MenuState.Win:
+                GameManager.OnFightEnd();
                 break;
             
             case MenuState.Lose:
+                GameManager.OnFightEnd();
                 break;
         }
         
