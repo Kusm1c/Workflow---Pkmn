@@ -41,6 +41,15 @@ public class MainMenuAnimation : MonoBehaviour
     public Sprite nMouthClosed, nPrepScream, nScream, nJump;
     public Sprite gBase, gPawUp, gPawDown;
     
+    [Header("Anim 3")]
+    public GameObject anim3;
+
+    public GameObject shine;
+    public GameObject florizarreBW;
+    public GameObject OrangeBG;
+    public Image bwMask;
+    public GameObject greenStripes;
+    
     [Header("mainMenu")]
     public GameObject mainMenuPanel;
     void Start()
@@ -209,17 +218,47 @@ public class MainMenuAnimation : MonoBehaviour
         nidoranFourthAct.transform.DOScale(Vector3.one*2, 1f);
         mask2.GetComponent<Image>().DOColor(Color.black, 1f);
         yield return new WaitForSeconds(1f);
-        
-        yield return new WaitForSeconds(5f);
-
-        
         fourthAct.SetActive(false);
-        SceneManager.LoadScene("MainMenuButtons");
+        anim2.SetActive(false);
+        StartCoroutine(StartAnimation3());
+        
+        
+        
         
         yield return null;
     }
-    
-    
+
+    IEnumerator StartAnimation3()
+    {
+        yield return new WaitForSeconds(1f);
+        anim3.SetActive(true);
+        shine.transform.DOMove(shine.transform.position+Vector3.up*350, 0.5f).SetEase(Ease.Linear);
+        yield return new WaitForSeconds(2f);
+        florizarreBW.GetComponent<Image>().DOColor(Color.white, 2f);
+        yield return new WaitForSeconds(2f);
+        
+        OrangeBG.transform.DOScale(Vector3.one*1, 0.2f);//oranges stripes appear
+        bwMask.DOColor(Color.white, 0.1f);
+        yield return new WaitForSeconds(0.1f);
+        bwMask.DOColor(Color.clear, 0.1f);
+        yield return new WaitForSeconds(0.1f);
+
+        yield return new WaitForSeconds(0.5f);
+        
+        greenStripes.transform.DOScale(Vector3.one*1, 0.2f);//oranges stripes appear
+        bwMask.DOColor(Color.white, 0.1f);
+        yield return new WaitForSeconds(0.1f);
+        bwMask.DOColor(Color.clear, 0.1f);
+        yield return new WaitForSeconds(0.1f);
+        
+        yield return new WaitForSeconds(10f);
+        
+        anim3.SetActive(false);
+        SceneManager.LoadScene("MainMenuButtons");
+        yield return null;
+    }
+
+
     IEnumerator StarDeath(GameObject st,Image img, float timeToLive)
     {
         yield return new WaitForSeconds(timeToLive - 0.5f);
