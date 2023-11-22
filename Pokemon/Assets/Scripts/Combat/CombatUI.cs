@@ -183,6 +183,10 @@ public class CombatUI : MonoBehaviour
                 TextBox.text = $"Go, {combatSystem.GetPlayerPokemonName()} !";
                 break;
             
+            case MenuState.PlayerUsedItem:
+                TextBox.text = $"[PlayerName] used [ItemName]";
+                break;
+            
             case MenuState.PlayerMove:
                 if(!combatSystem.GetPlayerMove()) 
                     TextBox.text = $"{combatSystem.GetPlayerPokemonName()} used [MOVE]";
@@ -242,7 +246,6 @@ public class CombatUI : MonoBehaviour
 
     private void GoToNextStep()
     {
-        Debug.Log(menuState + "//" + combatSystem.PlayerPlaysFirst());
         switch (menuState)
         {
             case MenuState.Default:
@@ -275,6 +278,10 @@ public class CombatUI : MonoBehaviour
                 break;
             
             case MenuState.PlayerSwitchedNew:
+                menuState = MenuState.OppenentMove;
+                break;
+            
+            case MenuState.PlayerUsedItem:
                 menuState = MenuState.OppenentMove;
                 break;
             
@@ -347,7 +354,6 @@ public class CombatUI : MonoBehaviour
             case MenuState.OpponentMiss:
                 if (combatSystem.PlayerPlaysFirst())
                 {
-                    Debug.Log("player first");
                     menuState = MenuState.Default;
                     OpenActionPanel();
                     break;
@@ -411,6 +417,7 @@ public class CombatUI : MonoBehaviour
         PlayerFledFailed,
         PlayerSwitchedOld,
         PlayerSwitchedNew,
+        PlayerUsedItem,
         PlayerMissed,
         PlayerEfficiency,
         PlayerFainted,
