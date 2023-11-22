@@ -179,7 +179,7 @@ public class MapGenerator : MonoBehaviour
                     tile.name = "Interactable";
                     tile.transform.parent = interactableTileParent.transform;
                 }
-                else /*if (pixelColor != Color.white)*/
+                else if (pixelColor != Color.white)
                 {
                     GameObject tile = Instantiate(actionTile, new Vector3(x, y, 0), Quaternion.identity);
                     tile.GetComponent<SpriteRenderer>().color = pixelColor;
@@ -396,7 +396,7 @@ public class MapGenerator : MonoBehaviour
         doorsTiles = new List<GameObject>();
         foreach (var tile in grassTileParent.GetComponentsInChildren<Transform>())
         {
-            if (tile.name == "Door")
+            if (tile.name.StartsWith("Door"))
             {
                 doorsTiles.Add(tile.gameObject);
             }
@@ -404,7 +404,7 @@ public class MapGenerator : MonoBehaviour
 
         foreach (var tile in flowerTileParent.GetComponentsInChildren<Transform>())
         {
-            if (tile.name == "Door")
+            if (tile.name.StartsWith("Door"))
             {
                 doorsTiles.Add(tile.gameObject);
             }
@@ -412,7 +412,7 @@ public class MapGenerator : MonoBehaviour
 
         foreach (var tile in waterTileParent.GetComponentsInChildren<Transform>())
         {
-            if (tile.name == "Door")
+            if (tile.name.StartsWith("Door"))
             {
                 doorsTiles.Add(tile.gameObject);
             }
@@ -420,7 +420,7 @@ public class MapGenerator : MonoBehaviour
 
         foreach (var tile in actionTileParent.GetComponentsInChildren<Transform>())
         {
-            if (tile.name == "Door")
+            if (tile.name.StartsWith("Door"))
             {
                 doorsTiles.Add(tile.gameObject);
             }
@@ -428,7 +428,7 @@ public class MapGenerator : MonoBehaviour
 
         foreach (var tile in doorsTileParent.GetComponentsInChildren<Transform>())
         {
-            if (tile.name == "Door")
+            if (tile.name.StartsWith("Door"))
             {
                 doorsTiles.Add(tile.gameObject);
             }

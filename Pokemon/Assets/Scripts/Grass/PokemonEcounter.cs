@@ -4,8 +4,8 @@ using UnityEngine;
 [Serializable]
 public class PokemonEcounter
 {
-    [SerializeField] PokemonSO pokemon;
-    [SerializeField] int minLevel;
-    [SerializeField] int maxLevel;
-    [SerializeField] Rarity rarity;
+    [SerializeField] public PokemonSO pokemon;
+    [SerializeField] public int minLevel;
+    [SerializeField] public int maxLevel;
+    [SerializeField] public Rarity rarity;
 }

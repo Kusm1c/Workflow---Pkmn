@@ -35,11 +35,13 @@ public class PlayerMvmnt : MonoBehaviour
     [SerializeField] private List<Sprite> bikeDownSprites;
     [SerializeField] private List<Sprite> bikeRightSprites;
 
-    private int currentAnimationFrame = 0;
-
     //boy 0 = down 1 = up 2 = right, 
     //girl 3 = down 4 = up 5 = right
     [SerializeField] private List<Sprite> notMovingSprites;
+
+    private int currentAnimationFrame = 0;
+
+    [SerializeField] private List<EcounterTableSO> ecounterTable;
 
     private bool isMoving = false;
     private bool isRunning = false;
@@ -53,7 +55,7 @@ public class PlayerMvmnt : MonoBehaviour
         player.GetComponent<SpriteRenderer>().sprite = isBoy ? notMovingSprites[0] : notMovingSprites[3];
         CameraScript.instance.target = player.transform;
     }
-    
+
     void Update()
     {
         if (Input.GetKey(acceptKey)) Accept();
@@ -89,7 +91,11 @@ public class PlayerMvmnt : MonoBehaviour
         {
             if (lastDirection == Vector3.up) player.GetComponent<SpriteRenderer>().sprite = notMovingSprites[4];
             else if (lastDirection == Vector3.down) player.GetComponent<SpriteRenderer>().sprite = notMovingSprites[3];
-            else if (lastDirection == Vector3.right) player.GetComponent<SpriteRenderer>().sprite = notMovingSprites[5];
+            else if (lastDirection == Vector3.right)
+            {
+                player.GetComponent<SpriteRenderer>().sprite = notMovingSprites[5];
+                player.GetComponent<SpriteRenderer>().flipX = false;
+            }
             else if (lastDirection == Vector3.left)
             {
                 player.GetComponent<SpriteRenderer>().sprite = notMovingSprites[5];
@@ -153,7 +159,7 @@ public class PlayerMvmnt : MonoBehaviour
             isMoving = false;
             return true;
         }
-        
+
         foreach (var pos in MapGenerator.Instance.blockedFromBelowPositions)
         {
             if (direction == Vector3.down) return false;
@@ -164,13 +170,22 @@ public class PlayerMvmnt : MonoBehaviour
                 return true;
             }
         }
+
+        if (Math.Abs(transform.position.x + direction.x * tileSize) > 32.6f ||
+            Mathf.Abs(transform.position.y + direction.y * tileSize) > 32.6f)
+        {
+            isMoving = false;
+            return true;
+        }
+
         return false;
     }
 
     private void UseDoor(Vector3 doorPosition)
     {
         int nextDoor = Doors.nextDoorFromPosition[doorPosition];
-        transform.position = new Vector3(Doors.positionFromDoor[nextDoor].x + lastDirection.x * tileSize, Doors.positionFromDoor[nextDoor].y +lastDirection.y * tileSize, -0.1f);
+        transform.position = new Vector3(Doors.positionFromDoor[nextDoor].x + lastDirection.x * tileSize,
+            Doors.positionFromDoor[nextDoor].y + lastDirection.y * tileSize, -0.1f);
     }
 
     private IEnumerator Move(Vector3 direction)
@@ -248,6 +263,37 @@ public class PlayerMvmnt : MonoBehaviour
                 Mathf.Abs(transform.position.y - pos.y) < tolerance.y))
         {
             Debug.Log("Grass");
+            // bool pokemonAppeared = false;
+            // int RandomPonderator = 0;
+            // foreach (var variPokemonEcounter in from ecounter in ecounterTable
+            //          where player.transform.position.x >= ecounter.grassPositionmin.x &&
+            //                player.transform.position.x <= ecounter.grassPositionmax.x &&
+            //                player.transform.position.y >= ecounter.grassPositionmin.y &&
+            //                player.transform.position.y <= ecounter.grassPositionmax.y
+            //          where UnityEngine.Random.Range(0, 100) < ecounter.encounterChance
+            //          from variPokemonEcounter in ecounter.pokemonList
+            //          select variPokemonEcounter)
+            // {
+            //     switch (variPokemonEcounter.rarity)
+            //     {
+            //         case Rarity.Common:
+            //             RandomPonderator += 100;
+            //             break;
+            //         case Rarity.Uncommon:
+            //             RandomPonderator += 50;
+            //             break;
+            //         case Rarity.Rare:
+            //             RandomPonderator += 25;
+            //             break;
+            //     }
+            // }
+            //
+            // int indexOfRandomPokemon;
+            // if (RandomPonderator > 0)
+            // {
+            //     indexOfRandomPokemon = UnityEngine.Random.Range(0, RandomPonderator) / ecounterTable.Count;
+            //     Debug.Log(ecounterTable[indexOfRandomPokemon].pokemonList[0].pokemon.name);
+            // }
         }
     }
 

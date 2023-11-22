@@ -196,3 +196,5 @@ MonoBehaviour:
   - {fileID: 677280357, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
   - {fileID: -44193600, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
   - {fileID: 1532942897, guid: 9b00c5363d7b0564d80698c5a19d963a, type: 3}
+  ecounterTable:
+  - {fileID: 11400000, guid: 9852826c2dd4bbc4ebd0d64813fa683d, type: 2}

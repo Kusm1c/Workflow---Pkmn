@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc90a26773fd8f444a221507fd8c4c4a, type: 3}
+  m_Name: Route1
+  m_EditorClassIdentifier: 
+  pokemonList:
+  - pokemon: {fileID: 11400000, guid: 1de60aba809004946a186b243ff5d5ab, type: 2}
+    minLevel: 2
+    maxLevel: 5
+    rarity: 0
+  - pokemon: {fileID: 11400000, guid: 189946aeb680a714eb48adca4b8a392f, type: 2}
+    minLevel: 2
+    maxLevel: 5
+    rarity: 0
+  grassPositionmin: {x: -22.960007, y: -9.680021}
+  grassPositionmax: {x: -19.28001, y: -3.280026}
+  encounterChance: 100
