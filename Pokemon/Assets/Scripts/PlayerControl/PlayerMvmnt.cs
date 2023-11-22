@@ -263,40 +263,37 @@ public class PlayerMvmnt : MonoBehaviour
                 Mathf.Abs(transform.position.y - pos.y) < tolerance.y))
         {
             Debug.Log("Grass");
-            foreach (var variPokemonEcounter in from ecounter in ecounterTable
-                     where player.transform.position.x >= ecounter.grassPositionmin.x &&
-                           player.transform.position.x <= ecounter.grassPositionmax.x &&
-                           player.transform.position.y >= ecounter.grassPositionmin.y &&
-                           player.transform.position.y <= ecounter.grassPositionmax.y
-                     where UnityEngine.Random.Range(0, 100) < ecounter.encounterChance
-                     from variPokemonEcounter in ecounter.pokemonList
-                     select variPokemonEcounter)
-            {
-                switch (variPokemonEcounter.rarity)
-                {
-                    case Rarity.Common:
-                        if (UnityEngine.Random.Range(0, 100) < 75)
-                        {
-                            Debug.Log(variPokemonEcounter.pokemon.name);
-                        }
-
-                        break;
-                    case Rarity.Uncommon:
-                        if (UnityEngine.Random.Range(0, 100) < 50)
-                        {
-                            Debug.Log(variPokemonEcounter.pokemon.name);
-                        }
-
-                        break;
-                    case Rarity.Rare:
-                        if (UnityEngine.Random.Range(0, 100) < 10)
-                        {
-                            Debug.Log(variPokemonEcounter.pokemon.name);
-                        }
-
-                        break;
-                }
-            }
+            // bool pokemonAppeared = false;
+            // int RandomPonderator = 0;
+            // foreach (var variPokemonEcounter in from ecounter in ecounterTable
+            //          where player.transform.position.x >= ecounter.grassPositionmin.x &&
+            //                player.transform.position.x <= ecounter.grassPositionmax.x &&
+            //                player.transform.position.y >= ecounter.grassPositionmin.y &&
+            //                player.transform.position.y <= ecounter.grassPositionmax.y
+            //          where UnityEngine.Random.Range(0, 100) < ecounter.encounterChance
+            //          from variPokemonEcounter in ecounter.pokemonList
+            //          select variPokemonEcounter)
+            // {
+            //     switch (variPokemonEcounter.rarity)
+            //     {
+            //         case Rarity.Common:
+            //             RandomPonderator += 100;
+            //             break;
+            //         case Rarity.Uncommon:
+            //             RandomPonderator += 50;
+            //             break;
+            //         case Rarity.Rare:
+            //             RandomPonderator += 25;
+            //             break;
+            //     }
+            // }
+            //
+            // int indexOfRandomPokemon;
+            // if (RandomPonderator > 0)
+            // {
+            //     indexOfRandomPokemon = UnityEngine.Random.Range(0, RandomPonderator) / ecounterTable.Count;
+            //     Debug.Log(ecounterTable[indexOfRandomPokemon].pokemonList[0].pokemon.name);
+            // }
         }
     }
 
