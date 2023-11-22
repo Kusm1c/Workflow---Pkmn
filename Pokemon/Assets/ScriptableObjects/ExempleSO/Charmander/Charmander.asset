@@ -59,3 +59,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: aaaa4a42a4a2e4e42b3223274e875440, type: 2}
   - {fileID: 11400000, guid: bfd3439865d6c1d40aee4913928f5dc7, type: 2}
   - {fileID: 11400000, guid: 362ca266a0de6d34ba0a28e243129933, type: 2}
+  <FrontSprite>k__BackingField: {fileID: 21300000, guid: 73612a9c42d2ea14d94c0572a793b685,
+    type: 3}
+  <BackSprite>k__BackingField: {fileID: 21300000, guid: 9dd9a57b241488a429312a175b277e2d,
+    type: 3}

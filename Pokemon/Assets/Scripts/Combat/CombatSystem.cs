@@ -264,7 +264,7 @@ public class CombatSystem : MonoBehaviour
         nextStep = true;
     }
 
-    #region Getters
+    #region Getters & Booleans
     
     public MoveSO[] GetPlayerMoveArray()
     {
@@ -285,6 +285,16 @@ public class CombatSystem : MonoBehaviour
         return pokemonSo2.Name;
     }
 
+    public Sprite GetPlayerPokemonSprite()
+    {
+        return pokemonSo1.BackSprite;
+    }
+
+    public Sprite GetOpponentPokemonSprite()
+    {
+        return pokemonSo2.FrontSprite;
+    }
+    
     public int GetPlayerPokemonLevel()
     {
         return pokemonSo1.Level;

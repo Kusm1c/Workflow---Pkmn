@@ -8,12 +8,15 @@ using TMPro;
 using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEditor;
+using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.UIElements;
 using Debug = UnityEngine.Debug;
+using Image = UnityEngine.UI.Image;
 
 public class CombatUI : MonoBehaviour
 {
-    
+    [Header("Pannels")]
     [SerializeField] private GameObject CombatUICanvas;
     [SerializeField] private GameObject CardsPannel;
     [SerializeField] private GameObject PlayerCard;
@@ -22,24 +25,40 @@ public class CombatUI : MonoBehaviour
     [SerializeField] private GameObject MovePannel;
     [SerializeField] private GameObject PokemonPannel;
     
+    [Header("Buttons")]
     [SerializeField] private GameObject[] pokemonSelectionButtons;
     
+    
+    [Header("Text")]
     [SerializeField] private TMP_Text TextBox;
     [SerializeField] private TMP_Text PlayerInfo;
+    [SerializeField] private TMP_Text PlayerLevel;
     [SerializeField] private TMP_Text OpponentInfo;
-    
+    [SerializeField] private TMP_Text OpponentLevel;
+    [SerializeField] private TMP_Text CurrentPP;
+    [SerializeField] private TMP_Text MaxPP;
+    [SerializeField] private TMP_Text MoveType;
     
     [SerializeField] private TMP_Text[] MoveNames;
+    [SerializeField] private TMP_Text[] PokemonSelectionLevels;
+    [SerializeField] private TMP_Text PokemonSelectedName;
+    [SerializeField] private TMP_Text PokemonSelectedLevel;
     
-    private CombatSystem combatSystem;
+    [Header("Sprites")]
+    [SerializeField] private GameObject playerDisplay;
+    [SerializeField] private GameObject opponentDisplay;
 
+    private string currentPokemonName;
+    
     private bool nextStep;
+    
     private MenuState menuState;
     
     private GameObject currentMenu;
     
     private MoveSO[] playerMoveSet;
     
+    private CombatSystem combatSystem;
     private PlayerControls input;
     private void OnEnable()
     {
@@ -56,12 +75,14 @@ public class CombatUI : MonoBehaviour
 
     private void Update()
     {
+        GetCancelInput();
         GetValidateInput();
     }
 
     public void StartCombat()
     {
         combatSystem = GameManager.instance.combatSystem;
+        
         CombatUICanvas.SetActive(true);
         CardsPannel.SetActive(true);
         ActionPannel.SetActive(true);
@@ -69,8 +90,13 @@ public class CombatUI : MonoBehaviour
         TextBox.text = $"What will {combatSystem.GetPlayerPokemonName()} do ?";
         
         playerMoveSet = combatSystem.GetPlayerMoveArray();
-        PlayerInfo.text = $"{combatSystem.GetPlayerPokemonName()} || Lv{combatSystem.GetPlayerPokemonLevel()}\nHP : {combatSystem.GetPlayerPokemonHp()}";
-        OpponentInfo.text = $"{combatSystem.GetOpponentPokemonName()} || Lv{combatSystem.GetOpponentPokemonLevel()}\nHP : {combatSystem.GetOpponentPokemonHp()}";
+        PlayerInfo.text = $"{combatSystem.GetPlayerPokemonName()}";
+        PlayerLevel.text = $"{combatSystem.GetPlayerPokemonLevel()}";
+        OpponentInfo.text = $"{combatSystem.GetOpponentPokemonName()}";
+        OpponentLevel.text = $"{combatSystem.GetOpponentPokemonLevel()}";
+
+         playerDisplay.GetComponent<UnityEngine.UI.Image>().sprite = combatSystem.GetPlayerPokemonSprite();
+         opponentDisplay.GetComponent<UnityEngine.UI.Image>().sprite = combatSystem.GetOpponentPokemonSprite();
         
         for (int i = 0; i < pokemonSelectionButtons.Length; i++)
         {
@@ -79,10 +105,22 @@ public class CombatUI : MonoBehaviour
                 pokemonSelectionButtons[i].SetActive(false);
                 continue;
             }
-     
+
+            if (combatSystem.GetPlayerPokemons()[i].Name == combatSystem.GetPlayerPokemonName())
+            {
+                currentPokemonName = combatSystem.GetPlayerPokemonName();
+                PokemonSelectedName.text = currentPokemonName;
+                PokemonSelectedLevel.text = combatSystem.GetPlayerPokemonLevel().ToString();
+                
+                pokemonSelectionButtons[i].SetActive(false);
+                
+                continue;
+            }
+            
             pokemonSelectionButtons[i].SetActive(true);
             pokemonSelectionButtons[i].GetComponentInChildren<TMP_Text>().text =
                 combatSystem.GetPlayerPokemons()[i].Name;
+            PokemonSelectionLevels[i].text = combatSystem.GetPlayerPokemons()[i].Level.ToString();
         }
         
         for (int i = 0; i < playerMoveSet.Length; i++)
@@ -121,24 +159,32 @@ public class CombatUI : MonoBehaviour
 
     public void SelectMove(int moveIndex)
     {
+        ResetMoveButtons();
         combatSystem.ChoseNextMove(moveIndex);
         combatSystem.NextStep();
     }
 
     public void SelectPokemon(int pokemonIndex)
     {
+        ResetSelectButtons();
         combatSystem.ChoseNewPokemon(pokemonIndex);
         combatSystem.NextStep();
     }
     
     public void EnterHoverMove(int moveIndex)
     {
-        TextBox.text = $"{playerMoveSet[moveIndex].Name} \nPP : {playerMoveSet[moveIndex].PP} \nTYPE : {playerMoveSet[moveIndex].Type}";
+        //TextBox.text = $"{playerMoveSet[moveIndex].Name} \nPP : {playerMoveSet[moveIndex].PP} \nTYPE : {playerMoveSet[moveIndex].Type}";
+        CurrentPP.text = $"{playerMoveSet[moveIndex].PP}";
+        MaxPP.text = $"{playerMoveSet[moveIndex].PP}";
+        MoveType.text = $"{playerMoveSet[moveIndex].Type}";
     }
 
     public void ExitHoverMove()
     {
-        TextBox.text = "Select a move.";
+        //TextBox.text = "Select a move.";
+        CurrentPP.text = "";
+        MaxPP.text = "";
+        MoveType.text = "";
     }
     
     public void TurnDone()
@@ -159,27 +205,29 @@ public class CombatUI : MonoBehaviour
         switch (menuState)
         {
             case MenuState.Default:
-                TextBox.text = $"What will {combatSystem.GetPlayerPokemonName()} do ?";
+                TextBox.text = $"What will {currentPokemonName} do ?";
                 break;
             
             case MenuState.PlayerTriedFlee:
-                TextBox.text = $"{combatSystem.GetPlayerPokemonName()} tries to flee.";
+                TextBox.text = $"{currentPokemonName} tries to flee.";
                 break;
             
             case MenuState.PlayerFled:
-                TextBox.text = $"{combatSystem.GetPlayerPokemonName()} fled !";
+                TextBox.text = $"{currentPokemonName} fled !";
                 break;
             
             case MenuState.PlayerFledFailed:
-                TextBox.text = $"{combatSystem.GetPlayerPokemonName()} failed !";
+                TextBox.text = $"{currentPokemonName} failed !";
                 break;
             
             case MenuState.PlayerSwitchedOld:
-                TextBox.text = $"Come back, {combatSystem.GetPlayerPokemonName()} !";
+                TextBox.text = $"Come back, {currentPokemonName} !";
                 break;
             
             case MenuState.PlayerSwitchedNew:
-                TextBox.text = $"Go, {combatSystem.GetPlayerPokemonName()} !";
+                TextBox.text = $"Go, {currentPokemonName} !";
+                UpdatePlayerSprite();
+                currentPokemonName = combatSystem.GetPlayerPokemonName();
                 break;
             
             case MenuState.PlayerUsedItem:
@@ -189,9 +237,9 @@ public class CombatUI : MonoBehaviour
             case MenuState.PlayerMove:
                 UpdateOpponentInfoText();
                 if(!combatSystem.GetPlayerMove()) 
-                    TextBox.text = $"{combatSystem.GetPlayerPokemonName()} used [MOVE]";
+                    TextBox.text = $"{currentPokemonName} used [MOVE]";
                 else
-                    TextBox.text = $"{combatSystem.GetPlayerPokemonName()} used {combatSystem.GetPlayerMove().Name}";
+                    TextBox.text = $"{currentPokemonName} used {combatSystem.GetPlayerMove().Name}";
                 break;
             
             case MenuState.PlayerEfficiency:
@@ -205,12 +253,12 @@ public class CombatUI : MonoBehaviour
                 break;
             
             case MenuState.PlayerMissed:
-                TextBox.text = $"{combatSystem.GetPlayerPokemonName()} missed !";
+                TextBox.text = $"{currentPokemonName} missed !";
                 break;
             
             case MenuState.OppenentMove:
                 UpdatePlayerInfoText();
-                TextBox.text = $"{combatSystem.GetOpponentPokemonName()} used {combatSystem.GetOpponentMove().Name}";
+                TextBox.text = $"Enemy {combatSystem.GetOpponentPokemonName()} used {combatSystem.GetOpponentMove().Name}";
                 break;
             
             case MenuState.OpponentEfficiency:
@@ -224,15 +272,15 @@ public class CombatUI : MonoBehaviour
                 break;
             
             case MenuState.OpponentMiss:
-                TextBox.text = $"{combatSystem.GetOpponentPokemonName()} missed !";
+                TextBox.text = $"Enemy {combatSystem.GetOpponentPokemonName()} missed !";
                 break;
             
             case MenuState.PlayerFainted:
-                TextBox.text = $"{combatSystem.GetPlayerPokemonName()} fainted !";
+                TextBox.text = $"{currentPokemonName} fainted !";
                 break;
             
             case MenuState.OpponentFainted:
-                TextBox.text = $"{combatSystem.GetOpponentPokemonName()} fainted !";
+                TextBox.text = $"Enemy {combatSystem.GetOpponentPokemonName()} fainted !";
                 break;
             
             case MenuState.Win:
@@ -401,18 +449,67 @@ public class CombatUI : MonoBehaviour
 
     private void UpdatePlayerInfoText()
     {
-        PlayerInfo.text = $"{combatSystem.GetPlayerPokemonName()} || Lv{combatSystem.GetPlayerPokemonLevel()}\nHP : {combatSystem.GetPlayerPokemonHp()}";
+        PlayerInfo.text = $"{combatSystem.GetPlayerPokemonName()}";
     }
 
     private void UpdateOpponentInfoText()
     {
-        OpponentInfo.text = $"{combatSystem.GetOpponentPokemonName()} || Lv{combatSystem.GetOpponentPokemonLevel()}\nHP : {combatSystem.GetOpponentPokemonHp()}";
+        OpponentInfo.text = $"{combatSystem.GetOpponentPokemonName()}";
+    }
+
+    private void UpdatePlayerSprite()
+    {
+        playerDisplay.GetComponent<UnityEngine.UI.Image>().sprite = combatSystem.GetPlayerPokemonSprite();
+    }
+
+    private void UpdateOpponentSprite()
+    {
+        opponentDisplay.GetComponent<UnityEngine.UI.Image>().sprite = combatSystem.GetOpponentPokemonSprite();
+    }
+
+    private void ResetMoveButtons()
+    {
+        for (int i = 0; i < playerMoveSet.Length; i++)
+            MoveNames[i].text = playerMoveSet[i].Name;
+    }
+    
+    private void ResetSelectButtons()
+    {
+        for (int i = 0; i < pokemonSelectionButtons.Length; i++)
+        {
+            if ((i >= combatSystem.GetPlayerPokemons().Length))
+            {
+                pokemonSelectionButtons[i].SetActive(false);
+                continue;
+            }
+
+            if (combatSystem.GetPlayerPokemons()[i].Name == combatSystem.GetPlayerPokemonName())
+            {
+                PokemonSelectedName.text = combatSystem.GetPlayerPokemonName();
+                PokemonSelectedLevel.text = combatSystem.GetPlayerPokemonLevel().ToString();
+                
+                pokemonSelectionButtons[i].SetActive(false);
+                
+                continue;
+            }
+            
+            pokemonSelectionButtons[i].SetActive(true);
+            pokemonSelectionButtons[i].GetComponentInChildren<TMP_Text>().text =
+                combatSystem.GetPlayerPokemons()[i].Name;
+            PokemonSelectionLevels[i].text = combatSystem.GetPlayerPokemons()[i].Level.ToString();
+        }
     }
     
     private void GetValidateInput()
     {
         if (input.Menu.Validate.triggered && menuState != MenuState.Default)
             GoToNextStep();
+    }
+
+    private void GetCancelInput()
+    {
+        if(input.Menu.Cancel.triggered && menuState == MenuState.Default)
+            OpenActionPanel();
     }
     
     private enum MenuState

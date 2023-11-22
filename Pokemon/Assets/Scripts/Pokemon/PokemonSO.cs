@@ -25,6 +25,8 @@ public class PokemonSO : ScriptableObject
     [field: SerializeField] public List<LearnableMove> LearnableMoves { get; private set; }
     [field: SerializeField] public List<MoveSO> Moves { get; private set; } 
     
+    [field: SerializeField] public Sprite FrontSprite { get; private set; }
+    [field: SerializeField] public Sprite BackSprite { get; private set; }
     //set the total stats of the pokemon when the value of base stats, evs, ivs, level, and nature changes
     public void SetTotalStats()
     {
