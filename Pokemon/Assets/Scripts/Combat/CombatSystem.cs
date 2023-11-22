@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using Debug = UnityEngine.Debug;
 using Random = UnityEngine.Random;
 
@@ -119,14 +120,14 @@ public class CombatSystem : MonoBehaviour
         if (playerPlaysFirst)
         {
             if(!skipPlayerTurn)
-                Attack(p1Move, pokemonSo1, pokemonSo2, ref p2CurrentStats, ref playerHitLastAction);
-            Attack(p2Move, pokemonSo2, pokemonSo1, ref p1CurrentStats, ref opponentHitLastAction);
+                UseMove(p1Move, pokemonSo1, pokemonSo2, ref p2CurrentStats, ref p1CurrentStats, ref playerHitLastAction);
+            UseMove(p2Move, pokemonSo2, pokemonSo1, ref p1CurrentStats, ref p2CurrentStats, ref opponentHitLastAction);
         }
         else
         {
-            Attack(p2Move, pokemonSo2, pokemonSo1, ref p1CurrentStats, ref opponentHitLastAction);
+            UseMove(p2Move, pokemonSo2, pokemonSo1, ref p1CurrentStats, ref p2CurrentStats, ref opponentHitLastAction);
             if(!skipPlayerTurn)
-                Attack(p1Move, pokemonSo1, pokemonSo2, ref p2CurrentStats, ref playerHitLastAction);
+                UseMove(p1Move, pokemonSo1, pokemonSo2, ref p2CurrentStats, ref p1CurrentStats, ref playerHitLastAction);
         }
 
         skipPlayerTurn = false;
@@ -135,21 +136,85 @@ public class CombatSystem : MonoBehaviour
 
     private void Attack(MoveSO attack, PokemonSO attacker, PokemonSO defender, ref Stats defenderStats, ref bool actorMissed)
     {
-        var attackerDamage = UseMove(attack, attacker, defender, ref actorMissed);
-        
-        defenderStats.HP -= attackerDamage;
-        defenderStats.HP = (defenderStats.HP < 0 ? 0 : defenderStats.HP);
+        actorMissed = AttackHits(attack);
+        if (actorMissed)
+        {
+            var attackerDamage = CalculateDamage(attack, attacker, defender);
+            defenderStats.HP -= attackerDamage;
+            defenderStats.HP = (defenderStats.HP < 0 ? 0 : defenderStats.HP);
 
-        if(EndCondition())
-            EndFight();
+            if(EndCondition())
+                EndFight();
+        }
     }
     
-    private int UseMove(MoveSO move, PokemonSO attacker, PokemonSO defender, ref bool actorMissed)
+    private int UseMove(MoveSO move, PokemonSO attacker, PokemonSO defender, ref Stats attackerStats, ref Stats defenderStats,ref bool actorMissed)
     {
         if (move.PP == 0) return 0;
         move.PP--;
-        actorMissed = AttackHits(move);
-        return actorMissed ? CalculateDamage(move, attacker, defender) : 0;
+
+        switch (move.MoveType)
+        {
+            case MoveType.Status:
+                if (move.Target == Target.Self)
+                    ApplySelfBonus(move, ref attackerStats);
+                else
+                    ApplyEffect(move, ref defenderStats);
+                break;
+            
+            default:
+                Attack(move, attacker, defender, ref defenderStats, ref actorMissed);
+                break;
+        }
+
+        return 0;
+    }
+
+    private void ApplySelfBonus(MoveSO move, ref Stats stats)
+    {
+        switch (move.Buff)
+        {
+            //Buff Section
+            case Buff.AttackUp:
+                stats.Attack += move.Power;
+                break;
+            case Buff.DefenseUp:
+                stats.Defense += move.Power;
+                break;
+            case Buff.SpeedUp:
+                stats.Speed += move.Power;
+                break;
+            case Buff.SpAtkUp:
+                stats.SpAttack += move.Power;
+                break;
+            case Buff.SpDefUp:
+                stats.SpDefense += move.Power;
+                break;
+        }
+    }
+
+    private void ApplyEffect(MoveSO move, ref Stats stats)
+    {
+        //Debuff Section
+        switch (move.Buff)
+        {
+            case Buff.AttackDown:
+                stats.Attack -= move.Power;
+                break;
+            case Buff.DefenseDown:
+                stats.Defense -= move.Power;
+                break;
+            case Buff.SpeedDown:
+                stats.Speed -= move.Power;
+                break;
+            case Buff.SpAtkDown:
+                stats.SpAttack -= move.Power;
+                break;
+            case Buff.SpDefDown:
+                stats.SpDefense -= move.Power;
+                break;
+        }
+
     }
     
     private bool AttackHits(MoveSO attack)
@@ -192,8 +257,19 @@ public class CombatSystem : MonoBehaviour
 
     private int CalculateDamage(MoveSO attack, PokemonSO attacker, PokemonSO defender)
     {
-        float attackValue = (2.0f * attacker.Level / 5.0f + 2.0f) * attack.Power * attacker.TotalStats.Attack;
-        float defenseValue = defender.TotalStats.Defense;
+        float attackValue;
+        float defenseValue;
+        if (attack.MoveType == MoveType.Physical)
+        {
+            attackValue = (2.0f * attacker.Level / 5.0f + 2.0f) * attack.Power * attacker.TotalStats.Attack;
+            defenseValue = defender.TotalStats.SpDefense;
+        }
+        else
+        {
+            attackValue = (2.0f * attacker.Level / 5.0f + 2.0f) * attack.Power * attacker.TotalStats.SpAttack;
+            defenseValue = defender.TotalStats.Defense;
+        }
+        
         float typeDamageMultiplier = TypeTable.GetTypeDamageMultiplier(attack.Type, defender.Type);
         float attackEfficiency = Random.Range(85, 100) / 100.0f;
         
