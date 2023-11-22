@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Mime;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Serialization;
@@ -35,6 +36,8 @@ public class MainMenuAnimation : MonoBehaviour
     public GameObject lilBushe;
     public GameObject treesFourthAct;
     public GameObject gengarAtack;
+    public GameObject mask;
+    public GameObject mask2;
     public Sprite nMouthClosed, nPrepScream, nScream, nJump;
     public Sprite gBase, gPawUp, gPawDown;
     
@@ -111,8 +114,12 @@ public class MainMenuAnimation : MonoBehaviour
         anim2.SetActive(true);
         grassAndTree.SetActive(true);
         yield return new WaitForSeconds(0.5f);
-        grassAndTree.transform.DOScale(Vector3.one*2.5f,0.5f);
-        yield return new WaitForSeconds(0.5f);
+        grassAndTree.transform.DOScale(Vector3.one*2.5f,0.2f);
+        foreach (Transform child in grassAndTree.transform)
+        {
+            child.GetComponent<Image>().DOColor(Color.clear, 0.2f);
+        }
+        yield return new WaitForSeconds(0.2f);
         grassAndTree.SetActive(false);
         //yield return new WaitForSeconds(0.1f);
         
@@ -154,16 +161,58 @@ public class MainMenuAnimation : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         gengarImg.sprite = gPawUp;
         gengarFourthAct.transform.DOMove(gengarFourthAct.transform.position+Vector3.left*80,0.5f).SetEase(Ease.Linear);
+        nidoranImg.sprite = nPrepScream;
         yield return new WaitForSeconds(0.5f);
         gengarImg.sprite = gPawDown;
+        nidoranImg.sprite = nJump;
         gengarFourthAct.transform.DOMove(gengarFourthAct.transform.position+Vector3.right*80,0.1f).SetEase(Ease.Linear);
+        nidoranFourthAct.transform.DOMove(nidoranFourthAct.transform.position+Vector3.right*50+Vector3.up*70,0.2f).SetEase(Ease.Linear);
         gengarAtack.SetActive(true);
-        yield return new WaitForSeconds(0.05f);
-        
-        yield return new WaitForSeconds(0.05f);
+        yield return new WaitForSeconds(0.1f);
         gengarImg.sprite = gBase;
         gengarAtack.SetActive(false);
+        yield return new WaitForSeconds(0.1f);
+        nidoranFourthAct.transform.DOMove(nidoranFourthAct.transform.position+Vector3.right*50+Vector3.down*70,0.2f).SetEase(Ease.Linear);
+        yield return new WaitForSeconds(0.2f);
+        nidoranImg.sprite = nPrepScream;
+        nidoranFourthAct.transform.DOMove(nidoranFourthAct.transform.position+Vector3.right*50,0.2f).SetEase(Ease.Linear);
+        yield return new WaitForSeconds(0.2f);
+        nidoranImg.sprite = nMouthClosed;
         yield return new WaitForSeconds(0.5f);
+        
+        nidoranImg.sprite = nJump;
+        nidoranFourthAct.transform.DOMove(nidoranFourthAct.transform.position+Vector3.left*75+Vector3.up*100,0.3f).SetEase(Ease.Linear);
+        yield return new WaitForSeconds(0.3f);
+        nidoranFourthAct.transform.DOMove(nidoranFourthAct.transform.position+Vector3.left*75+Vector3.down*100,0.3f).SetEase(Ease.Linear);
+        yield return new WaitForSeconds(0.3f);
+        nidoranImg.sprite = nPrepScream;
+        yield return new WaitForSeconds(0.2f);
+        nidoranImg.sprite = nMouthClosed;
+        
+        for(int i = 0; i<2; i++)
+        {
+            nidoranImg.sprite = nJump;
+            nidoranFourthAct.transform.DOMove(nidoranFourthAct.transform.position+Vector3.right*30+Vector3.up*50,0.1f).SetEase(Ease.Linear);
+            yield return new WaitForSeconds(0.1f);
+            nidoranFourthAct.transform.DOMove(nidoranFourthAct.transform.position+Vector3.right*30+Vector3.down*50,0.1f).SetEase(Ease.Linear);
+            yield return new WaitForSeconds(0.1f);
+            nidoranImg.sprite = nPrepScream;
+            yield return new WaitForSeconds(0.1f);
+        }
+        yield return new WaitForSeconds(0.5f);
+        nidoranImg.sprite = nJump;
+        nidoranFourthAct.transform.DOMove(nidoranFourthAct.transform.position+Vector3.left*150+Vector3.up*100,1f).SetEase(Ease.Linear);
+        mask.GetComponent<Image>().DOColor(Color.white, 2f);
+        yield return new WaitForSeconds(1f);
+        nidoranFourthAct.transform.DOMove(nidoranFourthAct.transform.position+Vector3.left*50+Vector3.down*50,1f);
+        gengarFourthAct.transform.DOScale(Vector3.one*2, 1f);
+        nidoranFourthAct.transform.DOScale(Vector3.one*2, 1f);
+        mask2.GetComponent<Image>().DOColor(Color.black, 1f);
+        yield return new WaitForSeconds(1f);
+        
+        yield return new WaitForSeconds(5f);
+
+        
         fourthAct.SetActive(false);
         SceneManager.LoadScene("MainMenuButtons");
         
