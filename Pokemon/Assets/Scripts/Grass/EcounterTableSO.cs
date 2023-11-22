@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Encounter", menuName = "Pokemon/Encounter")]
 public class EcounterTableSO : ScriptableObject
 {
-    [field:SerializeField] List<PokemonEcounter> pokemonList;
-    [field:SerializeField] List<Vector3> grassPositions;
+    [field:SerializeField] public List<PokemonEcounter> pokemonList;
+    [field:SerializeField] public Vector2 grassPositionmin, grassPositionmax;
+    [field:SerializeField] public float encounterChance;
 }

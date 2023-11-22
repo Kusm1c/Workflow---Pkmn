@@ -15,4 +15,5 @@ public enum PokemonType
     Rock = 12,
     Ghost = 13,
     Dragon = 14,
+    None = 15,
 }
