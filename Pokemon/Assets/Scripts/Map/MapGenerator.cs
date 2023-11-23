@@ -75,68 +75,44 @@ public class MapGenerator : MonoBehaviour
 
     private void SetTilesInvisible()
     {
-        foreach (var tile in grassTileParent.GetComponentsInChildren<Transform>())
+        foreach (var tile in grassTileParent.GetComponentsInChildren<SpriteRenderer>())
         {
-            if (tile.name == "Grass")
-            {
-                tile.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
-            }
+            tile.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
         }
 
-        foreach (var tile in flowerTileParent.GetComponentsInChildren<Transform>())
+        foreach (var tile in flowerTileParent.GetComponentsInChildren<SpriteRenderer>())
         {
-            if (tile.name == "Flower")
-            {
-                tile.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
-            }
+            tile.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
         }
 
-        foreach (var tile in waterTileParent.GetComponentsInChildren<Transform>())
+        foreach (var tile in waterTileParent.GetComponentsInChildren<SpriteRenderer>())
         {
-            if (tile.name == "Deep Water")
-            {
-                tile.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
-            }
+           tile.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
         }
 
-        foreach (var tile in actionTileParent.GetComponentsInChildren<Transform>())
+        foreach (var tile in actionTileParent.GetComponentsInChildren<SpriteRenderer>())
         {
-            if (tile.name == "Action")
-            {
-                tile.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
-            }
+            tile.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
         }
 
-        foreach (var tile in blockedTileParent.GetComponentsInChildren<Transform>())
+        foreach (var tile in blockedTileParent.GetComponentsInChildren<SpriteRenderer>())
         {
-            if (tile.name == "Blocked")
-            {
-                tile.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
-            }
+            tile.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
         }
 
-        foreach (var tile in blockedFromBelowTileParent.GetComponentsInChildren<Transform>())
+        foreach (var tile in blockedFromBelowTileParent.GetComponentsInChildren<SpriteRenderer>())
         {
-            if (tile.name == "Blocked From Below")
-            {
-                tile.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
-            }
+            tile.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
         }
 
-        foreach (var tile in doorsTileParent.GetComponentsInChildren<Transform>())
+        foreach (var tile in doorsTileParent.GetComponentsInChildren<SpriteRenderer>())
         {
-            if (tile.name.StartsWith("Door"))
-            {
-                tile.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
-            }
+            tile.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
         }
 
-        foreach (var tile in interactableTileParent.GetComponentsInChildren<Transform>())
+        foreach (var tile in interactableTileParent.GetComponentsInChildren<SpriteRenderer>())
         {
-            if (tile.name == "Interactable")
-            {
-                tile.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
-            }
+            tile.GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
         }
     }
 
