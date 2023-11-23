@@ -355,9 +355,9 @@ MonoBehaviour:
   combatUIPrefab: {fileID: 8252750383454524462, guid: 19e8f21566c260742a83cce1506c738b,
     type: 3}
   playerPokemonList:
-  - {fileID: 11400000, guid: dae9899d0a8002f44a2c19afec1ad4e9, type: 2}
+  - {fileID: 11400000, guid: 92c35af042ee2f940b416878738fc02a, type: 2}
   selectablePokemons:
-  - {fileID: 11400000, guid: 2b4dad557b7c7394cba8c95477fc58cb, type: 2}
+  - {fileID: 11400000, guid: 98d2838a2b274b048a3595b57d6e1a12, type: 2}
 --- !u!4 &848165767
 Transform:
   m_ObjectHideFlags: 0
