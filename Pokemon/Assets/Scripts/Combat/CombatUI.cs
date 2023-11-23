@@ -343,10 +343,14 @@ public class CombatUI : MonoBehaviour
                     menuState = MenuState.PlayerEfficiency;
                 else if (combatSystem.OpponentFainted())
                     menuState = MenuState.OpponentFainted;
-                else
+                else if(combatSystem.PlayerPlaysFirst())
                 {
                     menuState = MenuState.OppenentMove;
+                    break;
                 }
+
+                menuState = MenuState.Default;
+                OpenActionPanel();
                 break;
             
             case MenuState.PlayerMissed:
