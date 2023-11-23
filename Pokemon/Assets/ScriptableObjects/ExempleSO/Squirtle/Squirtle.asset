@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b45bd5d52479d645bbe3c8642af60da, type: 3}
+  m_Name: Squirtle
+  m_EditorClassIdentifier: 
+  <Name>k__BackingField: Squirtle
+  <ID>k__BackingField: 0
+  <Gender>k__BackingField: 0
+  <Level>k__BackingField: 3
+  <Nature>k__BackingField: 0
+  <Type>k__BackingField: 2
+  <Type2>k__BackingField: 0
+  <BaseStats>k__BackingField:
+    HP: 49
+    Attack: 6
+    Defense: 0
+    SpAttack: 0
+    SpDefense: 0
+    Speed: 39
+  <EVs>k__BackingField:
+    HP: 10
+    Attack: 0
+    Defense: 0
+    SpAttack: 0
+    SpDefense: 0
+    Speed: 0
+  <IVs>k__BackingField:
+    HP: 13
+    Attack: 21
+    Defense: 32
+    SpAttack: 0
+    SpDefense: 0
+    Speed: 21
+  <TotalStats>k__BackingField:
+    HP: 16
+    Attack: 6
+    Defense: 6
+    SpAttack: 5
+    SpDefense: 5
+    Speed: 8
+  <CatchRate>k__BackingField: 0
+  <BaseXP>k__BackingField: 0
+  <EVYield>k__BackingField: 0
+  <BaseFriendship>k__BackingField: 0
+  <GrowthRate>k__BackingField: 0
+  <Exp>k__BackingField: 0
+  <LearnableMoves>k__BackingField: []
+  <Moves>k__BackingField:
+  - {fileID: 11400000, guid: f6dc494b13ee4264e84ce5a64751e7cb, type: 2}
+  - {fileID: 11400000, guid: ebc4b5bdd9952eb49a724a0625efb6f0, type: 2}
+  - {fileID: 11400000, guid: 601421bd93565ab45b8a94428f8d48d9, type: 2}
+  - {fileID: 11400000, guid: d38ef1c91e1608b428e30ced65ed74a3, type: 2}
+  <FrontSprite>k__BackingField: {fileID: 21300000, guid: c3d1c19a446293f4fb6182ad1b716541,
+    type: 3}
+  <BackSprite>k__BackingField: {fileID: 21300000, guid: 1dfaa016c953b6e418f46743ec64bdbd,
+    type: 3}

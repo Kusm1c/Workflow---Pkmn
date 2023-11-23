@@ -1,110 +1,461 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
+using Debug = UnityEngine.Debug;
 using Random = UnityEngine.Random;
 
 public class CombatSystem : MonoBehaviour
 {
-    [SerializeField] private PokemonSO pokemonSo1;
-    [SerializeField] private PokemonSO pokemonSo2;
+    private PokemonSO pokemonSo1;
+    private PokemonSO pokemonSo2;
 
+    private PokemonSO[] playerPokemons;
+    
+    private MoveSO p1Move;
+    private MoveSO p2Move;
+    
     private Stats p1CurrentStats;
     private Stats p2CurrentStats;
+
+    private PlayerMove nextPlayerMove = PlayerMove.None;
     
-    private bool onePlaysFirst = true;
-    private bool nextStep = false;
+    private int fleeAttempts = 0;
     
-    // private PlayerControls input;
+    private bool playerPlaysFirst;
+    private bool skipPlayerTurn;
+    private bool nextStep;
+    private bool fightOngoing;
+    private bool playerHitLastAction;
+    private bool opponentHitLastAction;
+    private bool fleeResult;
     
     private void Awake()
     {
-        // input = new();
+        p1CurrentStats = new();
+        p2CurrentStats = new();
     }
 
     private void OnEnable()
     {
-        // input.Menu.Enable();
+        //StartFight();
     }
 
-    private void TestFunction()
+    private void Update()
     {
-        if (p1CurrentStats.HP <= 0.0f)
-        {
-            Debug.Log("P2 win");
-            return;
-        }
+        Turn();
+    }
 
-        if (p2CurrentStats.HP <= 0.0f)
-        {
-            Debug.Log("P1 win");
-            return;
-        }
+    private void Turn()
+    {
+        if (!nextStep) return;
         
+        PlayTurn(nextPlayerMove);
+    }
+
+    //Only for testing
+    private void StartFight()
+    {
         //Get copies of pokemon stats
         p1CurrentStats = pokemonSo1.TotalStats;
         p2CurrentStats = pokemonSo2.TotalStats;
+        fightOngoing = true;
+    }
+
+    public void StartFight(List<PokemonSO> playerPokemonList, PokemonSO opponentPokemon)
+    {
+        playerPokemons = playerPokemonList.ToArray();
+        pokemonSo1 = playerPokemons[0];
+        pokemonSo2 = opponentPokemon;
+
+        //Initialize "default moves"
+        p1Move = pokemonSo1.Moves[0];
+        p2Move = pokemonSo2.Moves[0];
+        
+        p1CurrentStats = pokemonSo1.TotalStats;
+        p2CurrentStats = pokemonSo2.TotalStats;
+        fightOngoing = true;
+    }
+    
+    public void EndFight()
+    {
+        //Save stats after fight
+        pokemonSo1.TotalStats = p1CurrentStats;
+        pokemonSo2.TotalStats = p2CurrentStats;
+        fightOngoing = false;
+    }
+    
+    private void PlayTurn(PlayerMove playerMove)
+    {
+        GetOpponentNextMove(pokemonSo2);
+        var p2Damage = 0;
+        var p1Damage = 0;
+        
+        switch (nextPlayerMove)
+        {
+            case PlayerMove.Attack:
+                //Attack selection implemented in button
+                break;
+            case PlayerMove.Item:
+                //Implement Later
+                //skipPlayerTurn = true;
+                break;
+            case PlayerMove.SwitchPokemon:
+                //Pokemon switch implemented in button
+                skipPlayerTurn = true;
+                break;
+            case PlayerMove.Flee:
+                if (Flee(p1CurrentStats, p2CurrentStats, ref fleeResult))
+                    EndFight();
+                else
+                    skipPlayerTurn = true;
+                break;
+        }
         
         CalculatePriority();
         
-        //Get PokemonMoves
-        MoveSO firstMove = new();
-        MoveSO secondMove;
-
-        if (onePlaysFirst)
+        if (playerPlaysFirst)
         {
-            p2CurrentStats.HP -= Attack(firstMove, pokemonSo1, pokemonSo2);
-            p1CurrentStats.HP -= Attack(firstMove, pokemonSo2, pokemonSo1);
+            if(!skipPlayerTurn)
+                UseMove(p1Move, pokemonSo1, pokemonSo2, ref p2CurrentStats, ref p1CurrentStats, ref playerHitLastAction);
+            UseMove(p2Move, pokemonSo2, pokemonSo1, ref p1CurrentStats, ref p2CurrentStats, ref opponentHitLastAction);
         }
-        
+        else
+        {
+            UseMove(p2Move, pokemonSo2, pokemonSo1, ref p1CurrentStats, ref p2CurrentStats, ref opponentHitLastAction);
+            if(!skipPlayerTurn)
+                UseMove(p1Move, pokemonSo1, pokemonSo2, ref p2CurrentStats, ref p1CurrentStats, ref playerHitLastAction);
+        }
+
+        skipPlayerTurn = false;
+        nextStep = false;
     }
 
-    private int Attack(MoveSO attack, PokemonSO attacker, PokemonSO defender)
+    private void Attack(MoveSO attack, PokemonSO attacker, PokemonSO defender, ref Stats defenderStats, ref bool actorMissed)
     {
-        if (!AttackHits(attack)) return 0;
+        actorMissed = AttackHits(attack);
+        if (actorMissed)
+        {
+            var attackerDamage = CalculateDamage(attack, attacker, defender);
+            defenderStats.HP -= attackerDamage;
+            defenderStats.HP = (defenderStats.HP < 0 ? 0 : defenderStats.HP);
 
-        return CalculateDamage(attack, attacker, defender);
+            if(EndCondition())
+                EndFight();
+        }
+    }
+    
+    private int UseMove(MoveSO move, PokemonSO attacker, PokemonSO defender, ref Stats attackerStats, ref Stats defenderStats,ref bool actorMissed)
+    {
+        if (move.PP == 0) return 0;
+        move.PP--;
+
+        switch (move.MoveType)
+        {
+            case MoveType.Status:
+                if (move.Target == Target.Self)
+                    ApplySelfBonus(move, ref attackerStats);
+                else
+                    ApplyEffect(move, ref defenderStats);
+                break;
+            
+            default:
+                Attack(move, attacker, defender, ref defenderStats, ref actorMissed);
+                break;
+        }
+
+        return 0;
+    }
+
+    private void ApplySelfBonus(MoveSO move, ref Stats stats)
+    {
+        switch (move.Buff)
+        {
+            //Buff Section
+            case Buff.AttackUp:
+                stats.Attack += move.Power;
+                break;
+            case Buff.DefenseUp:
+                stats.Defense += move.Power;
+                break;
+            case Buff.SpeedUp:
+                stats.Speed += move.Power;
+                break;
+            case Buff.SpAtkUp:
+                stats.SpAttack += move.Power;
+                break;
+            case Buff.SpDefUp:
+                stats.SpDefense += move.Power;
+                break;
+        }
+    }
+
+    private void ApplyEffect(MoveSO move, ref Stats stats)
+    {
+        //Debuff Section
+        switch (move.Buff)
+        {
+            case Buff.AttackDown:
+                stats.Attack -= move.Power;
+                break;
+            case Buff.DefenseDown:
+                stats.Defense -= move.Power;
+                break;
+            case Buff.SpeedDown:
+                stats.Speed -= move.Power;
+                break;
+            case Buff.SpAtkDown:
+                stats.SpAttack -= move.Power;
+                break;
+            case Buff.SpDefDown:
+                stats.SpDefense -= move.Power;
+                break;
+        }
+
     }
     
     private bool AttackHits(MoveSO attack)
     {
         if (attack.Accuracy > Random.Range(0, 100))
-        {
             return true;
-        }
-
         return false;
+    }
+    
+    private void GetOpponentNextMove(PokemonSO pokemon)
+    {
+        p2Move = pokemon.Moves[Random.Range(0, 3)];
     }
     
     private void CalculatePriority()
     {
-        onePlaysFirst = pokemonSo1.TotalStats.Speed > pokemonSo2.TotalStats.Speed;
+        //If player's turn is skipped, order doesnt matter
+        if (skipPlayerTurn)
+        {
+            playerPlaysFirst = true;
+            return;
+        }
+        
+        if (p1Move.MoveType == MoveType.Status)
+        {
+            playerPlaysFirst = true;
+            return;
+        }
+        else if (p2Move.MoveType == MoveType.Status)
+        {
+            playerPlaysFirst = false;
+            return;
+        }
+        
+        if (p1Move.Priority == p2Move.Priority)
+            playerPlaysFirst = pokemonSo1.TotalStats.Speed > pokemonSo2.TotalStats.Speed;
+        else
+            playerPlaysFirst = p1Move.Priority > p2Move.Priority;
     }
 
     private int CalculateDamage(MoveSO attack, PokemonSO attacker, PokemonSO defender)
     {
-        return Mathf.FloorToInt(((((2 * attacker.Level / 5 + 2) * attack.Power * attacker.BaseStats.Attack /
-                             defender.BaseStats.Defense) /
-                            50) + 2) * TypeTable.GetTypeDamageMultiplier(attack.Type, defender.Type) * Random.Range(0, 100) / 100);
+        float attackValue;
+        float defenseValue;
+        if (attack.MoveType == MoveType.Physical)
+        {
+            attackValue = (2.0f * attacker.Level / 5.0f + 2.0f) * attack.Power * attacker.TotalStats.Attack;
+            defenseValue = defender.TotalStats.SpDefense;
+        }
+        else
+        {
+            attackValue = (2.0f * attacker.Level / 5.0f + 2.0f) * attack.Power * attacker.TotalStats.SpAttack;
+            defenseValue = defender.TotalStats.Defense;
+        }
+        
+        float typeDamageMultiplier = TypeTable.GetTypeDamageMultiplier(attack.Type, defender.Type);
+        float attackEfficiency = Random.Range(85, 100) / 100.0f;
+        
+        return Mathf.FloorToInt((((attackValue / defenseValue) / 50) + 2) * typeDamageMultiplier * attackEfficiency);
+    }
+
+    private bool Flee(Stats playerStats, Stats wildStats, ref bool fled)
+    {
+        var playerVal = playerStats.Speed * 32;
+        var wildVal = Mathf.FloorToInt(wildStats.Speed / 4.0f) % 256;
+
+        var odds = playerVal / wildVal + 30 * fleeAttempts;
+
+        if (odds > 255) fled = true;
+        else
+        {
+            if (odds < Random.Range(0, 255)) fled = true;
+            else
+                fled = false;
+        }
+
+        return fled;
+    }
+
+    private bool EndCondition()
+    {
+        return p1CurrentStats.HP <= 0 || p2CurrentStats.HP <= 0;
+    }
+
+    public void ChoseNextMove(int moveIndex)
+    {
+        nextStep = true;
+        p1Move = pokemonSo1.Moves[moveIndex];
+    }
+
+    public void ChoseNewPokemon(int pokemonIndex)
+    {
+        //if (pokemonSo1 == playerPokemons[pokemonIndex]) return;
+        
+        //Register new stats for leaving pokemon
+        //pokemonSo1.TotalStats = p1CurrentStats;
+        
+        pokemonSo1 = playerPokemons[pokemonIndex];
+        p1CurrentStats = pokemonSo1.TotalStats;
     }
     
-    private float GetModifierFromNature(Nature pokemonSoNature)
+    public void ChoseNextPlayerAction(int actionIndex)
     {
-        switch (pokemonSoNature)
+        switch (actionIndex)
         {
-            default:
-                return 1.0f;
+            case 0:
+                nextPlayerMove = PlayerMove.Attack;
+                break;
+            case 1:
+                nextPlayerMove = PlayerMove.Item;
+                break;
+            case 2:
+                nextPlayerMove = PlayerMove.SwitchPokemon;
+                break;
+            case 3:
+                nextPlayerMove = PlayerMove.Flee;
+                break;
         }
     }
 
-    private void WaitForNextStep()
+    public void NextStep()
     {
-        while(!nextStep)
-        {
-            // if (input.Menu.Validate.triggered) nextStep = true;
-        }
+        nextStep = true;
+    }
 
-        nextStep = false;
+    #region Getters & Booleans
+    
+    public MoveSO[] GetPlayerMoveArray()
+    {
+        return pokemonSo1.Moves.ToArray();
+    }
+
+    public PokemonSO[] GetPlayerPokemons()
+    {
+        return playerPokemons;
+    }
+
+    public String GetPlayerPokemonName()
+    {
+        return pokemonSo1.Name;
+    }
+    public String GetOpponentPokemonName()
+    {
+        return pokemonSo2.Name;
+    }
+
+    public Sprite GetPlayerPokemonSprite()
+    {
+        return pokemonSo1.BackSprite;
+    }
+
+    public Sprite GetOpponentPokemonSprite()
+    {
+        return pokemonSo2.FrontSprite;
+    }
+    
+    public int GetPlayerPokemonLevel()
+    {
+        return pokemonSo1.Level;
+    }
+    public int GetOpponentPokemonLevel()
+    {
+        return pokemonSo2.Level;
+    }
+
+    public int GetPlayerPokemonHp()
+    {
+        return p1CurrentStats.HP;
+    }
+    public int GetOpponentPokemonHp()
+    {
+        return p2CurrentStats.HP;
+    }
+    
+    public MoveSO GetPlayerMove()
+    {
+        return p1Move;
+    }
+
+    public MoveSO GetOpponentMove()
+    {
+        return p2Move;
+    }
+
+    public PokemonType GetPlayerPokemonType()
+    {
+        return pokemonSo1.Type;
+    }
+    
+    public PokemonType GetOpponentType()
+    {
+        return pokemonSo2.Type;
+    }
+
+    public bool PlayerMissed()
+    {
+        return !playerHitLastAction;
+    }
+
+    public bool OpponentMissed()
+    {
+        return !opponentHitLastAction;
+    }
+    
+    public bool PlayerFainted()
+    {
+        return p1CurrentStats.HP <= 0;
+    }
+    
+    public bool OpponentFainted()
+    {
+        return p2CurrentStats.HP <= 0;
+    }
+
+    public bool PlayerSwitched()
+    {
+        return nextPlayerMove == PlayerMove.SwitchPokemon;
+    }
+    
+    public bool PlayerTriedFlee()
+    {
+        return nextPlayerMove == PlayerMove.Flee;
+    }
+
+    public bool PlayerFled()
+    {
+        return fleeResult;
+    }
+
+    public bool PlayerPlaysFirst()
+    {
+        return playerPlaysFirst;
+    }
+    
+    #endregion
+    private enum PlayerMove
+    {
+        None,
+        Attack,
+        Item,
+        SwitchPokemon,
+        Flee
     }
 }

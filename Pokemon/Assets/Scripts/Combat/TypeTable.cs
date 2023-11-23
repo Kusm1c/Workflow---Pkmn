@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class TypeTable
 {
-    //very fun very good, yes ? hard coded 800 gorillion entry float table
-    public static float[,] resistanceTable = {
+    private static float[,] resistanceTable = {
         //AttackerNormal
         {
             1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f, .5f, 0.0f, 1.0f

@@ -15,7 +15,7 @@ public class PokemonSO : ScriptableObject
     [field: SerializeField] public Stats BaseStats { get; private set; }
     [field: SerializeField] public Stats EVs { get; private set; }
     [field: SerializeField] public Stats IVs { get; private set; }
-    [field: SerializeField] public Stats TotalStats { get; private set; }
+    [field: SerializeField] public Stats TotalStats { get; set; }
     [field: SerializeField] public int CatchRate { get; private set; }
     [field: SerializeField] public int BaseXP { get; private set; }
     [field: SerializeField] public int EVYield { get; private set; }
@@ -23,8 +23,10 @@ public class PokemonSO : ScriptableObject
     [field: SerializeField] public int GrowthRate { get; private set; }
     [field: SerializeField] public int Exp { get; private set; }
     [field: SerializeField] public List<LearnableMove> LearnableMoves { get; private set; }
-    [field: SerializeField] public List<MoveSO> Moves { get; private set; }
-
+    [field: SerializeField] public List<MoveSO> Moves { get; private set; } 
+    
+    [field: SerializeField] public Sprite FrontSprite { get; private set; }
+    [field: SerializeField] public Sprite BackSprite { get; private set; }
     //set the total stats of the pokemon when the value of base stats, evs, ivs, level, and nature changes
     public void SetTotalStats()
     {
