@@ -38,6 +38,95 @@ public class PokemonSO : ScriptableObject
         totalStats.SpAttack = Mathf.FloorToInt(((BaseStats.SpAttack + IVs.SpAttack) * 2 + Mathf.Floor(Mathf.Ceil(Mathf.Sqrt(EVs.SpAttack))/4))*Level / 100f) + 5;
         totalStats.SpDefense = Mathf.FloorToInt(((BaseStats.SpDefense + IVs.SpDefense) * 2 + Mathf.Floor(Mathf.Ceil(Mathf.Sqrt(EVs.SpDefense))/4))*Level / 100f) + 5;
         totalStats.Speed = Mathf.FloorToInt(((BaseStats.Speed + IVs.Speed) * 2 + Mathf.Floor(Mathf.Ceil(Mathf.Sqrt(EVs.Speed))/4))*Level / 100f) + 5;
+        switch (Nature)
+        {
+            case Nature.Bashful or Nature.Docile or Nature.Hardy or Nature.Quirky or Nature.Serious:
+                break;
+            case Nature.Adamant:
+                totalStats.Attack = Mathf.FloorToInt(totalStats.Attack * 1.1f);
+                totalStats.SpAttack = Mathf.FloorToInt(totalStats.SpAttack * 0.9f);
+                break;
+            case Nature.Bold:
+                totalStats.Defense = Mathf.FloorToInt(totalStats.Defense * 1.1f);
+                totalStats.Attack = Mathf.FloorToInt(totalStats.Attack * 0.9f);
+                break;
+            case Nature.Brave:
+                totalStats.Attack = Mathf.FloorToInt(totalStats.Attack * 1.1f);
+                totalStats.Speed = Mathf.FloorToInt(totalStats.Speed * 0.9f);
+                break;
+            case Nature.Calm:
+                totalStats.SpDefense = Mathf.FloorToInt(totalStats.SpDefense * 1.1f);
+                totalStats.Attack = Mathf.FloorToInt(totalStats.Attack * 0.9f);
+                break;
+            case Nature.Careful:
+                totalStats.SpDefense = Mathf.FloorToInt(totalStats.SpDefense * 1.1f);
+                totalStats.SpAttack = Mathf.FloorToInt(totalStats.SpAttack * 0.9f);
+                break;
+            case Nature.Gentle:
+                totalStats.SpDefense = Mathf.FloorToInt(totalStats.SpDefense * 1.1f);
+                totalStats.Defense = Mathf.FloorToInt(totalStats.Defense * 0.9f);
+                break;
+            case Nature.Hasty:
+                totalStats.Speed = Mathf.FloorToInt(totalStats.Speed * 1.1f);
+                totalStats.Defense = Mathf.FloorToInt(totalStats.Defense * 0.9f);
+                break;
+            case Nature.Impish:
+                totalStats.Defense = Mathf.FloorToInt(totalStats.Defense * 1.1f);
+                totalStats.SpAttack = Mathf.FloorToInt(totalStats.SpAttack * 0.9f);
+                break;
+            case Nature.Jolly:
+                totalStats.Speed = Mathf.FloorToInt(totalStats.Speed * 1.1f);
+                totalStats.SpAttack = Mathf.FloorToInt(totalStats.SpAttack * 0.9f);
+                break;
+            case Nature.Lax:
+                totalStats.Defense = Mathf.FloorToInt(totalStats.Defense * 1.1f);
+                totalStats.SpDefense = Mathf.FloorToInt(totalStats.SpDefense * 0.9f);
+                break;
+            case Nature.Lonely:
+                totalStats.Attack = Mathf.FloorToInt(totalStats.Attack * 1.1f);
+                totalStats.Defense = Mathf.FloorToInt(totalStats.Defense * 0.9f);
+                break;
+            case Nature.Mild:
+                totalStats.SpAttack = Mathf.FloorToInt(totalStats.SpAttack * 1.1f);
+                totalStats.Defense = Mathf.FloorToInt(totalStats.Defense * 0.9f);
+                break;
+            case Nature.Modest:
+                totalStats.SpAttack = Mathf.FloorToInt(totalStats.SpAttack * 1.1f);
+                totalStats.Attack = Mathf.FloorToInt(totalStats.Attack * 0.9f);
+                break;
+            case Nature.Naive:
+                totalStats.Speed = Mathf.FloorToInt(totalStats.Speed * 1.1f);
+                totalStats.SpDefense = Mathf.FloorToInt(totalStats.SpDefense * 0.9f);
+                break;
+            case Nature.Naughty:
+                totalStats.Attack = Mathf.FloorToInt(totalStats.Attack * 1.1f);
+                totalStats.SpDefense = Mathf.FloorToInt(totalStats.SpDefense * 0.9f);
+                break;
+            case Nature.Quiet:
+                totalStats.SpAttack = Mathf.FloorToInt(totalStats.SpAttack * 1.1f);
+                totalStats.Speed = Mathf.FloorToInt(totalStats.Speed * 0.9f);
+                break;
+            case Nature.Rash:
+                totalStats.SpAttack = Mathf.FloorToInt(totalStats.SpAttack * 1.1f);
+                totalStats.SpDefense = Mathf.FloorToInt(totalStats.SpDefense * 0.9f);
+                break;
+            case Nature.Relaxed:
+                totalStats.Defense = Mathf.FloorToInt(totalStats.Defense * 1.1f);
+                totalStats.Speed = Mathf.FloorToInt(totalStats.Speed * 0.9f);
+                break;
+            case Nature.Sassy:
+                totalStats.SpDefense = Mathf.FloorToInt(totalStats.SpDefense * 1.1f);
+                totalStats.Speed = Mathf.FloorToInt(totalStats.Speed * 0.9f);
+                break;
+            case Nature.Timid:
+                totalStats.Speed = Mathf.FloorToInt(totalStats.Speed * 1.1f);
+                totalStats.Attack = Mathf.FloorToInt(totalStats.Attack * 0.9f);
+                break;
+            default:
+                throw new System.Exception("Invalid nature");
+        }
+        
+        
         TotalStats = totalStats;
     }
 
