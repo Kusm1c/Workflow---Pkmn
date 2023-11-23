@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b45bd5d52479d645bbe3c8642af60da, type: 3}
   m_Name: Squirtle
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: idiot
+  <Name>k__BackingField: Squirtle
   <ID>k__BackingField: 0
   <Gender>k__BackingField: 0
   <Level>k__BackingField: 3
@@ -59,5 +59,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ebc4b5bdd9952eb49a724a0625efb6f0, type: 2}
   - {fileID: 11400000, guid: 601421bd93565ab45b8a94428f8d48d9, type: 2}
   - {fileID: 11400000, guid: d38ef1c91e1608b428e30ced65ed74a3, type: 2}
-  <FrontSprite>k__BackingField: {fileID: 0}
-  <BackSprite>k__BackingField: {fileID: 0}
+  <FrontSprite>k__BackingField: {fileID: 21300000, guid: c3d1c19a446293f4fb6182ad1b716541,
+    type: 3}
+  <BackSprite>k__BackingField: {fileID: 21300000, guid: 1dfaa016c953b6e418f46743ec64bdbd,
+    type: 3}
