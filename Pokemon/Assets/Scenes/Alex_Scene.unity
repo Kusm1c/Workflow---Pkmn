@@ -241,6 +241,74 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 0
+--- !u!1001 &627378815
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1551908538157741972, guid: 5cf6d5b2857b16642b27eddd06299dbb,
+        type: 3}
+      propertyPath: m_Name
+      value: SceneSkipper
+      objectReference: {fileID: 0}
+    - target: {fileID: 6964074456078440562, guid: 5cf6d5b2857b16642b27eddd06299dbb,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -29.500198
+      objectReference: {fileID: 0}
+    - target: {fileID: 6964074456078440562, guid: 5cf6d5b2857b16642b27eddd06299dbb,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.240332
+      objectReference: {fileID: 0}
+    - target: {fileID: 6964074456078440562, guid: 5cf6d5b2857b16642b27eddd06299dbb,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 23.079882
+      objectReference: {fileID: 0}
+    - target: {fileID: 6964074456078440562, guid: 5cf6d5b2857b16642b27eddd06299dbb,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6964074456078440562, guid: 5cf6d5b2857b16642b27eddd06299dbb,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6964074456078440562, guid: 5cf6d5b2857b16642b27eddd06299dbb,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6964074456078440562, guid: 5cf6d5b2857b16642b27eddd06299dbb,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6964074456078440562, guid: 5cf6d5b2857b16642b27eddd06299dbb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6964074456078440562, guid: 5cf6d5b2857b16642b27eddd06299dbb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6964074456078440562, guid: 5cf6d5b2857b16642b27eddd06299dbb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5cf6d5b2857b16642b27eddd06299dbb, type: 3}
 --- !u!1 &848165764
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,9 +355,9 @@ MonoBehaviour:
   combatUIPrefab: {fileID: 8252750383454524462, guid: 19e8f21566c260742a83cce1506c738b,
     type: 3}
   playerPokemonList:
-  - {fileID: 11400000, guid: dae9899d0a8002f44a2c19afec1ad4e9, type: 2}
+  - {fileID: 11400000, guid: 92c35af042ee2f940b416878738fc02a, type: 2}
   selectablePokemons:
-  - {fileID: 11400000, guid: 2b4dad557b7c7394cba8c95477fc58cb, type: 2}
+  - {fileID: 11400000, guid: 98d2838a2b274b048a3595b57d6e1a12, type: 2}
 --- !u!4 &848165767
 Transform:
   m_ObjectHideFlags: 0
@@ -563,3 +631,4 @@ SceneRoots:
   - {fileID: 1548544528}
   - {fileID: 1139888701}
   - {fileID: 848165767}
+  - {fileID: 627378815}
