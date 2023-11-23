@@ -165,7 +165,16 @@ public class MapGenerator : MonoBehaviour
                     continue;
                 }
 
-                if (Math.Abs(pixelColor.r - grassTileSample.GetComponent<SpriteRenderer>().color.r) < 0.004f &&
+                if (blockedPositions.Contains(new Vector3(x, y, 0)))
+                {
+                    GameObject tile = Instantiate(actionTile, new Vector3(x, y, 0), Quaternion.identity);
+                    tile.GetComponent<SpriteRenderer>().color = Color.red;
+                    tile.GetComponent<SpriteRenderer>().color = new Color(tile.GetComponent<SpriteRenderer>().color.r,
+                        tile.GetComponent<SpriteRenderer>().color.g, tile.GetComponent<SpriteRenderer>().color.b, 0.6f);
+                    tile.name = "Blocked";
+                    tile.transform.parent = blockedTileParent.transform;
+                }
+                else if (Math.Abs(pixelColor.r - grassTileSample.GetComponent<SpriteRenderer>().color.r) < 0.004f &&
                     Math.Abs(pixelColor.g - grassTileSample.GetComponent<SpriteRenderer>().color.g) < 0.004f &&
                     Math.Abs(pixelColor.b - grassTileSample.GetComponent<SpriteRenderer>().color.b) < 0.004f)
                 {
@@ -186,15 +195,6 @@ public class MapGenerator : MonoBehaviour
                         tile.GetComponent<SpriteRenderer>().color.g, tile.GetComponent<SpriteRenderer>().color.b, 0.6f);
                     tile.name = "Flower";
                     tile.transform.parent = flowerTileParent.transform;
-                }
-                else if (blockedPositions.Contains(new Vector3(x, y, 0)))
-                {
-                    GameObject tile = Instantiate(actionTile, new Vector3(x, y, 0), Quaternion.identity);
-                    tile.GetComponent<SpriteRenderer>().color = Color.red;
-                    tile.GetComponent<SpriteRenderer>().color = new Color(tile.GetComponent<SpriteRenderer>().color.r,
-                        tile.GetComponent<SpriteRenderer>().color.g, tile.GetComponent<SpriteRenderer>().color.b, 0.6f);
-                    tile.name = "Blocked";
-                    tile.transform.parent = blockedTileParent.transform;
                 }
                 else if (blockedFromBelowPositions.Contains(new Vector3(x, y, 0)))
                 {
