@@ -42,6 +42,51 @@ public class MapGenerator : MonoBehaviour
 
     [SerializeField] private List<GameObject> TilesToDelete;
 
+    public Texture2D collisionTexture;
+    
+    [ContextMenu("Generate Collision Map")]
+    public void GenerateCollisionMap()
+    {
+        //generate the collisionTexture using the mapSprite and the blockedPositions and the size of the actionTile
+        Vector2 sizeOfMap = mapSprite.bounds.size;
+        Vector2 bottomLeft = new Vector2(-sizeOfMap.x / 2, -sizeOfMap.y / 2);
+        Vector2 topRight = new Vector2(sizeOfMap.x / 2, sizeOfMap.y / 2);
+        Vector2 actionTileSize = actionTile.GetComponent<SpriteRenderer>().bounds.size;
+        collisionTexture = new Texture2D((int) (sizeOfMap.x / actionTileSize.x), (int) (sizeOfMap.y / actionTileSize.y));
+        for (float x = bottomLeft.x + actionTileSize.x / 2; x < topRight.x; x += actionTileSize.x)
+        {
+            for (float y = bottomLeft.y + actionTileSize.y / 2; y < topRight.y; y += actionTileSize.y)
+            {
+                Color pixelColor = mapSprite.texture.GetPixelBilinear((x - bottomLeft.x) / sizeOfMap.x,
+                    (y - bottomLeft.y) / sizeOfMap.y);
+
+                if (blockedPositions.Contains(new Vector3(x, y, 0)))
+                {
+                    collisionTexture.SetPixel((int) (x / actionTileSize.x), (int) (y / actionTileSize.y), Color.red);
+                }
+                else if (blockedFromBelowPositions.Contains(new Vector3(x, y, 0)))
+                {
+                    collisionTexture.SetPixel((int) (x / actionTileSize.x), (int) (y / actionTileSize.y), Color.magenta);
+                }
+                else if (doorsPositions.Contains(new Vector3(x, y, 0)))
+                {
+                    collisionTexture.SetPixel((int) (x / actionTileSize.x), (int) (y / actionTileSize.y), Color.black);
+                }
+                else if (interactablePositions.Contains(new Vector3(x, y, 0)))
+                {
+                    collisionTexture.SetPixel((int) (x / actionTileSize.x), (int) (y / actionTileSize.y), Color.yellow);
+                }
+                else
+                {
+                    collisionTexture.SetPixel((int) (x / actionTileSize.x), (int) (y / actionTileSize.y), Color.white);
+                }
+            }
+        }
+        //save the collisionTexture as a png
+        byte[] bytes = collisionTexture.EncodeToPNG();
+        System.IO.File.WriteAllBytes(Application.dataPath + "/Resources/SaveFiles/CollisionMap.png", bytes);
+    }
+
     public static MapGenerator Instance { get; private set; }
 
     private void Awake()
@@ -53,6 +98,7 @@ public class MapGenerator : MonoBehaviour
 
         GenerateMap();
         SetGrassPositions();
+        GenerateCollisionMap();
     }
 
     private void SetGrassPositions()
@@ -119,6 +165,7 @@ public class MapGenerator : MonoBehaviour
     private void SpawnPlayer()
     {
         player = Instantiate(player, playerSpawnPosition, Quaternion.identity);
+        
     }
 
     private GameObject map;

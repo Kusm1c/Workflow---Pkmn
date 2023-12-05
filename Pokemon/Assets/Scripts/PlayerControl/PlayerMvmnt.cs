@@ -142,8 +142,22 @@ public class PlayerMvmnt : MonoBehaviour
 
     private Vector3 tolerance = new Vector3(0.1f, 0.1f, 0.1f);
 
+    private Color GetPixelColorOnCollisionMap(Vector2 playerPos)
+    {
+        Texture2D tex = MapGenerator.Instance.collisionTexture;
+        Vector2 pixelUV = playerPos;
+        pixelUV.x *= tex.width;
+        pixelUV.y *= tex.height;
+        return tex.GetPixel((int) pixelUV.x, (int) pixelUV.y);
+    }
+
     private bool CheckCollisionInDirection(Vector3 direction)
     {
+        // red = blocked
+        // magenta = blocked from below
+        // yellow = interactable
+        // black = door
+        // white = else
         if (MapGenerator.Instance.blockedPositions.Any(pos =>
                 Mathf.Abs(transform.position.x + direction.x * tileSize - pos.x) < tolerance.x &&
                 Mathf.Abs(transform.position.y + direction.y * tileSize - pos.y) < tolerance.y))
@@ -151,7 +165,7 @@ public class PlayerMvmnt : MonoBehaviour
             isMoving = false;
             return true;
         }
-
+        
         if (MapGenerator.Instance.interactablePositions.Any(pos =>
                 Mathf.Abs(transform.position.x + direction.x * tileSize - pos.x) < tolerance.x &&
                 Mathf.Abs(transform.position.y + direction.y * tileSize - pos.y) < tolerance.y))
@@ -159,7 +173,7 @@ public class PlayerMvmnt : MonoBehaviour
             isMoving = false;
             return true;
         }
-
+        
         foreach (var pos in MapGenerator.Instance.blockedFromBelowPositions)
         {
             if (direction == Vector3.down) return false;
