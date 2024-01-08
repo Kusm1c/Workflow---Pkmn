@@ -202,7 +202,7 @@ public class PlayerMvmnt : MonoBehaviour
             Doors.positionFromDoor[nextDoor].y + lastDirection.y * tileSize, -0.1f);
         CameraScript.instance.cameraBlockedPosition = Doors.blockedCameraPositionWhenTookDoor[nextDoor];
         CameraScript.instance.maxCameraPosition = Doors.maxBlockedCameraPositionWhenTookDoor[nextDoor];
-        CameraScript.instance.minCameraPosition = Doors.blockedCameraPositionWhenTookDoor[nextDoor];
+        CameraScript.instance.minCameraPosition = Doors.minBlockedCameraPositionWhenTookDoor[nextDoor];
     }
 
     private IEnumerator Move(Vector3 direction)
