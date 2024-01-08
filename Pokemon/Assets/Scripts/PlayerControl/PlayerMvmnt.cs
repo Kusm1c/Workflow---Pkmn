@@ -116,7 +116,7 @@ public class PlayerMvmnt : MonoBehaviour
 
     private void Menu()
     {
-        Debug.Log("Menu");
+        MenuManager.OpenActionMenu(OptionManager.Instance.menuActionPanel);
     }
 
     private void Run()
