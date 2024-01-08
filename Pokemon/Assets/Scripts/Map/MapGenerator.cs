@@ -165,7 +165,6 @@ public class MapGenerator : MonoBehaviour
     private void SpawnPlayer()
     {
         player = Instantiate(player, playerSpawnPosition, Quaternion.identity);
-        
     }
 
     private GameObject map;

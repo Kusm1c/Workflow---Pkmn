@@ -10,6 +10,7 @@ public class OptionManager : MonoBehaviour
     
     private int vitesseText;
     public int fenetreStyle;
+    public GameObject menuActionPanel;
     public GameObject optionPanel;
 
     public TMP_Text vitesseTMP;

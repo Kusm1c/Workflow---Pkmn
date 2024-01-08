@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PlayerMvmnt : MonoBehaviour
 {
@@ -49,6 +50,14 @@ public class PlayerMvmnt : MonoBehaviour
 
     private GameObject player;
 
+    public bool isFighting = false;
+
+    public static PlayerMvmnt Instance;
+    
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
         player = transform.gameObject;
@@ -58,6 +67,7 @@ public class PlayerMvmnt : MonoBehaviour
 
     void Update()
     {
+        if (isFighting) return;
         if (Input.GetKey(acceptKey)) Accept();
         else if (Input.GetKey(cancelKey)) Cancel();
         else if (Input.GetKey(menuKey)) Menu();
@@ -116,7 +126,7 @@ public class PlayerMvmnt : MonoBehaviour
 
     private void Menu()
     {
-        Debug.Log("Menu");
+        MenuManager.OpenActionMenu(OptionManager.Instance.menuActionPanel);
     }
 
     private void Run()
@@ -200,6 +210,9 @@ public class PlayerMvmnt : MonoBehaviour
         int nextDoor = Doors.nextDoorFromPosition[doorPosition];
         transform.position = new Vector3(Doors.positionFromDoor[nextDoor].x + lastDirection.x * tileSize,
             Doors.positionFromDoor[nextDoor].y + lastDirection.y * tileSize, -0.1f);
+        CameraScript.instance.cameraBlockedPosition = Doors.blockedCameraPositionWhenTookDoor[nextDoor];
+        CameraScript.instance.maxCameraPosition = Doors.maxBlockedCameraPositionWhenTookDoor[nextDoor];
+        CameraScript.instance.minCameraPosition = Doors.minBlockedCameraPositionWhenTookDoor[nextDoor];
     }
 
     private IEnumerator Move(Vector3 direction)
@@ -276,38 +289,38 @@ public class PlayerMvmnt : MonoBehaviour
                 Mathf.Abs(transform.position.x - pos.x) < tolerance.x &&
                 Mathf.Abs(transform.position.y - pos.y) < tolerance.y))
         {
-            Debug.Log("Grass");
+            int currentEncounterTableIndex = ecounterTable.TakeWhile(table =>
+                !(table.grassPositionmin.x <= transform.position.x) ||
+                !(table.grassPositionmax.x >= transform.position.x) ||
+                !(table.grassPositionmin.y <= transform.position.y) ||
+                !(table.grassPositionmax.y >= transform.position.y)).Count();
+            // Debug.Log("Grass");
             // bool pokemonAppeared = false;
-            // int RandomPonderator = 0;
-            // foreach (var variPokemonEcounter in from ecounter in ecounterTable
-            //          where player.transform.position.x >= ecounter.grassPositionmin.x &&
-            //                player.transform.position.x <= ecounter.grassPositionmax.x &&
-            //                player.transform.position.y >= ecounter.grassPositionmin.y &&
-            //                player.transform.position.y <= ecounter.grassPositionmax.y
-            //          where UnityEngine.Random.Range(0, 100) < ecounter.encounterChance
-            //          from variPokemonEcounter in ecounter.pokemonList
-            //          select variPokemonEcounter)
-            // {
-            //     switch (variPokemonEcounter.rarity)
-            //     {
-            //         case Rarity.Common:
-            //             RandomPonderator += 100;
-            //             break;
-            //         case Rarity.Uncommon:
-            //             RandomPonderator += 50;
-            //             break;
-            //         case Rarity.Rare:
-            //             RandomPonderator += 25;
-            //             break;
-            //     }
-            // }
-            //
-            // int indexOfRandomPokemon;
-            // if (RandomPonderator > 0)
-            // {
-            //     indexOfRandomPokemon = UnityEngine.Random.Range(0, RandomPonderator) / ecounterTable.Count;
-            //     Debug.Log(ecounterTable[indexOfRandomPokemon].pokemonList[0].pokemon.name);
-            // }
+
+            foreach (var pokemon in ecounterTable[currentEncounterTableIndex].pokemonList)
+            {
+                int pokemonOdd = 0;
+                switch (pokemon.rarity)
+                {
+                    case Rarity.Common:
+                        pokemonOdd = 20;
+                        break;
+                    case Rarity.Uncommon:
+                        pokemonOdd = 10;
+                        break;
+                    case Rarity.Rare:
+                        pokemonOdd = 2;
+                        break;
+                }
+
+                if (Random.Range(0, 100) >= pokemonOdd) continue;
+                // pokemonAppeared = true;
+                Debug.Log("Pokemon appeared " + pokemon.pokemon.name);
+                GameManager.instance.OnFightStart(pokemon.pokemon);
+                CombatUI.Instance.StartCombat();
+                isFighting = true;
+                break;
+            }
         }
     }
 

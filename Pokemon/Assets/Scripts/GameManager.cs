@@ -24,12 +24,19 @@ public class GameManager : MonoBehaviour
     {
         if (!instance) instance = this;
         combatSystem = GetComponent<CombatSystem>();
-        OnFightStart();
+        // OnFightStart();
     }
 
-    public static void OnFightStart()
+    public void OnFightStart()
     {
         instance.combatSystem.StartFight(instance.playerPokemonList, instance.selectablePokemons[0]);
+        var ui = Instantiate(instance.combatUIPrefab);
+        instance.combatUI = ui.GetComponent<CombatUI>();
+    }
+    
+    public void OnFightStart(PokemonSO pokemonSo)
+    {
+        instance.combatSystem.StartFight(instance.playerPokemonList,pokemonSo);
         var ui = Instantiate(instance.combatUIPrefab);
         instance.combatUI = ui.GetComponent<CombatUI>();
     }
@@ -37,6 +44,7 @@ public class GameManager : MonoBehaviour
     public static void OnFightEnd()
     {
         instance.combatSystem.EndFight();
+        PlayerMvmnt.Instance.isFighting = false;
         Destroy(instance.combatUI.gameObject);
     }
 }

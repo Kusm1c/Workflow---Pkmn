@@ -54,4 +54,8 @@ MonoBehaviour:
   <GrowthRate>k__BackingField: 0
   <Exp>k__BackingField: 0
   <LearnableMoves>k__BackingField: []
-  <Moves>k__BackingField: []
+  <Moves>k__BackingField:
+  - {fileID: 11400000, guid: 601421bd93565ab45b8a94428f8d48d9, type: 2}
+  - {fileID: 11400000, guid: aaaa4a42a4a2e4e42b3223274e875440, type: 2}
+  <FrontSprite>k__BackingField: {fileID: 0}
+  <BackSprite>k__BackingField: {fileID: 0}

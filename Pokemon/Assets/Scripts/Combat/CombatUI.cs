@@ -1,18 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Net.Mail;
-using System.Net.Mime;
 using TMPro;
-using Unity.VisualScripting;
-using Unity.VisualScripting.Antlr3.Runtime;
-using UnityEditor;
-using UnityEditor.Rendering;
 using UnityEngine;
-using UnityEngine.UIElements;
-using Debug = UnityEngine.Debug;
-using Image = UnityEngine.UI.Image;
+using UnityEngine.UI;
 
 public class CombatUI : MonoBehaviour
 {
@@ -64,12 +52,17 @@ public class CombatUI : MonoBehaviour
     
     private CombatSystem combatSystem;
     private PlayerControls input;
+    
+    public static CombatUI Instance { get; private set; }
+    
     private void OnEnable()
     {
+        Instance = this;
+        Debug.Log("CombatUI enabled");
         input = new();
         input.Menu.Enable();
         currentMenu = ActionPannel;
-        StartCombat();
+        // StartCombat();
     }
 
     private void OnDisable()
@@ -260,7 +253,7 @@ public class CombatUI : MonoBehaviour
                 break;
             
             case MenuState.PlayerUsedItem:
-                TextBox.text = $"Player used [ItemName]";
+                TextBox.text = "[PlayerName] used [ItemName]";
                 break;
             
             case MenuState.PlayerMove:
@@ -582,5 +575,55 @@ public class CombatUI : MonoBehaviour
         OpponentFainted,
         Win,
         Lose,
+    }
+
+    public void StartCombatAgainstWildPokemon(PokemonSO opponentPokemon)
+    {
+        combatSystem = GameManager.instance.combatSystem;
+        
+        CombatUICanvas.SetActive(true);
+        CardsPannel.SetActive(true);
+        ActionPannel.SetActive(true);
+        MovePannel.SetActive(false);
+        TextBox.text = $"A wild {opponentPokemon.Name} appeared !";
+        
+        playerMoveSet = combatSystem.GetPlayerMoveArray();
+        PlayerInfo.text = $"{combatSystem.GetPlayerPokemonName()}";
+        PlayerLevel.text = $"{combatSystem.GetPlayerPokemonLevel()}";
+        OpponentInfo.text = $"{opponentPokemon.Name}";
+        OpponentLevel.text = $"{opponentPokemon.Level}";
+
+        playerDisplay.GetComponent<Image>().sprite = combatSystem.GetPlayerPokemonSprite();
+        opponentDisplay.GetComponent<Image>().sprite = opponentPokemon.BackSprite;
+        
+        for (int i = 0; i < pokemonSelectionButtons.Length; i++)
+        {
+            if ((i >= combatSystem.GetPlayerPokemons().Length))
+            {
+                pokemonSelectionButtons[i].SetActive(false);
+                continue;
+            }
+
+            if (combatSystem.GetPlayerPokemons()[i].Name == combatSystem.GetPlayerPokemonName())
+            {
+                currentPokemonName = combatSystem.GetPlayerPokemonName();
+                PokemonSelectedName.text = currentPokemonName;
+                PokemonSelectedLevel.text = combatSystem.GetPlayerPokemonLevel().ToString();
+                
+                pokemonSelectionButtons[i].SetActive(false);
+                
+                continue;
+            }
+            
+            pokemonSelectionButtons[i].SetActive(true);
+            pokemonSelectionButtons[i].GetComponentInChildren<TMP_Text>().text =
+                combatSystem.GetPlayerPokemons()[i].Name;
+            PokemonSelectionLevels[i].text = combatSystem.GetPlayerPokemons()[i].Level.ToString();
+        }
+        
+        for (int i = 0; i < playerMoveSet.Length; i++)
+            MoveNames[i].text = playerMoveSet[i].Name;
+        
+        currentMenu = ActionPannel;
     }
 }
