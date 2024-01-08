@@ -62,7 +62,7 @@ public class CombatUI : MonoBehaviour
         input = new();
         input.Menu.Enable();
         currentMenu = ActionPannel;
-        // StartCombat();
+        StartCombat();
     }
 
     private void OnDisable()

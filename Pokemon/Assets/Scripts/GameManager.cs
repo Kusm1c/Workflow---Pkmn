@@ -24,7 +24,7 @@ public class GameManager : MonoBehaviour
     {
         if (!instance) instance = this;
         combatSystem = GetComponent<CombatSystem>();
-        // OnFightStart();
+        OnFightStart();
     }
 
     public void OnFightStart()
