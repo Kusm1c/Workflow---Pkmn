@@ -42,7 +42,7 @@ public static class Doors
     
     public static Dictionary<int, Vector3> blockedCameraPositionWhenTookDoor = new()
     {
-        { 1, Vector3.zero },
+        { 1, new Vector3(-31.5999985f,-5.04002571f,-10f) },
         { 2, new Vector3(-31.7599983f,-3.2800262f,-10f) },
         { 3, Vector3.zero },
         { 4, Vector3.zero },
@@ -65,7 +65,7 @@ public static class Doors
         { 2, new Vector3(-31.7599983f,-3.2800262f,-10f) },
         { 3, new Vector3(-29.5200005f,-3.2800262f,-10f) },
         { 4, new Vector3(-29.5200005f,-3.2800262f,-10f) },
-        { 5, Vector3.zero },
+        { 5, new Vector3(-27.2800026f,-3.2800262f,-10f) },
         { 6, Vector3.zero },
 
         { 7, Vector3.zero },
@@ -84,7 +84,7 @@ public static class Doors
         { 2, new Vector3(-31.7599983f,-3.2800262f,-10f) },
         { 3, new Vector3(-29.6800003f,-3.2800262f,-10f) },
         { 4, new Vector3(-29.6800003f,-3.2800262f,-10f) },
-        { 5, Vector3.zero },
+        { 5, new Vector3(-27.2800026f,-4.08002663f,-10f) },
         { 6, Vector3.zero },
 
         { 7, Vector3.zero },
