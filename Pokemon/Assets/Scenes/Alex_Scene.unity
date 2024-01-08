@@ -339,7 +339,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 677529a75b8a5d64b9a7f056ef5dfccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerItems: []
+  playerItems:
+  - {fileID: 11400000, guid: 5ed6bf1d287ade043b421d40c01c65ce, type: 2}
+  - {fileID: 11400000, guid: 165561ff9a343a7498be2329fefca44a, type: 2}
+  - {fileID: 11400000, guid: 9ec09e5cc3bffeb449762babbabdc0c5, type: 2}
 --- !u!114 &848165766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -352,7 +355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c685752558ecae0469071ab23dd86c37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  combatSystem: {fileID: 0}
+  combatSystem: {fileID: 848165765}
   combatUIPrefab: {fileID: 8252750383454524462, guid: 19e8f21566c260742a83cce1506c738b,
     type: 3}
   playerPokemonList:
@@ -434,54 +437,6 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1139888698}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1548544526
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1548544528}
-  - component: {fileID: 1548544527}
-  m_Layer: 0
-  m_Name: CombatSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1548544527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1548544526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 677529a75b8a5d64b9a7f056ef5dfccb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerItems:
-  - {fileID: 11400000, guid: 5ed6bf1d287ade043b421d40c01c65ce, type: 2}
-  - {fileID: 11400000, guid: 165561ff9a343a7498be2329fefca44a, type: 2}
-  - {fileID: 11400000, guid: 9ec09e5cc3bffeb449762babbabdc0c5, type: 2}
---- !u!4 &1548544528
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1548544526}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -633,7 +588,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 2086176629}
   - {fileID: 235110713}
-  - {fileID: 1548544528}
   - {fileID: 1139888701}
   - {fileID: 848165767}
   - {fileID: 627378815}
