@@ -201,7 +201,9 @@ public class PlayerMvmnt : MonoBehaviour
             isMoving = false;
             return true;
         }
-
+        
+        
+        
         return false;
     }
 
@@ -271,17 +273,38 @@ public class PlayerMvmnt : MonoBehaviour
         Vector3 targetPos = startingPos + direction * tileSize;
         while (elapsedTime < 1.0f)
         {
+            if (hasToJump)
+            {
+                player.transform.position = Vector3.Lerp(startingPos, targetPos, elapsedTime);
+                elapsedTime += Time.deltaTime * speed;
+                yield return null;
+                continue;
+            }
             player.transform.position = Vector3.Lerp(startingPos, targetPos, elapsedTime);
             elapsedTime += Time.deltaTime * speed;
             yield return null;
         }
+        hasToJump = false;
 
         currentAnimationFrame = (currentAnimationFrame + 1) % 4;
         player.transform.position = targetPos;
         CheckForDoor();
         CheckForGrass();
+        CheckForBlockedFromBelow();
         isMoving = false;
     }
+
+    public bool hasToJump = false;
+    private void CheckForBlockedFromBelow()
+    {
+        if (!MapGenerator.Instance.blockedFromBelowPositions.Any(pos =>
+                Mathf.Abs(transform.position.x - pos.x) < tolerance.x &&
+                Mathf.Abs(transform.position.y - pos.y) < tolerance.y)) return;
+        Debug.Log("Jump");
+        hasToJump = true;
+        StartCoroutine(Move(lastDirection));
+    }
+
 
     private void CheckForGrass()
     {
@@ -323,6 +346,8 @@ public class PlayerMvmnt : MonoBehaviour
             }
         }
     }
+    
+    
 
     private void CheckForDoor()
     {
