@@ -47,4 +47,20 @@ public class GameManager : MonoBehaviour
         PlayerMvmnt.Instance.isFighting = false;
         Destroy(instance.combatUI.gameObject);
     }
+
+    public static void GivePlayerPokemon(PokemonSO pokemonSo)
+    {
+        if (instance.playerPokemonList.Count >= 6)
+        {
+            Debug.LogWarning("Max pokemons in team reached ! Sending new pokemon to brazil");
+            return;
+        }
+            
+        instance.playerPokemonList.Add(pokemonSo);
+    }
+
+    public static void GivePlayerItem(ItemSO itemSo)
+    {
+        
+    }
 }

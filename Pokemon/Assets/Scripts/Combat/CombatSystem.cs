@@ -37,18 +37,14 @@ public class CombatSystem : MonoBehaviour
     private bool playerHitLastAction;
     private bool opponentHitLastAction;
     private bool fleeResult;
+    private bool opponentCaught;
     
     private void Awake()
     {
         p1CurrentStats = new();
         p2CurrentStats = new();
     }
-
-    private void OnEnable()
-    {
-        //StartFight();
-    }
-
+    
     private void Update()
     {
         Turn();
@@ -88,8 +84,14 @@ public class CombatSystem : MonoBehaviour
     public void EndFight()
     {
         //Save stats after fight
-        pokemonSo1.TotalStats = p1CurrentStats;
-        pokemonSo2.TotalStats = p2CurrentStats;
+        //pokemonSo1.TotalStats = p1CurrentStats;
+        //pokemonSo2.TotalStats = p2CurrentStats;
+        
+        /*
+        if (p1CurrentStats.HP > 0)
+            pokemonSo1.Exp += CalculateEXP();
+        */
+        
         fightOngoing = false;
     }
     
@@ -106,7 +108,6 @@ public class CombatSystem : MonoBehaviour
                 break;
             case PlayerMove.Item:
                 //Implement Later
-                UseItem(0);
                 break;
             case PlayerMove.SwitchPokemon:
                 //Pokemon switch implemented in button
@@ -222,9 +223,12 @@ public class CombatSystem : MonoBehaviour
 
     }
 
-    private void UseItem(int itemIndex)
+    public void UseItem(int itemIndex)
     {
         ItemSO item = playerItems[itemIndex];
+
+        lastUsedItem = item;
+        
         switch (item.itemType)
         {
             case ItemType.Pokeball:
@@ -232,8 +236,15 @@ public class CombatSystem : MonoBehaviour
             
                 int f = Mathf.FloorToInt((p2CurrentStats.HP * 255 * 4) / (pokemonSo2.TotalStats.HP * 12));
 
-                if(f >= catchValue) Debug.Log("Caught !");
-                else Debug.Log("Broke free.");
+                if (f >= catchValue)
+                {
+                    opponentCaught = true;
+                    Debug.Log("Caught !");
+                }
+                else
+                {
+                    Debug.Log("Broke free.");
+                }
                 break;
             
             case ItemType.StatBuff:
@@ -256,6 +267,9 @@ public class CombatSystem : MonoBehaviour
                         break;
                     case TargetStat.HP:
                         p1CurrentStats.HP += item.effectValue;
+                        p1CurrentStats.HP = p1CurrentStats.HP > pokemonSo1.TotalStats.HP
+                            ? pokemonSo1.TotalStats.HP
+                            : p1CurrentStats.HP;
                         break;
                 }
 
@@ -340,6 +354,20 @@ public class CombatSystem : MonoBehaviour
         return fled;
     }
 
+    private int CalculateEXP()
+    {
+        int expGained;
+
+        int pokemonIsWild = 1; //1 if wild, 1.5 if not
+        int pokemonBaseXP = pokemonSo2.BaseXP;
+        int pokemonLevel = pokemonSo2.Level;
+        int numberOfReceivers = 1; //number of pokemons that took part and didn't faint
+
+        expGained = ((pokemonBaseXP * pokemonLevel) / 7) * (1 / numberOfReceivers) * pokemonIsWild;
+        
+        return expGained;
+    }
+    
     private bool EndCondition()
     {
         return p1CurrentStats.HP <= 0 || p2CurrentStats.HP <= 0;
@@ -403,6 +431,16 @@ public class CombatSystem : MonoBehaviour
         return playerPokemons;
     }
 
+    public PokemonSO GetPlayerCurrentPokemon()
+    {
+        return pokemonSo1;
+    }
+    
+    public PokemonSO GetOpponentPokemon()
+    {
+        return pokemonSo2;
+    }
+    
     public String GetPlayerPokemonName()
     {
         return pokemonSo1.Name;
@@ -501,9 +539,9 @@ public class CombatSystem : MonoBehaviour
         return nextPlayerMove == PlayerMove.Item;
     }
 
-    public bool PlayerUsedMove()
+    public ItemSO GetLastUsedItem()
     {
-        return nextPlayerMove == PlayerMove.Attack;
+        return lastUsedItem;
     }
     
     public bool PlayerFled()
@@ -514,6 +552,11 @@ public class CombatSystem : MonoBehaviour
     public bool PlayerPlaysFirst()
     {
         return playerPlaysFirst;
+    }
+
+    public bool OpponentIsCaught()
+    {
+        return opponentCaught;
     }
     
     #endregion
