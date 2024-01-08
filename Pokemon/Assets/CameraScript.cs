@@ -8,6 +8,10 @@ public class CameraScript : MonoBehaviour
     public Transform target;
     
     public static CameraScript instance;
+    
+    public Vector3 cameraBlockedPosition;
+    public Vector3 maxCameraPosition;
+    public Vector3 minCameraPosition;
 
     private void Awake()
     {
@@ -23,6 +27,20 @@ public class CameraScript : MonoBehaviour
     void LateUpdate()
     {
         if (!target) return;
+        if (cameraBlockedPosition != Vector3.zero)
+        {
+            transform.position = cameraBlockedPosition;
+            return;
+        }
+        if (maxCameraPosition != Vector3.zero && minCameraPosition != Vector3.zero)
+        {
+            transform.position = new Vector3(
+                Mathf.Clamp(target.position.x, minCameraPosition.x, maxCameraPosition.x),
+                Mathf.Clamp(target.position.y, minCameraPosition.y, maxCameraPosition.y),
+                -10
+            );
+            return;
+        }
         var nextPos = new Vector3(target.position.x, target.position.y, -10);
         // if (CheckIfNextPosIsBorder(nextPos)) return;
         transform.position = nextPos;
