@@ -4076,6 +4076,7 @@ GameObject:
   - component: {fileID: 9011618446007830539}
   - component: {fileID: 3630138783004648740}
   - component: {fileID: 7406896087358025661}
+  - component: {fileID: 2963219018056430574}
   m_Layer: 5
   m_Name: PlayerSprite
   m_TagString: Untagged
@@ -4140,6 +4141,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2963219018056430574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4992877120403178713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
 --- !u!1 &5025483096088238015
 GameObject:
   m_ObjectHideFlags: 0
@@ -7425,6 +7439,7 @@ GameObject:
   - component: {fileID: 7723398996206307888}
   - component: {fileID: 6738602496913045355}
   - component: {fileID: 4359555098573316137}
+  - component: {fileID: 2897057907136918259}
   m_Layer: 5
   m_Name: OpponentSprite
   m_TagString: Untagged
@@ -7489,6 +7504,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2897057907136918259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7230618071840038473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShowMaskGraphic: 1
 --- !u!1 &7347737793076254927
 GameObject:
   m_ObjectHideFlags: 0
