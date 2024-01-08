@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     private void Init()
     {
         if (!instance) instance = this;
-        combatSystem = this.GetComponent<CombatSystem>();
+        combatSystem = GetComponent<CombatSystem>();
         OnFightStart();
     }
 

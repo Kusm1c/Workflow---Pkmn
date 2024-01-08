@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Unity.VisualScripting;
+using UnityEditor;
+using UnityEditor.Networking.PlayerConnection;
 using UnityEngine;
 using UnityEngine.Assertions.Must;
 using Debug = UnityEngine.Debug;
@@ -14,6 +16,9 @@ public class CombatSystem : MonoBehaviour
     private PokemonSO pokemonSo2;
 
     private PokemonSO[] playerPokemons;
+
+    [SerializeField] private ItemSO[] playerItems;
+    private ItemSO lastUsedItem;
     
     private MoveSO p1Move;
     private MoveSO p2Move;
@@ -101,7 +106,7 @@ public class CombatSystem : MonoBehaviour
                 break;
             case PlayerMove.Item:
                 //Implement Later
-                //skipPlayerTurn = true;
+                UseItem(0);
                 break;
             case PlayerMove.SwitchPokemon:
                 //Pokemon switch implemented in button
@@ -215,6 +220,47 @@ public class CombatSystem : MonoBehaviour
                 break;
         }
 
+    }
+
+    private void UseItem(int itemIndex)
+    {
+        ItemSO item = playerItems[itemIndex];
+        switch (item.itemType)
+        {
+            case ItemType.Pokeball:
+                int catchValue = Random.Range(0, 256);
+            
+                int f = Mathf.FloorToInt((p2CurrentStats.HP * 255 * 4) / (pokemonSo2.TotalStats.HP * 12));
+
+                if(f >= catchValue) Debug.Log("Caught !");
+                else Debug.Log("Broke free.");
+                break;
+            
+            case ItemType.StatBuff:
+                switch (item.targetStat)
+                {
+                    case TargetStat.Attack:
+                        p1CurrentStats.Attack += item.effectValue;
+                        break;
+                    case TargetStat.Defense:
+                        p1CurrentStats.Defense += item.effectValue;
+                        break;
+                    case TargetStat.SpAttack:
+                        p1CurrentStats.SpAttack += item.effectValue;
+                        break;
+                    case TargetStat.SpDefense:
+                        p1CurrentStats.SpDefense += item.effectValue;
+                        break;
+                    case TargetStat.Speed:
+                        p1CurrentStats.Speed += item.effectValue;
+                        break;
+                    case TargetStat.HP:
+                        p1CurrentStats.HP += item.effectValue;
+                        break;
+                }
+
+                break;
+        }
     }
     
     private bool AttackHits(MoveSO attack)
@@ -347,6 +393,11 @@ public class CombatSystem : MonoBehaviour
         return pokemonSo1.Moves.ToArray();
     }
 
+    public ItemSO[] GetPlayerItems()
+    {
+        return playerItems;
+    }
+    
     public PokemonSO[] GetPlayerPokemons()
     {
         return playerPokemons;
@@ -384,6 +435,12 @@ public class CombatSystem : MonoBehaviour
     {
         return p1CurrentStats.HP;
     }
+
+    public int GetPlayerPokemonMaxHp()
+    {
+        return pokemonSo1.TotalStats.HP;
+    }
+    
     public int GetOpponentPokemonHp()
     {
         return p2CurrentStats.HP;
@@ -439,6 +496,16 @@ public class CombatSystem : MonoBehaviour
         return nextPlayerMove == PlayerMove.Flee;
     }
 
+    public bool PlayerUsedItem()
+    {
+        return nextPlayerMove == PlayerMove.Item;
+    }
+
+    public bool PlayerUsedMove()
+    {
+        return nextPlayerMove == PlayerMove.Attack;
+    }
+    
     public bool PlayerFled()
     {
         return fleeResult;
