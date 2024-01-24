@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 899f77580ab748d9aa9bb331704b1631, type: 3}
   m_Name: WaterGun
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: idiot move
+  <Name>k__BackingField: Water Gun
   <ID>k__BackingField: 0
-  <Type>k__BackingField: 0
+  <Type>k__BackingField: 2
   <MoveType>k__BackingField: 0
   <PP>k__BackingField: 9960
-  <Power>k__BackingField: 0
+  <MaxPP>k__BackingField: 0
+  <Power>k__BackingField: 1
   <Accuracy>k__BackingField: 80
   <Priority>k__BackingField: 5
   <CritRatio>k__BackingField: 0
   <StatusEffect>k__BackingField: 0
+  <Buff>k__BackingField: 0
   <Target>k__BackingField: 0

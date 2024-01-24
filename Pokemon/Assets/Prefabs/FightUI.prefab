@@ -9336,7 +9336,7 @@ MonoBehaviour:
       - m_Target: {fileID: 2229938407867421706}
         m_TargetAssemblyTypeName: CombatUI, Assembly-CSharp
         m_MethodName: OpenPokemonPanel
-        m_Mode: 1
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -9484,6 +9484,7 @@ MonoBehaviour:
   - {fileID: 1375086344467267706}
   - {fileID: 7819819560742231512}
   - {fileID: 4483982803304612605}
+  pokemonSelectCancelButton: {fileID: 1168465798127914298}
   TextBox: {fileID: 7612231558146075930}
   PlayerInfo: {fileID: 6490330220878759483}
   PlayerLevel: {fileID: 6154377852511441307}

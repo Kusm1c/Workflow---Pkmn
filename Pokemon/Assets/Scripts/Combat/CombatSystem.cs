@@ -1,12 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
-using Unity.VisualScripting;
-using UnityEditor;
-using UnityEditor.Networking.PlayerConnection;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
 using Debug = UnityEngine.Debug;
 using Random = UnityEngine.Random;
 
@@ -16,7 +10,8 @@ public class CombatSystem : MonoBehaviour
     private PokemonSO pokemonSo2;
 
     private PokemonSO[] playerPokemons;
-
+    private PokemonSO[] opponentPokemons;
+    
     [SerializeField] private ItemSO[] playerItems;
     private ItemSO lastUsedItem;
     
@@ -29,6 +24,8 @@ public class CombatSystem : MonoBehaviour
     private PlayerMove nextPlayerMove = PlayerMove.None;
     
     private int fleeAttempts = 0;
+
+    private bool multipleOpponents;
     
     private bool playerPlaysFirst;
     private bool skipPlayerTurn;
@@ -65,10 +62,12 @@ public class CombatSystem : MonoBehaviour
         p2CurrentStats = pokemonSo2.TotalStats;
         fightOngoing = true;
     }
-
-    public void StartFight(List<PokemonSO> playerPokemonList, PokemonSO opponentPokemon)
+    
+    //todo : ajouter un start fight avec PokemonEncounter
+    
+    public void StartFight(PokemonSO opponentPokemon)
     {
-        playerPokemons = playerPokemonList.ToArray();
+        playerPokemons = GameManager.GetPlayerPokemons().ToArray();
         pokemonSo1 = playerPokemons[0];
         pokemonSo2 = opponentPokemon;
 
@@ -78,19 +77,55 @@ public class CombatSystem : MonoBehaviour
         
         p1CurrentStats = pokemonSo1.TotalStats;
         p2CurrentStats = pokemonSo2.TotalStats;
+        
+        multipleOpponents = false;
+        fightOngoing = true;
+    }
+
+    public void StartFightEncounter(PokemonEcounter encounter)
+    {
+        playerPokemons = GameManager.GetPlayerPokemons().ToArray();
+        pokemonSo1 = playerPokemons[0];
+        pokemonSo2 = encounter.pokemon;
+        pokemonSo2.Level = Random.Range(encounter.minLevel, encounter.maxLevel);
+        
+        //Initialize "default moves"
+        p1Move = pokemonSo1.Moves[0];
+        p2Move = pokemonSo2.Moves[0];
+        
+        p1CurrentStats = pokemonSo1.TotalStats;
+        p2CurrentStats = pokemonSo2.TotalStats;
+        
+        multipleOpponents = false;
+        fightOngoing = true;
+    }
+    
+    public void StartFightTrainer(List<PokemonSO> opponentPokemonList)
+    {
+        playerPokemons = GameManager.GetPlayerPokemons().ToArray();
+        opponentPokemons = opponentPokemonList.ToArray();
+        pokemonSo1 = playerPokemons[0];
+        pokemonSo2 = opponentPokemons[0];
+
+        //Initialize "default moves"
+        p1Move = pokemonSo1.Moves[0];
+        p2Move = pokemonSo2.Moves[0];
+        
+        p1CurrentStats = pokemonSo1.TotalStats;
+        p2CurrentStats = pokemonSo2.TotalStats;
+        
+        multipleOpponents = true;
         fightOngoing = true;
     }
     
     public void EndFight()
     {
         //Save stats after fight
-        //pokemonSo1.TotalStats = p1CurrentStats;
-        //pokemonSo2.TotalStats = p2CurrentStats;
+        pokemonSo1.TotalStats = p1CurrentStats;
+        pokemonSo2.TotalStats = p2CurrentStats;
         
-        /*
         if (p1CurrentStats.HP > 0)
-            pokemonSo1.Exp += CalculateEXP();
-        */
+            pokemonSo1.Exp += CalculateExp();
         
         fightOngoing = false;
     }
@@ -142,8 +177,8 @@ public class CombatSystem : MonoBehaviour
 
     private void Attack(MoveSO attack, PokemonSO attacker, PokemonSO defender, ref Stats defenderStats, ref bool actorMissed)
     {
-        actorMissed = AttackHits(attack);
-        if (actorMissed)
+        actorMissed = !AttackHits(attack);
+        if (!actorMissed)
         {
             var attackerDamage = CalculateDamage(attack, attacker, defender);
             defenderStats.HP -= attackerDamage;
@@ -355,7 +390,7 @@ public class CombatSystem : MonoBehaviour
         return fled;
     }
 
-    private int CalculateEXP()
+    private int CalculateExp()
     {
         int expGained;
 
@@ -369,11 +404,21 @@ public class CombatSystem : MonoBehaviour
         return expGained;
     }
     
-    private bool EndCondition()
+    public bool EndCondition()
     {
-        return p1CurrentStats.HP <= 0 || p2CurrentStats.HP <= 0;
-    }
+        if(!multipleOpponents) return p1CurrentStats.HP <= 0 || p2CurrentStats.HP <= 0;
+            
+        for(int i = 0; i < playerPokemons.Length; i++)
+            if (playerPokemons[i].TotalStats.HP > 0)
+                return false;
+        
+        for(int i = 0; i < opponentPokemons.Length; i++)
+            if (opponentPokemons[i].TotalStats.HP > 0)
+                return false;
 
+        return true;
+    }
+    
     public void ChoseNextMove(int moveIndex)
     {
         nextStep = true;
@@ -477,12 +522,17 @@ public class CombatSystem : MonoBehaviour
 
     public int GetPlayerPokemonMaxHp()
     {
-        return pokemonSo1.TotalStats.HP;
+        return pokemonSo1.TotalStats.MaxHP;
     }
     
     public int GetOpponentPokemonHp()
     {
         return p2CurrentStats.HP;
+    }
+    
+    public int GetOpponentPokemonMaxHp()
+    {
+        return pokemonSo2.TotalStats.MaxHP;
     }
     
     public MoveSO GetPlayerMove()
@@ -507,12 +557,12 @@ public class CombatSystem : MonoBehaviour
 
     public bool PlayerMissed()
     {
-        return !playerHitLastAction;
+        return playerHitLastAction;
     }
 
     public bool OpponentMissed()
     {
-        return !opponentHitLastAction;
+        return opponentHitLastAction;
     }
     
     public bool PlayerFainted()
