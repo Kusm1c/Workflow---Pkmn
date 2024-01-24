@@ -57,5 +57,7 @@ MonoBehaviour:
   <Moves>k__BackingField:
   - {fileID: 11400000, guid: 601421bd93565ab45b8a94428f8d48d9, type: 2}
   - {fileID: 11400000, guid: aaaa4a42a4a2e4e42b3223274e875440, type: 2}
-  <FrontSprite>k__BackingField: {fileID: 0}
-  <BackSprite>k__BackingField: {fileID: 0}
+  <FrontSprite>k__BackingField: {fileID: 21300000, guid: 2ead0c4ecdc4fe949ac6d4da1b2874bc,
+    type: 3}
+  <BackSprite>k__BackingField: {fileID: 21300000, guid: eecc0d22d21b31f4aa33827296b9e590,
+    type: 3}

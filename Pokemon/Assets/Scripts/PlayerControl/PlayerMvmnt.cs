@@ -54,6 +54,14 @@ public class PlayerMvmnt : MonoBehaviour
 
     public static PlayerMvmnt Instance;
     
+    [SerializeField] private AnimationCurve jumpCurve;
+    
+    public Vector2 currentPos
+    {
+        get => transform.position;
+        set => transform.position = value;
+    }
+
     private void Awake()
     {
         Instance = this;
@@ -78,6 +86,8 @@ public class PlayerMvmnt : MonoBehaviour
         else if (Input.GetKey(leftKey)) MovePlayer(Vector3.left);
         else if (Input.GetKey(rightKey)) MovePlayer(Vector3.right);
         else Idle();
+
+        currentPos = transform.position;
     }
 
     private void Idle()
@@ -147,7 +157,7 @@ public class PlayerMvmnt : MonoBehaviour
         lastDirection = direction;
         isMoving = true;
         if (CheckCollisionInDirection(direction)) return;
-        StartCoroutine(Move(direction));
+        StartCoroutine(Move(direction,null));
     }
 
     private Vector3 tolerance = new Vector3(0.1f, 0.1f, 0.1f);
@@ -217,7 +227,7 @@ public class PlayerMvmnt : MonoBehaviour
         CameraScript.instance.minCameraPosition = Doors.minBlockedCameraPositionWhenTookDoor[nextDoor];
     }
 
-    private IEnumerator Move(Vector3 direction)
+    private IEnumerator Move(Vector3 direction, float? speedParam)
     {
         float elapsedTime = 0.0f;
         if (isBoy)
@@ -276,12 +286,12 @@ public class PlayerMvmnt : MonoBehaviour
             if (hasToJump)
             {
                 player.transform.position = Vector3.Lerp(startingPos, targetPos, elapsedTime);
-                elapsedTime += Time.deltaTime * speed;
+                elapsedTime = MoveAction(speedParam, elapsedTime);
                 yield return null;
                 continue;
             }
             player.transform.position = Vector3.Lerp(startingPos, targetPos, elapsedTime);
-            elapsedTime += Time.deltaTime * speed;
+            elapsedTime = MoveAction(speedParam, elapsedTime);
             yield return null;
         }
         hasToJump = false;
@@ -294,6 +304,20 @@ public class PlayerMvmnt : MonoBehaviour
         isMoving = false;
     }
 
+    private float MoveAction(float? speedParam, float elapsedTime)
+    {
+        if (speedParam == null) elapsedTime += Time.deltaTime * speed;
+        else
+        {
+            var vector3 = player.transform.position;
+            vector3.y += jumpCurve.Evaluate(elapsedTime);
+            player.transform.position = vector3;
+            elapsedTime += Time.deltaTime * (float)speedParam;
+        }
+
+        return elapsedTime;
+    }
+
     public bool hasToJump = false;
     private void CheckForBlockedFromBelow()
     {
@@ -302,7 +326,7 @@ public class PlayerMvmnt : MonoBehaviour
                 Mathf.Abs(transform.position.y - pos.y) < tolerance.y)) return;
         Debug.Log("Jump");
         hasToJump = true;
-        StartCoroutine(Move(lastDirection));
+        StartCoroutine(Move(lastDirection, speed/4));
     }
 
 

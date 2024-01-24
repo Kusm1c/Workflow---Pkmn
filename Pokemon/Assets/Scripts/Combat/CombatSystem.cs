@@ -286,7 +286,8 @@ public class CombatSystem : MonoBehaviour
     
     private void GetOpponentNextMove(PokemonSO pokemon)
     {
-        p2Move = pokemon.Moves[Random.Range(0, 3)];
+        int numOfMoves = pokemon.Moves.Count;
+        p2Move = pokemon.Moves[Random.Range(0, numOfMoves)];
     }
     
     private void CalculatePriority()

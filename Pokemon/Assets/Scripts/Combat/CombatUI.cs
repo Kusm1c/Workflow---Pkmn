@@ -693,4 +693,9 @@ public class CombatUI : MonoBehaviour
         
         currentMenu = ActionPannel;
     }
+
+    public void SetTrainerName(string s)
+    {
+        // TODO : Set trainer name and display message **** wants to fight !
+    }
 }
