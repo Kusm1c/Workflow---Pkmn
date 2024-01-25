@@ -16,10 +16,12 @@ MonoBehaviour:
   <ID>k__BackingField: 0
   <Type>k__BackingField: 0
   <MoveType>k__BackingField: 0
-  <PP>k__BackingField: 11
+  <PP>k__BackingField: 15
+  <MaxPP>k__BackingField: 15
   <Power>k__BackingField: 70
   <Accuracy>k__BackingField: 100
   <Priority>k__BackingField: 0
   <CritRatio>k__BackingField: 0
   <StatusEffect>k__BackingField: 0
+  <Buff>k__BackingField: 0
   <Target>k__BackingField: 0

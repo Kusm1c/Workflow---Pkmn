@@ -8,7 +8,7 @@ public class PokemonSO : ScriptableObject
     [field: SerializeField] public string Name { get; private set; }
     [field: SerializeField] public int ID { get; private set; }
     [field: SerializeField] public Gender Gender { get; private set; }
-    [field: SerializeField] public int Level { get; private set; }
+    [field: SerializeField] public int Level { get; set; }
     [field: SerializeField] public Nature Nature { get; private set; }
     [field: SerializeField] public PokemonType Type { get; private set; }
     [field: SerializeField] public PokemonType Type2 { get; private set; }
@@ -21,7 +21,7 @@ public class PokemonSO : ScriptableObject
     [field: SerializeField] public int EVYield { get; private set; }
     [field: SerializeField] public int BaseFriendship { get; private set; }
     [field: SerializeField] public int GrowthRate { get; private set; }
-    [field: SerializeField] public int Exp { get; private set; }
+    [field: SerializeField] public int Exp { get; set; }
     [field: SerializeField] public List<LearnableMove> LearnableMoves { get; private set; }
     [field: SerializeField] public List<MoveSO> Moves { get; private set; } 
     
@@ -32,7 +32,8 @@ public class PokemonSO : ScriptableObject
     {
         var totalStats = TotalStats;
 
-        totalStats.HP = Mathf.FloorToInt((((BaseStats.HP + IVs.HP) * 2 + Mathf.Floor(Mathf.Ceil(Mathf.Sqrt(EVs.HP)) / 4f)) * Level) / 100f) + Level + 10;
+        totalStats.MaxHP = Mathf.FloorToInt((((BaseStats.HP + IVs.HP) * 2 + Mathf.Floor(Mathf.Ceil(Mathf.Sqrt(EVs.HP)) / 4f)) * Level) / 100f) + Level + 10;
+        totalStats.HP = totalStats.MaxHP;
         totalStats.Attack = Mathf.FloorToInt(((BaseStats.Attack + IVs.Attack) * 2 + Mathf.Floor(Mathf.Ceil(Mathf.Sqrt(EVs.Attack))/4))*Level / 100f) + 5;
         totalStats.Defense = Mathf.FloorToInt(((BaseStats.Defense + IVs.Defense) * 2 + Mathf.Floor(Mathf.Ceil(Mathf.Sqrt(EVs.Defense))/4))*Level / 100f) + 5;
         totalStats.SpAttack = Mathf.FloorToInt(((BaseStats.SpAttack + IVs.SpAttack) * 2 + Mathf.Floor(Mathf.Ceil(Mathf.Sqrt(EVs.SpAttack))/4))*Level / 100f) + 5;

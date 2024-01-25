@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private List<PokemonSO> playerPokemonList;
     [SerializeField] private List<PokemonSO> selectablePokemons;
+    
+    [SerializeField] private ItemSO[] playerItems;
+
     private void Awake()
     {
         Init();
@@ -24,19 +27,26 @@ public class GameManager : MonoBehaviour
     {
         if (!instance) instance = this;
         combatSystem = GetComponent<CombatSystem>();
-        OnFightStart();
+        OnFightStart(selectablePokemons);
     }
 
     public void OnFightStart()
     {
-        instance.combatSystem.StartFight(instance.playerPokemonList, instance.selectablePokemons[0]);
+        instance.combatSystem.StartFight(instance.selectablePokemons[0]);
         var ui = Instantiate(instance.combatUIPrefab);
         instance.combatUI = ui.GetComponent<CombatUI>();
     }
     
     public void OnFightStart(PokemonSO pokemonSo)
     {
-        instance.combatSystem.StartFight(instance.playerPokemonList,pokemonSo);
+        instance.combatSystem.StartFight(pokemonSo);
+        var ui = Instantiate(instance.combatUIPrefab);
+        instance.combatUI = ui.GetComponent<CombatUI>();
+    }
+
+    public void OnFightStart(List<PokemonSO> pokemonList)
+    {
+        instance.combatSystem.StartFightTrainer(pokemonList);
         var ui = Instantiate(instance.combatUIPrefab);
         instance.combatUI = ui.GetComponent<CombatUI>();
     }
@@ -48,6 +58,11 @@ public class GameManager : MonoBehaviour
         Destroy(instance.combatUI.gameObject);
     }
 
+    public static List<PokemonSO> GetPlayerPokemons()
+    {
+        return instance.playerPokemonList;
+    }
+    
     public static void GivePlayerPokemon(PokemonSO pokemonSo)
     {
         if (instance.playerPokemonList.Count >= 6)
@@ -62,5 +77,15 @@ public class GameManager : MonoBehaviour
     public static void GivePlayerItem(ItemSO itemSo)
     {
         
+    }
+
+    public static ItemSO[] GetPlayerItems()
+    {
+        return instance.playerItems;
+    }
+    
+    public void SetPlayerItemQuantity(ItemSO itemSo, int quantity)
+    {
+        playerItems[Array.IndexOf(playerItems, itemSo)].quantity += quantity;
     }
 }

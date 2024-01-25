@@ -15,18 +15,20 @@ MonoBehaviour:
   <Name>k__BackingField: Squirtle
   <ID>k__BackingField: 0
   <Gender>k__BackingField: 0
-  <Level>k__BackingField: 3
+  <Level>k__BackingField: 5
   <Nature>k__BackingField: 0
   <Type>k__BackingField: 2
   <Type2>k__BackingField: 0
   <BaseStats>k__BackingField:
-    HP: 49
+    MaxHP: 20
+    HP: 20
     Attack: 6
     Defense: 0
     SpAttack: 0
     SpDefense: 0
     Speed: 39
   <EVs>k__BackingField:
+    MaxHP: 0
     HP: 10
     Attack: 0
     Defense: 0
@@ -34,6 +36,7 @@ MonoBehaviour:
     SpDefense: 0
     Speed: 0
   <IVs>k__BackingField:
+    MaxHP: 0
     HP: 13
     Attack: 21
     Defense: 32
@@ -41,12 +44,13 @@ MonoBehaviour:
     SpDefense: 0
     Speed: 21
   <TotalStats>k__BackingField:
-    HP: 16
-    Attack: 6
-    Defense: 6
-    SpAttack: 5
+    MaxHP: 18
+    HP: 18
+    Attack: 7
+    Defense: 8
+    SpAttack: 4
     SpDefense: 5
-    Speed: 8
+    Speed: 11
   <CatchRate>k__BackingField: 0
   <BaseXP>k__BackingField: 0
   <EVYield>k__BackingField: 0

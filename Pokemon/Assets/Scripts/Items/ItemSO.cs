@@ -12,4 +12,5 @@ public class ItemSO : ScriptableObject
 
     public string name;
     [TextArea] public string description;
+    public int quantity;
 }

@@ -54,6 +54,19 @@ public class PlayerMvmnt : MonoBehaviour
 
     public static PlayerMvmnt Instance;
     
+    [SerializeField] private AnimationCurve jumpCurve;
+    
+    public Vector3 up { get { return new Vector3(0, 0, 1); } }
+    private Vector3 down { get { return new Vector3(0, 0, -1); } }
+    private Vector3 left { get { return new Vector3(-1, 0, 0); } }
+    private Vector3 right { get { return new Vector3(1, 0, 0); } }
+    
+    public Vector2 currentPos
+    {
+        get => transform.position;
+        set => transform.position = value;
+    }
+
     private void Awake()
     {
         Instance = this;
@@ -68,16 +81,18 @@ public class PlayerMvmnt : MonoBehaviour
     void Update()
     {
         if (isFighting) return;
-        if (Input.GetKey(acceptKey)) Accept();
-        else if (Input.GetKey(cancelKey)) Cancel();
-        else if (Input.GetKey(menuKey)) Menu();
+        if (Input.GetKeyDown(acceptKey)) Accept();
+        else if (Input.GetKeyDown(cancelKey)) Cancel();
+        else if (Input.GetKeyDown(menuKey)) Menu();
         else if (Input.GetKey(runKey)) Run();
-        else if (Input.GetKey(interactKey)) Interact();
+        else if (Input.GetKeyDown(interactKey)) Interact();
         else if (Input.GetKey(upKey)) MovePlayer(Vector3.up);
         else if (Input.GetKey(downKey)) MovePlayer(Vector3.down);
         else if (Input.GetKey(leftKey)) MovePlayer(Vector3.left);
         else if (Input.GetKey(rightKey)) MovePlayer(Vector3.right);
         else Idle();
+
+        currentPos = transform.position;
     }
 
     private void Idle()
@@ -133,13 +148,167 @@ public class PlayerMvmnt : MonoBehaviour
     {
         Debug.Log("Run");
     }
+    private Vector3 lastDirection;
 
     private void Interact()
     {
-        Debug.Log("Interact");
+        int x, y;
+        if (lastDirection == Vector3.up && MapGenerator.Instance.interactableTilesList.Any(pos =>
+                Mathf.Abs(transform.position.x - pos.interactablePositions.x) < tolerance.x &&
+                Mathf.Abs(transform.position.y + tileSize - pos.interactablePositions.y) < tolerance.y))
+        {
+            var tileInteracted = MapGenerator.Instance.interactableTilesList.First(pos =>
+                Mathf.Abs(transform.position.x - pos.interactablePositions.x) < tolerance.x &&
+                Mathf.Abs(transform.position.y + tileSize - pos.interactablePositions.y) < tolerance.y);
+            Debug.Log("Interact up");
+            if (tileInteracted.npc != null)
+            {
+                if (tileInteracted.npc.GetComponent<NonTrainer>())
+                {
+                    NonTrainer aaa = tileInteracted.npc.GetComponent<NonTrainer>();
+                    if (aaa.firstTimeTalkItem != null)
+                    {
+                        GameManager.instance.SetPlayerItemQuantity(aaa.firstTimeTalkItem, 1);
+                        aaa.firstTimeTalkItem = null;
+                    }
+                    Debug.Log(aaa.firstTimeTalk ? aaa.firstTimeTalkText : aaa.talkText);
+                    aaa.firstTimeTalk = false;
+                }
+                else if (tileInteracted.npc.GetComponent<TrainerBattle>())
+                {
+                    TrainerBattle aaa = tileInteracted.npc.GetComponent<TrainerBattle>();
+                    if (aaa.hasLost)
+                    {
+                        Debug.Log(aaa.AfterBattleText);
+                    }
+                    else
+                    {
+                        Debug.Log(aaa.BeforeBattleText);
+                        GameManager.instance.OnFightStart(aaa.playerPokemonList[0]);
+                        CombatUI.Instance.SetTrainerName(aaa.Name);
+                        CombatUI.Instance.StartCombat();
+                    }
+                }
+            }
+        }
+        else if (lastDirection == Vector3.down && MapGenerator.Instance.interactableTilesList.Any(pos =>
+                     Mathf.Abs(transform.position.x - pos.interactablePositions.x) < tolerance.x &&
+                     Mathf.Abs(transform.position.y - tileSize - pos.interactablePositions.y) < tolerance.y))
+        {
+            var tileInteracted = MapGenerator.Instance.interactableTilesList.First(pos =>
+                Mathf.Abs(transform.position.x - pos.interactablePositions.x) < tolerance.x &&
+                Mathf.Abs(transform.position.y - tileSize - pos.interactablePositions.y) < tolerance.y);
+            Debug.Log("Interact down");
+            if (tileInteracted.npc != null)
+            {
+                if (tileInteracted.npc.GetComponent<NonTrainer>())
+                {
+                    NonTrainer aaa = tileInteracted.npc.GetComponent<NonTrainer>();
+                    if (aaa.firstTimeTalkItem != null)
+                    {
+                        GameManager.instance.SetPlayerItemQuantity(aaa.firstTimeTalkItem, 1);
+                        aaa.firstTimeTalkItem = null;
+                    }
+                    Debug.Log(aaa.firstTimeTalk ? aaa.firstTimeTalkText : aaa.talkText);
+                    aaa.firstTimeTalk = false;
+                }
+                else if (tileInteracted.npc.GetComponent<TrainerBattle>())
+                {
+                    TrainerBattle aaa = tileInteracted.npc.GetComponent<TrainerBattle>();
+                    if (aaa.hasLost)
+                    {
+                        Debug.Log(aaa.AfterBattleText);
+                    }
+                    else
+                    {
+                        Debug.Log(aaa.BeforeBattleText);
+                        GameManager.instance.OnFightStart(aaa.playerPokemonList[0]);
+                        CombatUI.Instance.SetTrainerName(aaa.Name);
+                        CombatUI.Instance.StartCombat();
+                    }
+                }
+            }
+        }
+        else if (lastDirection == Vector3.right && MapGenerator.Instance.interactableTilesList.Any(pos =>
+                     Mathf.Abs(transform.position.x + tileSize - pos.interactablePositions.x) < tolerance.x &&
+                     Mathf.Abs(transform.position.y - pos.interactablePositions.y) < tolerance.y))
+        {
+            var tileInteracted = MapGenerator.Instance.interactableTilesList.First(pos =>
+                Mathf.Abs(transform.position.x + tileSize - pos.interactablePositions.x) < tolerance.x &&
+                Mathf.Abs(transform.position.y - pos.interactablePositions.y) < tolerance.y);
+            Debug.Log("Interact right");
+            if (tileInteracted.npc != null)
+            {
+                if (tileInteracted.npc.GetComponent<NonTrainer>())
+                {
+                    NonTrainer aaa = tileInteracted.npc.GetComponent<NonTrainer>();
+                    if (aaa.firstTimeTalkItem != null)
+                    {
+                        GameManager.instance.SetPlayerItemQuantity(aaa.firstTimeTalkItem, 1);
+                        aaa.firstTimeTalkItem = null;
+                    }
+                    Debug.Log(aaa.firstTimeTalk ? aaa.firstTimeTalkText : aaa.talkText);
+                    aaa.firstTimeTalk = false;
+                    aaa.GetComponent<SpriteRenderer>().flipX = false;
+                }
+                else if (tileInteracted.npc.GetComponent<TrainerBattle>())
+                {
+                    TrainerBattle aaa = tileInteracted.npc.GetComponent<TrainerBattle>();
+                    if (aaa.hasLost)
+                    {
+                        Debug.Log(aaa.AfterBattleText);
+                    }
+                    else
+                    {
+                        Debug.Log(aaa.BeforeBattleText);
+                        GameManager.instance.OnFightStart(aaa.playerPokemonList[0]);
+                        CombatUI.Instance.SetTrainerName(aaa.Name);
+                        CombatUI.Instance.StartCombat();
+                    }
+                }
+            }
+        }
+        else if (lastDirection == Vector3.left && MapGenerator.Instance.interactableTilesList.Any(pos =>
+                     Mathf.Abs(transform.position.x - tileSize - pos.interactablePositions.x) < tolerance.x &&
+                     Mathf.Abs(transform.position.y - pos.interactablePositions.y) < tolerance.y))
+        {
+            var tileInteracted = MapGenerator.Instance.interactableTilesList.First(pos =>
+                Mathf.Abs(transform.position.x - tileSize - pos.interactablePositions.x) < tolerance.x &&
+                Mathf.Abs(transform.position.y - pos.interactablePositions.y) < tolerance.y);
+            Debug.Log("Interact left");
+            if (tileInteracted.npc != null)
+            {
+                if (tileInteracted.npc.GetComponent<NonTrainer>())
+                {
+                    NonTrainer aaa = tileInteracted.npc.GetComponent<NonTrainer>();
+                    if (aaa.firstTimeTalkItem != null)
+                    {
+                        GameManager.instance.SetPlayerItemQuantity(aaa.firstTimeTalkItem, 1);
+                        aaa.firstTimeTalkItem = null;
+                    }
+                    Debug.Log(aaa.firstTimeTalk ? aaa.firstTimeTalkText : aaa.talkText);
+                    aaa.firstTimeTalk = false;
+                    aaa.GetComponent<SpriteRenderer>().flipX = true;
+                }
+                else if (tileInteracted.npc.GetComponent<TrainerBattle>())
+                {
+                    TrainerBattle aaa = tileInteracted.npc.GetComponent<TrainerBattle>();
+                    if (aaa.hasLost)
+                    {
+                        Debug.Log(aaa.AfterBattleText);
+                    }
+                    else
+                    {
+                        Debug.Log(aaa.BeforeBattleText);
+                        GameManager.instance.OnFightStart(aaa.playerPokemonList[0]);
+                        CombatUI.Instance.SetTrainerName(aaa.Name);
+                        CombatUI.Instance.StartCombat();
+                    }
+                }
+            }
+        }
     }
 
-    private Vector3 lastDirection;
 
     private void MovePlayer(Vector3 direction)
     {
@@ -147,7 +316,7 @@ public class PlayerMvmnt : MonoBehaviour
         lastDirection = direction;
         isMoving = true;
         if (CheckCollisionInDirection(direction)) return;
-        StartCoroutine(Move(direction));
+        StartCoroutine(Move(direction,null));
     }
 
     private Vector3 tolerance = new Vector3(0.1f, 0.1f, 0.1f);
@@ -176,9 +345,9 @@ public class PlayerMvmnt : MonoBehaviour
             return true;
         }
         
-        if (MapGenerator.Instance.interactablePositions.Any(pos =>
-                Mathf.Abs(transform.position.x + direction.x * tileSize - pos.x) < tolerance.x &&
-                Mathf.Abs(transform.position.y + direction.y * tileSize - pos.y) < tolerance.y))
+        if (MapGenerator.Instance.interactableTilesList.Any(pos =>
+                Mathf.Abs(transform.position.x + direction.x * tileSize - pos.interactablePositions.x) < tolerance.x &&
+                Mathf.Abs(transform.position.y + direction.y * tileSize - pos.interactablePositions.y) < tolerance.y))
         {
             isMoving = false;
             return true;
@@ -217,7 +386,7 @@ public class PlayerMvmnt : MonoBehaviour
         CameraScript.instance.minCameraPosition = Doors.minBlockedCameraPositionWhenTookDoor[nextDoor];
     }
 
-    private IEnumerator Move(Vector3 direction)
+    private IEnumerator Move(Vector3 direction, float? speedParam)
     {
         float elapsedTime = 0.0f;
         if (isBoy)
@@ -276,12 +445,12 @@ public class PlayerMvmnt : MonoBehaviour
             if (hasToJump)
             {
                 player.transform.position = Vector3.Lerp(startingPos, targetPos, elapsedTime);
-                elapsedTime += Time.deltaTime * speed;
+                elapsedTime = MoveAction(speedParam, elapsedTime);
                 yield return null;
                 continue;
             }
             player.transform.position = Vector3.Lerp(startingPos, targetPos, elapsedTime);
-            elapsedTime += Time.deltaTime * speed;
+            elapsedTime = MoveAction(speedParam, elapsedTime);
             yield return null;
         }
         hasToJump = false;
@@ -294,6 +463,20 @@ public class PlayerMvmnt : MonoBehaviour
         isMoving = false;
     }
 
+    private float MoveAction(float? speedParam, float elapsedTime)
+    {
+        if (speedParam == null) elapsedTime += Time.deltaTime * speed;
+        else
+        {
+            var vector3 = player.transform.position;
+            vector3.y += jumpCurve.Evaluate(elapsedTime);
+            player.transform.position = vector3;
+            elapsedTime += Time.deltaTime * (float)speedParam;
+        }
+
+        return elapsedTime;
+    }
+
     public bool hasToJump = false;
     private void CheckForBlockedFromBelow()
     {
@@ -302,7 +485,7 @@ public class PlayerMvmnt : MonoBehaviour
                 Mathf.Abs(transform.position.y - pos.y) < tolerance.y)) return;
         Debug.Log("Jump");
         hasToJump = true;
-        StartCoroutine(Move(lastDirection));
+        StartCoroutine(Move(lastDirection, speed/4));
     }
 
 

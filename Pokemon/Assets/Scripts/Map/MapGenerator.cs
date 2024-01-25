@@ -5,6 +5,13 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
 
+[Serializable]
+public class interactableTiles
+{
+    public Vector3 interactablePositions;
+    public string text;
+    public GameObject npc;
+}
 public class MapGenerator : MonoBehaviour
 {
     [SerializeField] private Sprite mapSprite;
@@ -22,11 +29,13 @@ public class MapGenerator : MonoBehaviour
     public List<Vector3> doorsPositions;
     public List<GameObject> doorsTiles;
 
-    public List<Vector3> interactablePositions;
+    public List<interactableTiles> interactableTilesList;
     [SerializeField] private List<GameObject> interactableTiles;
 
     public List<Vector3> blockedFromBelowPositions;
     [SerializeField] private List<GameObject> blockedFromBelowTiles;
+
+    public List<GameObject> npcs;
 
     public List<Vector3> grassPositions;
 
@@ -72,9 +81,13 @@ public class MapGenerator : MonoBehaviour
                 {
                     collisionTexture.SetPixel((int) (x / actionTileSize.x), (int) (y / actionTileSize.y), Color.black);
                 }
-                else if (interactablePositions.Contains(new Vector3(x, y, 0)))
+                else if (interactableTilesList.Any(interactableTile => interactableTile.interactablePositions == new Vector3(x, y, 0)))
                 {
                     collisionTexture.SetPixel((int) (x / actionTileSize.x), (int) (y / actionTileSize.y), Color.yellow);
+                }
+                else if (pixelColor != Color.white)
+                {
+                    collisionTexture.SetPixel((int) (x / actionTileSize.x), (int) (y / actionTileSize.y), Color.gray);
                 }
                 else
                 {
@@ -260,14 +273,14 @@ public class MapGenerator : MonoBehaviour
                     tile.transform.parent = doorsTileParent.transform;
                     tile.name = "Door" + tile.transform.parent.childCount;
                 }
-                else if (interactablePositions.Contains(new Vector3(x, y, 0)))
+                else if (interactableTilesList.Any(interactableTile => interactableTile.interactablePositions == new Vector3(x, y, 0)))
                 {
                     GameObject tile = Instantiate(actionTile, new Vector3(x, y, 0), Quaternion.identity);
                     tile.GetComponent<SpriteRenderer>().color = Color.yellow;
                     tile.GetComponent<SpriteRenderer>().color = new Color(tile.GetComponent<SpriteRenderer>().color.r,
                         tile.GetComponent<SpriteRenderer>().color.g, tile.GetComponent<SpriteRenderer>().color.b, 0.6f);
-                    tile.name = "Interactable";
                     tile.transform.parent = interactableTileParent.transform;
+                    tile.name = "Interactable";
                 }
                 else if (pixelColor != Color.white)
                 {
@@ -528,11 +541,15 @@ public class MapGenerator : MonoBehaviour
     [ContextMenu("Generate Interactable Positions")]
     public void GenerateInteractablePositions()
     {
-        interactablePositions = new List<Vector3>();
+        interactableTilesList = new List<interactableTiles>();
         foreach (var interactableTile in interactableTiles.Where(interactableTile =>
-                     !interactablePositions.Contains(interactableTile.transform.position)))
+                     !interactableTilesList.Any(interactableTileList => interactableTileList.interactablePositions == interactableTile.transform.position)))
         {
-            interactablePositions.Add(interactableTile.transform.position);
+            interactableTilesList.Add(new interactableTiles()
+            {
+                interactablePositions = interactableTile.transform.position,
+                text = ""
+            });
         }
     }
 
@@ -601,9 +618,9 @@ public class MapGenerator : MonoBehaviour
                 doorsPositions.Remove(tile.transform.position);
             }
 
-            if (interactablePositions.Contains(tile.transform.position))
+            if (interactableTilesList.Any(interactableTile => interactableTile.interactablePositions == tile.transform.position))
             {
-                interactablePositions.Remove(tile.transform.position);
+                interactableTilesList.Remove(interactableTilesList.First(interactableTile => interactableTile.interactablePositions == tile.transform.position));
             }
         }
     }
@@ -623,7 +640,7 @@ public class MapGenerator : MonoBehaviour
         System.IO.File.WriteAllLines(path + fileName2,
             blockedFromBelowPositions.Select(pos => pos.ToString()).ToArray());
         System.IO.File.WriteAllLines(path + fileName3, doorsPositions.Select(pos => pos.ToString()).ToArray());
-        System.IO.File.WriteAllLines(path + fileName4, interactablePositions.Select(pos => pos.ToString()).ToArray());
+        System.IO.File.WriteAllLines(path + fileName4, interactableTilesList.Select(interactableTile => interactableTile.interactablePositions.ToString()).ToArray());
     }
 
     //load the positions from the file
@@ -646,7 +663,7 @@ public class MapGenerator : MonoBehaviour
         blockedPositions = new List<Vector3>();
         blockedFromBelowPositions = new List<Vector3>();
         doorsPositions = new List<Vector3>();
-        interactablePositions = new List<Vector3>();
+        interactableTilesList = new List<interactableTiles>();
         foreach (var pos in System.IO.File.ReadAllLines(path + fileName))
         {
             blockedPositions.Add(StringToVector3(pos));
@@ -664,7 +681,11 @@ public class MapGenerator : MonoBehaviour
 
         foreach (var pos in System.IO.File.ReadAllLines(path + fileName4))
         {
-            interactablePositions.Add(StringToVector3(pos));
+            interactableTilesList.Add(new interactableTiles()
+            {
+                interactablePositions = StringToVector3(pos),
+                text = ""
+            });
         }
     }
 

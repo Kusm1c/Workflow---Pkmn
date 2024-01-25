@@ -20,6 +20,7 @@ MonoBehaviour:
   <Type>k__BackingField: 0
   <Type2>k__BackingField: 0
   <BaseStats>k__BackingField:
+    MaxHP: 39
     HP: 39
     Attack: 52
     Defense: 43
@@ -27,6 +28,7 @@ MonoBehaviour:
     SpDefense: 50
     Speed: 65
   <EVs>k__BackingField:
+    MaxHP: 0
     HP: 1
     Attack: 1
     Defense: 1
@@ -34,6 +36,7 @@ MonoBehaviour:
     SpDefense: 1
     Speed: 1
   <IVs>k__BackingField:
+    MaxHP: 0
     HP: 1
     Attack: 1
     Defense: 1
@@ -41,10 +44,11 @@ MonoBehaviour:
     SpDefense: 1
     Speed: 1
   <TotalStats>k__BackingField:
+    MaxHP: 37
     HP: 37
-    Attack: 20
+    Attack: 22
     Defense: 18
-    SpAttack: 23
+    SpAttack: 20
     SpDefense: 20
     Speed: 24
   <CatchRate>k__BackingField: 0

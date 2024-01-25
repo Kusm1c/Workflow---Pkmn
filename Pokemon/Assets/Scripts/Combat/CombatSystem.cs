@@ -1,12 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
-using Unity.VisualScripting;
-using UnityEditor;
-using UnityEditor.Networking.PlayerConnection;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
 using Debug = UnityEngine.Debug;
 using Random = UnityEngine.Random;
 
@@ -16,8 +10,11 @@ public class CombatSystem : MonoBehaviour
     private PokemonSO pokemonSo2;
 
     private PokemonSO[] playerPokemons;
-
-    [SerializeField] private ItemSO[] playerItems;
+    private bool[] tookPart = {false, false, false, false, false, false};
+    
+    private PokemonSO[] opponentPokemons;
+    private int opponentPokemonIndex;
+    
     private ItemSO lastUsedItem;
     
     private MoveSO p1Move;
@@ -29,6 +26,8 @@ public class CombatSystem : MonoBehaviour
     private PlayerMove nextPlayerMove = PlayerMove.None;
     
     private int fleeAttempts = 0;
+
+    private bool multipleOpponents;
     
     private bool playerPlaysFirst;
     private bool skipPlayerTurn;
@@ -38,11 +37,15 @@ public class CombatSystem : MonoBehaviour
     private bool opponentHitLastAction;
     private bool fleeResult;
     private bool opponentCaught;
+    private bool opponentSwitched;
     
     private void Awake()
     {
         p1CurrentStats = new();
         p2CurrentStats = new();
+        opponentPokemonIndex = 0;
+        
+        tookPart[0] = true;
     }
     
     private void Update()
@@ -65,12 +68,58 @@ public class CombatSystem : MonoBehaviour
         p2CurrentStats = pokemonSo2.TotalStats;
         fightOngoing = true;
     }
-
-    public void StartFight(List<PokemonSO> playerPokemonList, PokemonSO opponentPokemon)
+    
+    //todo : ajouter un start fight avec PokemonEncounter
+    
+    public void StartFight(PokemonSO opponentPokemon)
     {
-        playerPokemons = playerPokemonList.ToArray();
+        playerPokemons = GameManager.GetPlayerPokemons().ToArray();
         pokemonSo1 = playerPokemons[0];
         pokemonSo2 = opponentPokemon;
+
+        //Initialize "default moves"
+        p1Move = pokemonSo1.Moves[0];
+        p2Move = pokemonSo2.Moves[0];
+
+        for (int i = 0; i < pokemonSo1.Moves.Count; i++)
+            pokemonSo1.Moves[i].PP = pokemonSo1.Moves[i].MaxPP;
+        
+        for (int i = 0; i < pokemonSo2.Moves.Count; i++)
+            pokemonSo2.Moves[i].PP = pokemonSo2.Moves[i].MaxPP;
+        
+        p1CurrentStats = pokemonSo1.TotalStats;
+        p2CurrentStats = pokemonSo2.TotalStats;
+        
+        multipleOpponents = false;
+        fightOngoing = true;
+    }
+
+    public void StartFightEncounter(PokemonEcounter encounter)
+    {
+        playerPokemons = GameManager.GetPlayerPokemons().ToArray();
+        pokemonSo1 = playerPokemons[0];
+        pokemonSo2 = encounter.pokemon;
+        pokemonSo2.Level = Random.Range(encounter.minLevel, encounter.maxLevel);
+        
+        //Initialize "default moves"
+        p1Move = pokemonSo1.Moves[0];
+        p2Move = pokemonSo2.Moves[0];
+        
+        p1CurrentStats = pokemonSo1.TotalStats;
+        p2CurrentStats = pokemonSo2.TotalStats;
+        
+        multipleOpponents = false;
+        fightOngoing = true;
+    }
+    
+    public void StartFightTrainer(List<PokemonSO> opponentPokemonList)
+    {
+        playerPokemons = GameManager.GetPlayerPokemons().ToArray();
+        opponentPokemons = opponentPokemonList.ToArray();
+        opponentPokemonIndex = 0;
+        
+        pokemonSo1 = playerPokemons[0];
+        pokemonSo2 = opponentPokemons[opponentPokemonIndex];
 
         //Initialize "default moves"
         p1Move = pokemonSo1.Moves[0];
@@ -78,20 +127,30 @@ public class CombatSystem : MonoBehaviour
         
         p1CurrentStats = pokemonSo1.TotalStats;
         p2CurrentStats = pokemonSo2.TotalStats;
+        
+        multipleOpponents = true;
         fightOngoing = true;
     }
     
     public void EndFight()
     {
         //Save stats after fight
-        //pokemonSo1.TotalStats = p1CurrentStats;
-        //pokemonSo2.TotalStats = p2CurrentStats;
-        
-        /*
-        if (p1CurrentStats.HP > 0)
-            pokemonSo1.Exp += CalculateEXP();
-        */
-        
+        pokemonSo1.TotalStats = p1CurrentStats;
+        pokemonSo2.TotalStats = p2CurrentStats;
+
+        for (int i = 0; i < playerPokemons.Length; i++)
+        {
+            if (playerPokemons[i].TotalStats.HP > 0 && tookPart[i])
+            {
+                playerPokemons[i].Exp += CalculateExp();
+                if (playerPokemons[i].Exp >= playerPokemons[i].Level * .95f)
+                {
+                    playerPokemons[i].Level++;
+                    playerPokemons[i].Exp = 0;
+                    Debug.Log($"{playerPokemons[i].Name} leveled up !");
+                }
+            }
+        }        
         fightOngoing = false;
     }
     
@@ -126,24 +185,29 @@ public class CombatSystem : MonoBehaviour
         if (playerPlaysFirst)
         {
             if(!skipPlayerTurn)
-                UseMove(p1Move, pokemonSo1, pokemonSo2, ref p2CurrentStats, ref p1CurrentStats, ref playerHitLastAction);
-            UseMove(p2Move, pokemonSo2, pokemonSo1, ref p1CurrentStats, ref p2CurrentStats, ref opponentHitLastAction);
+                UseMove(p1Move, pokemonSo1, pokemonSo2, ref p2CurrentStats, ref p2CurrentStats, ref playerHitLastAction);
+            UseMove(p2Move, pokemonSo2, pokemonSo1, ref p1CurrentStats, ref p1CurrentStats, ref opponentHitLastAction);
         }
         else
         {
-            UseMove(p2Move, pokemonSo2, pokemonSo1, ref p1CurrentStats, ref p2CurrentStats, ref opponentHitLastAction);
+            UseMove(p2Move, pokemonSo2, pokemonSo1, ref p1CurrentStats, ref p1CurrentStats, ref opponentHitLastAction);
             if(!skipPlayerTurn)
-                UseMove(p1Move, pokemonSo1, pokemonSo2, ref p2CurrentStats, ref p1CurrentStats, ref playerHitLastAction);
+                UseMove(p1Move, pokemonSo1, pokemonSo2, ref p2CurrentStats, ref p2CurrentStats, ref playerHitLastAction);
         }
 
+        Debug.Log(p2CurrentStats.HP);
+        if(OpponentFainted())
+           OpponentSwap();
+        
         skipPlayerTurn = false;
         nextStep = false;
+        opponentSwitched = false;
     }
 
     private void Attack(MoveSO attack, PokemonSO attacker, PokemonSO defender, ref Stats defenderStats, ref bool actorMissed)
     {
-        actorMissed = AttackHits(attack);
-        if (actorMissed)
+        actorMissed = !AttackHits(attack);
+        if (!actorMissed)
         {
             var attackerDamage = CalculateDamage(attack, attacker, defender);
             defenderStats.HP -= attackerDamage;
@@ -154,9 +218,9 @@ public class CombatSystem : MonoBehaviour
         }
     }
     
-    private int UseMove(MoveSO move, PokemonSO attacker, PokemonSO defender, ref Stats attackerStats, ref Stats defenderStats,ref bool actorMissed)
+    private void UseMove(MoveSO move, PokemonSO attacker, PokemonSO defender, ref Stats attackerStats, ref Stats defenderStats,ref bool actorMissed)
     {
-        if (move.PP == 0) return 0;
+        if (move.PP == 0) return;
         move.PP--;
 
         switch (move.MoveType)
@@ -172,8 +236,6 @@ public class CombatSystem : MonoBehaviour
                 Attack(move, attacker, defender, ref defenderStats, ref actorMissed);
                 break;
         }
-
-        return 0;
     }
 
     private void ApplySelfBonus(MoveSO move, ref Stats stats)
@@ -225,7 +287,7 @@ public class CombatSystem : MonoBehaviour
 
     public void UseItem(int itemIndex)
     {
-        ItemSO item = playerItems[itemIndex];
+        ItemSO item = GameManager.GetPlayerItems()[itemIndex];
 
         lastUsedItem = item;
         
@@ -286,7 +348,8 @@ public class CombatSystem : MonoBehaviour
     
     private void GetOpponentNextMove(PokemonSO pokemon)
     {
-        p2Move = pokemon.Moves[Random.Range(0, 3)];
+        int numOfMoves = pokemon.Moves.Count;
+        p2Move = pokemon.Moves[Random.Range(0, numOfMoves)];
     }
     
     private void CalculatePriority()
@@ -303,7 +366,7 @@ public class CombatSystem : MonoBehaviour
             playerPlaysFirst = true;
             return;
         }
-        else if (p2Move.MoveType == MoveType.Status)
+        if (p2Move.MoveType == MoveType.Status)
         {
             playerPlaysFirst = false;
             return;
@@ -354,25 +417,39 @@ public class CombatSystem : MonoBehaviour
         return fled;
     }
 
-    private int CalculateEXP()
+    private int CalculateExp()
     {
         int expGained;
 
         int pokemonIsWild = 1; //1 if wild, 1.5 if not
         int pokemonBaseXP = pokemonSo2.BaseXP;
         int pokemonLevel = pokemonSo2.Level;
-        int numberOfReceivers = 1; //number of pokemons that took part and didn't faint
-
+        
+        int numberOfReceivers = 0; //number of pokemons that took part and didn't faint
+        
+        for (int i = 0; i < tookPart.Length; i++)
+            numberOfReceivers += tookPart[i] ? 1 : 0;
+        
         expGained = ((pokemonBaseXP * pokemonLevel) / 7) * (1 / numberOfReceivers) * pokemonIsWild;
         
         return expGained;
     }
     
-    private bool EndCondition()
+    public bool EndCondition()
     {
-        return p1CurrentStats.HP <= 0 || p2CurrentStats.HP <= 0;
-    }
+        if(!multipleOpponents) return p1CurrentStats.HP <= 0 || p2CurrentStats.HP <= 0;
+            
+        for(int i = 0; i < playerPokemons.Length; i++)
+            if (playerPokemons[i].TotalStats.HP > 0)
+                return false;
+        
+        for(int i = 0; i < opponentPokemons.Length; i++)
+            if (opponentPokemons[i].TotalStats.HP > 0)
+                return false;
 
+        return true;
+    }
+    
     public void ChoseNextMove(int moveIndex)
     {
         nextStep = true;
@@ -388,6 +465,36 @@ public class CombatSystem : MonoBehaviour
         
         pokemonSo1 = playerPokemons[pokemonIndex];
         p1CurrentStats = pokemonSo1.TotalStats;
+
+        tookPart[pokemonIndex] = true;
+    }
+
+    public void OpponentSwap()
+    {
+        if (!multipleOpponents)
+        {
+            EndFight();
+            return;
+        }
+        
+        ++opponentPokemonIndex;
+        
+        Debug.Log($"{opponentPokemonIndex} // {opponentPokemons.Length}");
+        
+        if (opponentPokemonIndex >= opponentPokemons.Length)
+        {
+            Debug.Log("Fight over");
+            EndFight();
+            return;
+        }
+
+        pokemonSo2 = opponentPokemons[opponentPokemonIndex];
+        opponentSwitched = true;
+    }
+
+    public void UpdateOpponentStats()
+    {
+        p2CurrentStats = pokemonSo2.TotalStats;
     }
     
     public void ChoseNextPlayerAction(int actionIndex)
@@ -421,11 +528,6 @@ public class CombatSystem : MonoBehaviour
         return pokemonSo1.Moves.ToArray();
     }
 
-    public ItemSO[] GetPlayerItems()
-    {
-        return playerItems;
-    }
-    
     public PokemonSO[] GetPlayerPokemons()
     {
         return playerPokemons;
@@ -476,12 +578,17 @@ public class CombatSystem : MonoBehaviour
 
     public int GetPlayerPokemonMaxHp()
     {
-        return pokemonSo1.TotalStats.HP;
+        return pokemonSo1.TotalStats.MaxHP;
     }
     
     public int GetOpponentPokemonHp()
     {
         return p2CurrentStats.HP;
+    }
+    
+    public int GetOpponentPokemonMaxHp()
+    {
+        return pokemonSo2.TotalStats.MaxHP;
     }
     
     public MoveSO GetPlayerMove()
@@ -506,12 +613,12 @@ public class CombatSystem : MonoBehaviour
 
     public bool PlayerMissed()
     {
-        return !playerHitLastAction;
+        return playerHitLastAction;
     }
 
     public bool OpponentMissed()
     {
-        return !opponentHitLastAction;
+        return opponentHitLastAction;
     }
     
     public bool PlayerFainted()
@@ -557,6 +664,13 @@ public class CombatSystem : MonoBehaviour
     public bool OpponentIsCaught()
     {
         return opponentCaught;
+    }
+
+    public bool OpponentCanSwap()
+    {
+        if (!multipleOpponents) return false;
+        
+        return opponentPokemonIndex < opponentPokemons.Length;
     }
     
     #endregion
