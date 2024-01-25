@@ -6992,6 +6992,11 @@ PrefabInstance:
       propertyPath: fenetreStyleTMP
       value: 
       objectReference: {fileID: 1282041986}
+    - target: {fileID: 2474603480831738185, guid: e0bf2242205256b4586daa2fc9639b95,
+        type: 3}
+      propertyPath: menuActionPanel
+      value: 
+      objectReference: {fileID: 285613842}
     - target: {fileID: 4804164751249947409, guid: e0bf2242205256b4586daa2fc9639b95,
         type: 3}
       propertyPath: m_LocalPosition.x
