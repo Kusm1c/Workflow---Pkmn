@@ -53,6 +53,7 @@ public class CombatUI : MonoBehaviour
     [SerializeField] private Sprite Red;
     
     private string currentPokemonName;
+    private string currentOpponentPokemonName;
     
     private bool nextStep;
     
@@ -132,6 +133,8 @@ public class CombatUI : MonoBehaviour
                 combatSystem.GetPlayerPokemons()[i].Name;
             PokemonSelectionLevels[i].text = combatSystem.GetPlayerPokemons()[i].Level.ToString();
         }
+
+        currentOpponentPokemonName = combatSystem.GetOpponentPokemonName();
         
         for (int i = 0; i < playerMoveSet.Length; i++)
             MoveNames[i].text = playerMoveSet[i].Name;
@@ -233,7 +236,7 @@ public class CombatUI : MonoBehaviour
     public void EnterHoverMove(int moveIndex)
     {
         CurrentPP.text = $"{playerMoveSet[moveIndex].PP}";
-        MaxPP.text = $"{playerMoveSet[moveIndex].PP}";
+        MaxPP.text = $"{playerMoveSet[moveIndex].MaxPP}";
         MoveType.text = $"{playerMoveSet[moveIndex].Type}";
     }
 
@@ -330,16 +333,17 @@ public class CombatUI : MonoBehaviour
                 break;
             
             case MenuState.OppenentMove:
-                TextBox.text = $"Enemy {combatSystem.GetOpponentPokemonName()} used {combatSystem.GetOpponentMove().Name}";
+                TextBox.text = $"Enemy {currentOpponentPokemonName} used {combatSystem.GetOpponentMove().Name}";
                 UpdatePlayerHealthBar();
                 break;
             
             case MenuState.OpponentSwitchedOld:
-                TextBox.text = $"Enemy {combatSystem.GetOpponentPokemonName()} comes back !";
+                TextBox.text = $"Enemy {currentOpponentPokemonName} comes back !";
                 break;
             
             case MenuState.OpponentSwitchedNew:
-                TextBox.text = $"Enemy sent {combatSystem.GetOpponentPokemonName()} !";
+                currentOpponentPokemonName = combatSystem.GetOpponentPokemonName();
+                TextBox.text = $"Enemy sent {currentOpponentPokemonName} !";
                 UpdateOpponentHealthBar();
                 UpdateOpponentInfoText();
                 UpdateOpponentSprite();
@@ -355,7 +359,7 @@ public class CombatUI : MonoBehaviour
                 break;
             
             case MenuState.OpponentMiss:
-                TextBox.text = $"Enemy {combatSystem.GetOpponentPokemonName()} missed !";
+                TextBox.text = $"Enemy {currentOpponentPokemonName} missed !";
                 break;
             
             case MenuState.PlayerFainted:
@@ -363,15 +367,15 @@ public class CombatUI : MonoBehaviour
                 break;
             
             case MenuState.OpponentFainted:
-                TextBox.text = $"Enemy {combatSystem.GetOpponentPokemonName()} fainted !";
+                TextBox.text = $"Enemy {currentOpponentPokemonName} fainted !";
                 break;
             
             case MenuState.OpponentCaught:
-                TextBox.text = $"{combatSystem.GetOpponentPokemonName()} was caught !";
+                TextBox.text = $"{currentOpponentPokemonName} was caught !";
                 break;
             
             case MenuState.OpponentNotCaught:
-                TextBox.text = $"{combatSystem.GetOpponentPokemonName()} broke free !";
+                TextBox.text = $"{currentOpponentPokemonName} broke free !";
                 break;
             
             case MenuState.Win:
@@ -514,6 +518,7 @@ public class CombatUI : MonoBehaviour
             
             case MenuState.OpponentSwitchedNew:
                 menuState = MenuState.Default;
+                currentOpponentPokemonName = combatSystem.GetOpponentPokemonName();
                 OpenActionPanel();
                 break;
             
@@ -594,8 +599,7 @@ public class CombatUI : MonoBehaviour
 
     private void UpdatePlayerXPBar()
     {
-        //PlayerXPBar.fillAmount = combatSystem.GetPlayerCurrentPokemon().Exp / combatSystem.GetPlayerCurrentPokemon().Exp;
-        PlayerXPBar.fillAmount = 0;
+        PlayerXPBar.fillAmount = (float) combatSystem.GetPlayerCurrentPokemon().Exp / combatSystem.GetPlayerCurrentPokemon().Level * 0.95f;
     }
     
     private void UpdateOpponentHealthBar()
@@ -614,7 +618,7 @@ public class CombatUI : MonoBehaviour
 
     private void UpdateOpponentInfoText()
     {
-        OpponentInfo.text = $"{combatSystem.GetOpponentPokemonName()}";
+        OpponentInfo.text = $"{currentOpponentPokemonName}";
     }
 
     private void UpdateData()

@@ -16,9 +16,9 @@ MonoBehaviour:
   <ID>k__BackingField: 0
   <Type>k__BackingField: 0
   <MoveType>k__BackingField: 0
-  <PP>k__BackingField: 9957
-  <MaxPP>k__BackingField: 0
-  <Power>k__BackingField: 1
+  <PP>k__BackingField: 30
+  <MaxPP>k__BackingField: 30
+  <Power>k__BackingField: 10
   <Accuracy>k__BackingField: 80
   <Priority>k__BackingField: 5
   <CritRatio>k__BackingField: 0

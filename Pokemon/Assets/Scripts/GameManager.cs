@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     {
         if (!instance) instance = this;
         combatSystem = GetComponent<CombatSystem>();
-        //OnFightStart();
+        OnFightStart(selectablePokemons);
     }
 
     public void OnFightStart()
@@ -40,6 +40,13 @@ public class GameManager : MonoBehaviour
     public void OnFightStart(PokemonSO pokemonSo)
     {
         instance.combatSystem.StartFight(pokemonSo);
+        var ui = Instantiate(instance.combatUIPrefab);
+        instance.combatUI = ui.GetComponent<CombatUI>();
+    }
+
+    public void OnFightStart(List<PokemonSO> pokemonList)
+    {
+        instance.combatSystem.StartFightTrainer(pokemonList);
         var ui = Instantiate(instance.combatUIPrefab);
         instance.combatUI = ui.GetComponent<CombatUI>();
     }

@@ -10,7 +10,8 @@ public class CombatSystem : MonoBehaviour
     private PokemonSO pokemonSo2;
 
     private PokemonSO[] playerPokemons;
-    private bool[] tookPart;
+    private bool[] tookPart = {false, false, false, false, false, false};
+    
     private PokemonSO[] opponentPokemons;
     private int opponentPokemonIndex = 0;
     
@@ -44,7 +45,6 @@ public class CombatSystem : MonoBehaviour
         p2CurrentStats = new();
         opponentPokemonIndex = 0;
         
-        tookPart = new bool[playerPokemons.Length];
         tookPart[0] = true;
     }
     
@@ -131,10 +131,20 @@ public class CombatSystem : MonoBehaviour
         //Save stats after fight
         pokemonSo1.TotalStats = p1CurrentStats;
         pokemonSo2.TotalStats = p2CurrentStats;
-        
-        if (p1CurrentStats.HP > 0)
-            pokemonSo1.Exp += CalculateExp();
-        
+
+        for (int i = 0; i < playerPokemons.Length; i++)
+        {
+            if (playerPokemons[i].TotalStats.HP > 0 && tookPart[i])
+            {
+                playerPokemons[i].Exp += CalculateExp();
+                if (playerPokemons[i].Exp >= playerPokemons[i].Level * .95f)
+                {
+                    playerPokemons[i].Level++;
+                    playerPokemons[i].Exp = 0;
+                    Debug.Log($"{playerPokemons[i].Name} leveled up !");
+                }
+            }
+        }        
         fightOngoing = false;
     }
     
