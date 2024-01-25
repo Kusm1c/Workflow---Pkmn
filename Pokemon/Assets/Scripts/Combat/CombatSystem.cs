@@ -136,8 +136,7 @@ public class CombatSystem : MonoBehaviour
     {
         //Save stats after fight
         pokemonSo1.TotalStats = p1CurrentStats;
-        pokemonSo2.TotalStats = p2CurrentStats;
-
+        
         for (int i = 0; i < playerPokemons.Length; i++)
         {
             if (playerPokemons[i].TotalStats.HP > 0 && tookPart[i])
