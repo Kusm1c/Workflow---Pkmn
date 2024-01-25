@@ -7,5 +7,5 @@ public class NonTrainer : MonoBehaviour
     public ItemSO firstTimeTalkItem;
     public string firstTimeTalkText;
     public bool firstTimeTalk = true;
-    public ItemSO talkText;
+    public string talkText;
 }

@@ -28,24 +28,24 @@ public class TrainerBattle : MonoBehaviour
         _player = PlayerMvmnt.Instance;
     }
 
-    void Update()
-    {
-        if (routeLoaded)
-        {
-            foreach (var VARIABLE in tilesToCheck)
-            {
-                if (VARIABLE == _player.currentPos)
-                {
-                    _player.isFighting = true;
-                    MoveToPlayer();
-                    SayBeforeBattleText();
-                    GameManager.instance.OnFightStart(playerPokemonList[0]); // TODO : Change this to a list of pokemons
-                    CombatUI.Instance.SetTrainerName(Name);
-                    CombatUI.Instance.StartCombat();
-                }
-            }
-        }
-    }
+    // void Update()
+    // {
+    //     if (routeLoaded)
+    //     {
+    //         foreach (var VARIABLE in tilesToCheck)
+    //         {
+    //             if (VARIABLE == _player.currentPos)
+    //             {
+    //                 _player.isFighting = true;
+    //                 MoveToPlayer();
+    //                 SayBeforeBattleText();
+    //                 GameManager.instance.OnFightStart(playerPokemonList[0]); // TODO : Change this to a list of pokemons
+    //                 CombatUI.Instance.SetTrainerName(Name);
+    //                 CombatUI.Instance.StartCombat();
+    //             }
+    //         }
+    //     }
+    // }
 
     private void SayBeforeBattleText()
     {

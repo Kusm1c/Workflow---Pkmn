@@ -56,6 +56,11 @@ public class PlayerMvmnt : MonoBehaviour
     
     [SerializeField] private AnimationCurve jumpCurve;
     
+    public Vector3 up { get { return new Vector3(0, 0, 1); } }
+    private Vector3 down { get { return new Vector3(0, 0, -1); } }
+    private Vector3 left { get { return new Vector3(-1, 0, 0); } }
+    private Vector3 right { get { return new Vector3(1, 0, 0); } }
+    
     public Vector2 currentPos
     {
         get => transform.position;
@@ -76,11 +81,11 @@ public class PlayerMvmnt : MonoBehaviour
     void Update()
     {
         if (isFighting) return;
-        if (Input.GetKey(acceptKey)) Accept();
-        else if (Input.GetKey(cancelKey)) Cancel();
-        else if (Input.GetKey(menuKey)) Menu();
+        if (Input.GetKeyDown(acceptKey)) Accept();
+        else if (Input.GetKeyDown(cancelKey)) Cancel();
+        else if (Input.GetKeyDown(menuKey)) Menu();
         else if (Input.GetKey(runKey)) Run();
-        else if (Input.GetKey(interactKey)) Interact();
+        else if (Input.GetKeyDown(interactKey)) Interact();
         else if (Input.GetKey(upKey)) MovePlayer(Vector3.up);
         else if (Input.GetKey(downKey)) MovePlayer(Vector3.down);
         else if (Input.GetKey(leftKey)) MovePlayer(Vector3.left);
@@ -143,13 +148,145 @@ public class PlayerMvmnt : MonoBehaviour
     {
         Debug.Log("Run");
     }
+    private Vector3 lastDirection;
 
     private void Interact()
     {
-        Debug.Log("Interact");
+        int x, y;
+        if (lastDirection == Vector3.up && MapGenerator.Instance.interactableTilesList.Any(pos =>
+                Mathf.Abs(transform.position.x - pos.interactablePositions.x) < tolerance.x &&
+                Mathf.Abs(transform.position.y + tileSize - pos.interactablePositions.y) < tolerance.y))
+        {
+            var tileInteracted = MapGenerator.Instance.interactableTilesList.First(pos =>
+                Mathf.Abs(transform.position.x - pos.interactablePositions.x) < tolerance.x &&
+                Mathf.Abs(transform.position.y + tileSize - pos.interactablePositions.y) < tolerance.y);
+            Debug.Log("Interact up");
+            if (tileInteracted.npc != null)
+            {
+                if (tileInteracted.npc.GetComponent<NonTrainer>())
+                {
+                    NonTrainer aaa = tileInteracted.npc.GetComponent<NonTrainer>();
+                    Debug.Log(aaa.firstTimeTalk ? aaa.firstTimeTalkText : aaa.talkText);
+                    aaa.firstTimeTalk = false;
+                }
+                else if (tileInteracted.npc.GetComponent<TrainerBattle>())
+                {
+                    TrainerBattle aaa = tileInteracted.npc.GetComponent<TrainerBattle>();
+                    if (aaa.hasLost)
+                    {
+                        Debug.Log(aaa.AfterBattleText);
+                    }
+                    else
+                    {
+                        Debug.Log(aaa.BeforeBattleText);
+                        GameManager.instance.OnFightStart(aaa.playerPokemonList[0]);
+                        CombatUI.Instance.SetTrainerName(aaa.Name);
+                        CombatUI.Instance.StartCombat();
+                    }
+                }
+            }
+        }
+        else if (lastDirection == Vector3.down && MapGenerator.Instance.interactableTilesList.Any(pos =>
+                     Mathf.Abs(transform.position.x - pos.interactablePositions.x) < tolerance.x &&
+                     Mathf.Abs(transform.position.y - tileSize - pos.interactablePositions.y) < tolerance.y))
+        {
+            var tileInteracted = MapGenerator.Instance.interactableTilesList.First(pos =>
+                Mathf.Abs(transform.position.x - pos.interactablePositions.x) < tolerance.x &&
+                Mathf.Abs(transform.position.y - tileSize - pos.interactablePositions.y) < tolerance.y);
+            Debug.Log("Interact down");
+            if (tileInteracted.npc != null)
+            {
+                if (tileInteracted.npc.GetComponent<NonTrainer>())
+                {
+                    NonTrainer aaa = tileInteracted.npc.GetComponent<NonTrainer>();
+                    Debug.Log(aaa.firstTimeTalk ? aaa.firstTimeTalkText : aaa.talkText);
+                    aaa.firstTimeTalk = false;
+                }
+                else if (tileInteracted.npc.GetComponent<TrainerBattle>())
+                {
+                    TrainerBattle aaa = tileInteracted.npc.GetComponent<TrainerBattle>();
+                    if (aaa.hasLost)
+                    {
+                        Debug.Log(aaa.AfterBattleText);
+                    }
+                    else
+                    {
+                        Debug.Log(aaa.BeforeBattleText);
+                        GameManager.instance.OnFightStart(aaa.playerPokemonList[0]);
+                        CombatUI.Instance.SetTrainerName(aaa.Name);
+                        CombatUI.Instance.StartCombat();
+                    }
+                }
+            }
+        }
+        else if (lastDirection == Vector3.right && MapGenerator.Instance.interactableTilesList.Any(pos =>
+                     Mathf.Abs(transform.position.x + tileSize - pos.interactablePositions.x) < tolerance.x &&
+                     Mathf.Abs(transform.position.y - pos.interactablePositions.y) < tolerance.y))
+        {
+            var tileInteracted = MapGenerator.Instance.interactableTilesList.First(pos =>
+                Mathf.Abs(transform.position.x + tileSize - pos.interactablePositions.x) < tolerance.x &&
+                Mathf.Abs(transform.position.y - pos.interactablePositions.y) < tolerance.y);
+            Debug.Log("Interact right");
+            if (tileInteracted.npc != null)
+            {
+                if (tileInteracted.npc.GetComponent<NonTrainer>())
+                {
+                    NonTrainer aaa = tileInteracted.npc.GetComponent<NonTrainer>();
+                    Debug.Log(aaa.firstTimeTalk ? aaa.firstTimeTalkText : aaa.talkText);
+                    aaa.firstTimeTalk = false;
+                }
+                else if (tileInteracted.npc.GetComponent<TrainerBattle>())
+                {
+                    TrainerBattle aaa = tileInteracted.npc.GetComponent<TrainerBattle>();
+                    if (aaa.hasLost)
+                    {
+                        Debug.Log(aaa.AfterBattleText);
+                    }
+                    else
+                    {
+                        Debug.Log(aaa.BeforeBattleText);
+                        GameManager.instance.OnFightStart(aaa.playerPokemonList[0]);
+                        CombatUI.Instance.SetTrainerName(aaa.Name);
+                        CombatUI.Instance.StartCombat();
+                    }
+                }
+            }
+        }
+        else if (lastDirection == Vector3.left && MapGenerator.Instance.interactableTilesList.Any(pos =>
+                     Mathf.Abs(transform.position.x - tileSize - pos.interactablePositions.x) < tolerance.x &&
+                     Mathf.Abs(transform.position.y - pos.interactablePositions.y) < tolerance.y))
+        {
+            var tileInteracted = MapGenerator.Instance.interactableTilesList.First(pos =>
+                Mathf.Abs(transform.position.x - tileSize - pos.interactablePositions.x) < tolerance.x &&
+                Mathf.Abs(transform.position.y - pos.interactablePositions.y) < tolerance.y);
+            Debug.Log("Interact left");
+            if (tileInteracted.npc != null)
+            {
+                if (tileInteracted.npc.GetComponent<NonTrainer>())
+                {
+                    NonTrainer aaa = tileInteracted.npc.GetComponent<NonTrainer>();
+                    Debug.Log(aaa.firstTimeTalk ? aaa.firstTimeTalkText : aaa.talkText);
+                    aaa.firstTimeTalk = false;
+                }
+                else if (tileInteracted.npc.GetComponent<TrainerBattle>())
+                {
+                    TrainerBattle aaa = tileInteracted.npc.GetComponent<TrainerBattle>();
+                    if (aaa.hasLost)
+                    {
+                        Debug.Log(aaa.AfterBattleText);
+                    }
+                    else
+                    {
+                        Debug.Log(aaa.BeforeBattleText);
+                        GameManager.instance.OnFightStart(aaa.playerPokemonList[0]);
+                        CombatUI.Instance.SetTrainerName(aaa.Name);
+                        CombatUI.Instance.StartCombat();
+                    }
+                }
+            }
+        }
     }
 
-    private Vector3 lastDirection;
 
     private void MovePlayer(Vector3 direction)
     {
@@ -186,9 +323,9 @@ public class PlayerMvmnt : MonoBehaviour
             return true;
         }
         
-        if (MapGenerator.Instance.interactablePositions.Any(pos =>
-                Mathf.Abs(transform.position.x + direction.x * tileSize - pos.x) < tolerance.x &&
-                Mathf.Abs(transform.position.y + direction.y * tileSize - pos.y) < tolerance.y))
+        if (MapGenerator.Instance.interactableTilesList.Any(pos =>
+                Mathf.Abs(transform.position.x + direction.x * tileSize - pos.interactablePositions.x) < tolerance.x &&
+                Mathf.Abs(transform.position.y + direction.y * tileSize - pos.interactablePositions.y) < tolerance.y))
         {
             isMoving = false;
             return true;
