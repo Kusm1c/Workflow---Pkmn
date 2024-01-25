@@ -339,10 +339,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 677529a75b8a5d64b9a7f056ef5dfccb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerItems:
-  - {fileID: 11400000, guid: 5ed6bf1d287ade043b421d40c01c65ce, type: 2}
-  - {fileID: 11400000, guid: 165561ff9a343a7498be2329fefca44a, type: 2}
-  - {fileID: 11400000, guid: 9ec09e5cc3bffeb449762babbabdc0c5, type: 2}
 --- !u!114 &848165766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -361,9 +357,11 @@ MonoBehaviour:
   playerPokemonList:
   - {fileID: 11400000, guid: 92c35af042ee2f940b416878738fc02a, type: 2}
   - {fileID: 11400000, guid: 98d2838a2b274b048a3595b57d6e1a12, type: 2}
+  - {fileID: 11400000, guid: 189946aeb680a714eb48adca4b8a392f, type: 2}
   selectablePokemons:
   - {fileID: 11400000, guid: 98d2838a2b274b048a3595b57d6e1a12, type: 2}
   - {fileID: 11400000, guid: 92c35af042ee2f940b416878738fc02a, type: 2}
+  playerItems: []
 --- !u!4 &848165767
 Transform:
   m_ObjectHideFlags: 0
