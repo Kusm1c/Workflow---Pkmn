@@ -249,6 +249,7 @@ public class PlayerMvmnt : MonoBehaviour
                     }
                     Debug.Log(aaa.firstTimeTalk ? aaa.firstTimeTalkText : aaa.talkText);
                     aaa.firstTimeTalk = false;
+                    aaa.GetComponent<SpriteRenderer>().flipX = false;
                 }
                 else if (tileInteracted.npc.GetComponent<TrainerBattle>())
                 {
@@ -287,6 +288,7 @@ public class PlayerMvmnt : MonoBehaviour
                     }
                     Debug.Log(aaa.firstTimeTalk ? aaa.firstTimeTalkText : aaa.talkText);
                     aaa.firstTimeTalk = false;
+                    aaa.GetComponent<SpriteRenderer>().flipX = true;
                 }
                 else if (tileInteracted.npc.GetComponent<TrainerBattle>())
                 {

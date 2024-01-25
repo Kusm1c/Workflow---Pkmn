@@ -15,11 +15,12 @@ MonoBehaviour:
   <Name>k__BackingField: 'Roucool '
   <ID>k__BackingField: 16
   <Gender>k__BackingField: 0
-  <Level>k__BackingField: 0
+  <Level>k__BackingField: 50
   <Nature>k__BackingField: 8
   <Type>k__BackingField: 0
   <Type2>k__BackingField: 9
   <BaseStats>k__BackingField:
+    MaxHP: 0
     HP: 40
     Attack: 45
     Defense: 40
@@ -27,6 +28,7 @@ MonoBehaviour:
     SpDefense: 35
     Speed: 56
   <EVs>k__BackingField:
+    MaxHP: 0
     HP: 0
     Attack: 0
     Defense: 0
@@ -34,6 +36,7 @@ MonoBehaviour:
     SpDefense: 0
     Speed: 0
   <IVs>k__BackingField:
+    MaxHP: 0
     HP: 7
     Attack: 7
     Defense: 7
@@ -41,12 +44,13 @@ MonoBehaviour:
     SpDefense: 7
     Speed: 7
   <TotalStats>k__BackingField:
-    HP: 10
-    Attack: 5
-    Defense: 5
-    SpAttack: 5
-    SpDefense: 5
-    Speed: 5
+    MaxHP: 107
+    HP: 107
+    Attack: 57
+    Defense: 52
+    SpAttack: 47
+    SpDefense: 47
+    Speed: 68
   <CatchRate>k__BackingField: 0
   <BaseXP>k__BackingField: 0
   <EVYield>k__BackingField: 0
