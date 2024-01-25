@@ -41,6 +41,8 @@ public class CombatUI : MonoBehaviour
     [Header("Sprites")]
     [SerializeField] private GameObject playerDisplay;
     [SerializeField] private GameObject opponentDisplay;
+    [SerializeField] private Image bagItemSprite;
+    [SerializeField] private Image currentPokemonSprite;
 
     [Header("Stat Gauges")] 
     [SerializeField] private Image PlayerHealthBar;
@@ -202,6 +204,8 @@ public class CombatUI : MonoBehaviour
                 combatSystem.GetPlayerPokemons()[i].Name;
             PokemonSelectionLevels[i].text = combatSystem.GetPlayerPokemons()[i].Level.ToString();
         }
+
+        currentPokemonSprite.sprite = combatSystem.GetPlayerCurrentPokemon().FrontSprite;
         
         TextBox.text = "Chose a POKéMON.";
         combatSystem.ChoseNextPlayerAction(2);
@@ -260,11 +264,14 @@ public class CombatUI : MonoBehaviour
 
     public void EnterHoverItem(int itemIndex)
     {
+        bagItemSprite.gameObject.SetActive(true);
         ItemDescription.text = GameManager.GetPlayerItems()[itemIndex].description;
+        bagItemSprite.sprite = GameManager.GetPlayerItems()[itemIndex].sprite;
     }
 
     public void ExitHoverItem()
     {
+        bagItemSprite.gameObject.SetActive(false);
         ItemDescription.text = "Chose an item.";
     }
     

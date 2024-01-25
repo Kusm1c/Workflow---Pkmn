@@ -12,5 +12,6 @@ public class ItemSO : ScriptableObject
 
     public string name;
     [TextArea] public string description;
+    public Sprite sprite;
     public int quantity;
 }
