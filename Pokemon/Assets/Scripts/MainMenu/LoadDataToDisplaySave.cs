@@ -39,6 +39,6 @@ public class LoadDataToDisplaySave : MonoBehaviour
 
     public void NewGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("ChenDialogue");
     }
 }
