@@ -321,14 +321,14 @@ public class PlayerMvmnt : MonoBehaviour
 
     private Vector3 tolerance = new Vector3(0.1f, 0.1f, 0.1f);
 
-    private Color GetPixelColorOnCollisionMap(Vector2 playerPos)
-    {
-        Texture2D tex = MapGenerator.Instance.collisionTexture;
-        Vector2 pixelUV = playerPos;
-        pixelUV.x *= tex.width;
-        pixelUV.y *= tex.height;
-        return tex.GetPixel((int) pixelUV.x, (int) pixelUV.y);
-    }
+    // private Color GetPixelColorOnCollisionMap(Vector2 playerPos)
+    // {
+    //     Texture2D tex = MapGenerator.Instance.collisionTexture;
+    //     Vector2 pixelUV = playerPos;
+    //     pixelUV.x *= tex.width;
+    //     pixelUV.y *= tex.height;
+    //     return tex.GetPixel((int) pixelUV.x, (int) pixelUV.y);
+    // }
 
     private bool CheckCollisionInDirection(Vector3 direction)
     {

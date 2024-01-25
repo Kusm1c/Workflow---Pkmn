@@ -58,7 +58,7 @@ public class VideoManager : MonoBehaviour
                 nameInput.gameObject.SetActive(true);
                 nameInput.Select();
                 break;
-            case 15:
+            case 13:
                 SceneManager.LoadScene("SampleScene");
                 break;
         }
