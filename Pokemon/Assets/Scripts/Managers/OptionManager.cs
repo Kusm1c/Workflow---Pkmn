@@ -43,6 +43,21 @@ public class OptionManager : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (menuActionPanel.activeSelf)
+            {
+                menuActionPanel.SetActive(false);
+            }
+            else
+            {
+                menuActionPanel.SetActive(true);
+            }
+        }
+    }
+
     public void ChangeVitesseText()
     {
         vitesseText++;
