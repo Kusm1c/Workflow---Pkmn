@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LoadDataToDisplaySave : MonoBehaviour
 {
@@ -25,12 +26,19 @@ public class LoadDataToDisplaySave : MonoBehaviour
         //todo
         //get player gender
         //Color colorGender = (data.getGender=="boy")?boyFontColor:girlFontColor;
-        Color colorGender = girlFontColor;
+        Color colorGender = PlayerPrefs.GetString("Gender") == "boy"? boyFontColor : girlFontColor;
         foreach (var text in textToChangeColor)
         {
            
             text.color = colorGender;
         }
-        //change text to matche data
+        playerName.text = PlayerPrefs.GetString("PlayerName", "Player");
+        timePlayed.text = PlayerPrefs.GetInt("TimePlayed",0).ToString();
+        badges.text = PlayerPrefs.GetInt("Badges",0).ToString();
+    }
+
+    public void NewGame()
+    {
+        SceneManager.LoadScene("ChenDialogue");
     }
 }
