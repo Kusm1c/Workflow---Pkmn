@@ -247,7 +247,7 @@ public class CombatUI : MonoBehaviour
 
     public void EnterHoverItem(int itemIndex)
     {
-        ItemDescription.text = combatSystem.GetPlayerItems()[itemIndex].description;
+        ItemDescription.text = GameManager.GetPlayerItems()[itemIndex].description;
     }
 
     public void ExitHoverItem()
@@ -295,20 +295,25 @@ public class CombatUI : MonoBehaviour
             case MenuState.PlayerSwitchedNew:
                 TextBox.text = $"Go, {currentPokemonName} !";
                 currentPokemonName = combatSystem.GetPlayerPokemonName();
-                UpdateData();
+                UpdatePlayerSprite();
+                UpdatePlayerHealthBar();
+                UpdatePlayerXPBar();
                 break;
             
             case MenuState.PlayerUsedItem:
-                UpdateData();
                 TextBox.text = $"Player used {combatSystem.GetLastUsedItem().name}";
+                UpdatePlayerHealthBar();
+                UpdatePlayerInfoText();
+                UpdateOpponentHealthBar();
+                UpdateOpponentInfoText();
                 break;
             
             case MenuState.PlayerMove:
-                UpdateOpponentHealthBar();
                 if(!combatSystem.GetPlayerMove()) 
                     TextBox.text = $"{currentPokemonName} used [MOVE]";
                 else
                     TextBox.text = $"{currentPokemonName} used {combatSystem.GetPlayerMove().Name}";
+                UpdateOpponentHealthBar();
                 break;
             
             case MenuState.PlayerEfficiency:
@@ -325,8 +330,8 @@ public class CombatUI : MonoBehaviour
                 break;
             
             case MenuState.OppenentMove:
-                UpdatePlayerHealthBar();
                 TextBox.text = $"Enemy {combatSystem.GetOpponentPokemonName()} used {combatSystem.GetOpponentMove().Name}";
+                UpdatePlayerHealthBar();
                 break;
             
             case MenuState.OpponentSwitchedOld:
@@ -334,8 +339,10 @@ public class CombatUI : MonoBehaviour
                 break;
             
             case MenuState.OpponentSwitchedNew:
-                UpdateData();
                 TextBox.text = $"Enemy sent {combatSystem.GetOpponentPokemonName()} !";
+                UpdateOpponentHealthBar();
+                UpdateOpponentInfoText();
+                UpdateOpponentSprite();
                 break;
             
             case MenuState.OpponentEfficiency:
@@ -668,14 +675,14 @@ public class CombatUI : MonoBehaviour
     {
         for (int i = 0; i < itemButtons.Length; i++)
         {
-            if (i >= combatSystem.GetPlayerItems().Length)
+            if (i >= GameManager.GetPlayerItems().Length)
             {
                 itemButtons[i].SetActive(false);
                 continue;
             }
 
             itemButtons[i].SetActive(true);
-            ItemNames[i].text = combatSystem.GetPlayerItems()[i].name;
+            ItemNames[i].text = GameManager.GetPlayerItems()[i].name;
         }
     }
     

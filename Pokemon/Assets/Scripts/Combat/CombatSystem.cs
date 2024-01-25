@@ -10,10 +10,10 @@ public class CombatSystem : MonoBehaviour
     private PokemonSO pokemonSo2;
 
     private PokemonSO[] playerPokemons;
+    private bool[] tookPart;
     private PokemonSO[] opponentPokemons;
     private int opponentPokemonIndex = 0;
     
-    [SerializeField] private ItemSO[] playerItems;
     private ItemSO lastUsedItem;
     
     private MoveSO p1Move;
@@ -43,6 +43,9 @@ public class CombatSystem : MonoBehaviour
         p1CurrentStats = new();
         p2CurrentStats = new();
         opponentPokemonIndex = 0;
+        
+        tookPart = new bool[playerPokemons.Length];
+        tookPart[0] = true;
     }
     
     private void Update()
@@ -267,7 +270,7 @@ public class CombatSystem : MonoBehaviour
 
     public void UseItem(int itemIndex)
     {
-        ItemSO item = playerItems[itemIndex];
+        ItemSO item = GameManager.GetPlayerItems()[itemIndex];
 
         lastUsedItem = item;
         
@@ -404,8 +407,12 @@ public class CombatSystem : MonoBehaviour
         int pokemonIsWild = 1; //1 if wild, 1.5 if not
         int pokemonBaseXP = pokemonSo2.BaseXP;
         int pokemonLevel = pokemonSo2.Level;
-        int numberOfReceivers = 1; //number of pokemons that took part and didn't faint
-
+        
+        int numberOfReceivers = 0; //number of pokemons that took part and didn't faint
+        
+        for (int i = 0; i < tookPart.Length; i++)
+            numberOfReceivers += tookPart[i] ? 1 : 0;
+        
         expGained = ((pokemonBaseXP * pokemonLevel) / 7) * (1 / numberOfReceivers) * pokemonIsWild;
         
         return expGained;
@@ -441,6 +448,8 @@ public class CombatSystem : MonoBehaviour
         
         pokemonSo1 = playerPokemons[pokemonIndex];
         p1CurrentStats = pokemonSo1.TotalStats;
+
+        tookPart[pokemonIndex] = true;
     }
 
     public void OpponentSwap()
@@ -495,11 +504,6 @@ public class CombatSystem : MonoBehaviour
         return pokemonSo1.Moves.ToArray();
     }
 
-    public ItemSO[] GetPlayerItems()
-    {
-        return playerItems;
-    }
-    
     public PokemonSO[] GetPlayerPokemons()
     {
         return playerPokemons;

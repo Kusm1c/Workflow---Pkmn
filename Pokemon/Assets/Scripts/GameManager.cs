@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private List<PokemonSO> playerPokemonList;
     [SerializeField] private List<PokemonSO> selectablePokemons;
+    
+    [SerializeField] private ItemSO[] playerItems;
+
     private void Awake()
     {
         Init();
@@ -67,5 +70,10 @@ public class GameManager : MonoBehaviour
     public static void GivePlayerItem(ItemSO itemSo)
     {
         
+    }
+
+    public static ItemSO[] GetPlayerItems()
+    {
+        return instance.playerItems;
     }
 }
