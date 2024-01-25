@@ -1,0 +1,3515 @@
+fileFormatVersion: 2
+guid: bbdd203791c57d84da2e52d021349fda
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Kanto Pokmon_0
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 1145
+        width: 34
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cf52a0db0ccd204a8d4ad2aa714d2af
+      internalID: 1871037518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_1
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 1144
+        width: 43
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 809755a2a5bbd8246b84cceeb729a07c
+      internalID: -51697033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_2
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 1142
+        width: 59
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fac2e48d7ad8a64f99380b580be753e
+      internalID: 161057710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_3
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 1142
+        width: 35
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a61e757748d520245bd6af41a69255f5
+      internalID: 1670929333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_4
+      rect:
+        serializedVersion: 2
+        x: 277
+        y: 1143
+        width: 49
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f15010613fdc8264bb3ebb8558d8a7ea
+      internalID: -2146334182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_5
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 1142
+        width: 64
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fe69f4eee0081c469a6390174a3bbe3
+      internalID: 816821904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_6
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 1143
+        width: 38
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54d79bd2578ea014eb6d138831a766ba
+      internalID: -1801057663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_7
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 1141
+        width: 49
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bb2c93201b74c547b720c719b26200e
+      internalID: -1394459496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_8
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 1138
+        width: 59
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 187a91c36175d6d4891217cd1297b4ac
+      internalID: 1156576058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_9
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 1138
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ead6852c628829246bcf57dd23dbed6e
+      internalID: 219750652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_10
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 1077
+        width: 39
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bd5e1f22d5cc2940b008564d5998de6
+      internalID: -2130328276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_11
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 1072
+        width: 55
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bd681b76dff6924e9086836a722ca00
+      internalID: 1901114736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_12
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 1075
+        width: 33
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f326641664a948d41b94a963bda00faa
+      internalID: 1315207835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_13
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 1075
+        width: 26
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 176e477a87f3032469a463b1fe0e620c
+      internalID: -897700412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_14
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 1072
+        width: 58
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dca150718b3369428097c12a0f2f167
+      internalID: -1267963023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_15
+      rect:
+        serializedVersion: 2
+        x: 367
+        y: 1072
+        width: 34
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94c8163439b76e94d8661c445061ad59
+      internalID: 111227650
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_16
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 1071
+        width: 45
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8a6edecd8a97394fbcd7700d50c1d94
+      internalID: 1128034920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_17
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 1066
+        width: 62
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbe5e501e0d795e46902b102f62507ba
+      internalID: -1883394112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_18
+      rect:
+        serializedVersion: 2
+        x: 568
+        y: 1066
+        width: 36
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87f28967e6fc0094a8cb3e1c55ee5fd6
+      internalID: -1228426831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_19
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 1065
+        width: 53
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89f860168db3f0c468343d203e5ad419
+      internalID: 1022618061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_20
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 1008
+        width: 34
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40218b12f6f39fa4682db34b14c0dff8
+      internalID: -830321916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_21
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 996
+        width: 60
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1acd0ed4788f474bbd1c3b30e05b7be
+      internalID: -274039798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_22
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 996
+        width: 40
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 158c22b8e4176b24388e69983db44509
+      internalID: 335762935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_23
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 995
+        width: 53
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c0eae9423848be45abb2b5b5739f322
+      internalID: 324645472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_24
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 993
+        width: 41
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef8ff9960f0bfdb45b81cd1d43520b70
+      internalID: 402481435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_25
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 996
+        width: 57
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55578686cd543f34eaa0d9eff7a3c271
+      internalID: 99486244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_26
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 992
+        width: 36
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 396b8e9f4f6d14347b9b3d91bf0dce2a
+      internalID: 915441195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_27
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 988
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3e1c29836ceaa448bade76eb25955dd
+      internalID: -189359703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_28
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 988
+        width: 33
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15efbf5a483ace74ea703f369ca842a3
+      internalID: -1742333914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_29
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 987
+        width: 46
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f40a76496abb93147bac220af3c63b7b
+      internalID: 939813857
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_30
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 924
+        width: 54
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e67c7fcf0cf13a44bbe0adeea5ec78bd
+      internalID: -2066028933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_31
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 923
+        width: 31
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5357db4c77c8e0a4c831615dbf341fa1
+      internalID: -214725407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_32
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 924
+        width: 44
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6102ed88293bdef49bede1da0e85c617
+      internalID: -145785087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_33
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 921
+        width: 57
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c02c662e5e5df0d4c994bf08e189a5ad
+      internalID: 916108667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_34
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 921
+        width: 36
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a60df5f61941420488504ea8b2e6bc01
+      internalID: 1903813240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_35
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 920
+        width: 43
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9e58b294bafcd04d8138b91351e9b8e
+      internalID: -1676817081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_36
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 922
+        width: 48
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f2f87f42ce635a4d9da494e4cc28e21
+      internalID: -1653536871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_37
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 919
+        width: 56
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa4fb0269cb5fee49b38d65cb6420501
+      internalID: -489528908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_38
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 919
+        width: 33
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5550dde228973904abe865ce7b08dc4f
+      internalID: 1903214494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_39
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 917
+        width: 46
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40cbb5b572418614f9c0dfec4005b3c7
+      internalID: -1757875508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_40
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 856
+        width: 43
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cf06c9ed5a676c4e904b685219a0973
+      internalID: -256358479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_41
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 852
+        width: 62
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2948f70e13f2c3144a0106e1732196c9
+      internalID: -2059335224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_42
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 851
+        width: 31
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 997027740734e8f46b0514ef868c90d0
+      internalID: 1121420851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_43
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 850
+        width: 46
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d39e228d0f8a3bc44b4eb2208e4815be
+      internalID: -160713851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_44
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 850
+        width: 56
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59c66264d2cc6f34da3fddb1d38349f1
+      internalID: 1984833680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_45
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 852
+        width: 41
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 369ef1e2604bed84580c498decd08c44
+      internalID: 718383398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_46
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 850
+        width: 60
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd8d83fab8bb38b47a675b640853c19b
+      internalID: 739504211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_47
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 846
+        width: 34
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f8cebd1a5f374f47a44e54afc81ef53
+      internalID: 726441251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_48
+      rect:
+        serializedVersion: 2
+        x: 541
+        y: 848
+        width: 56
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb5856abc5e11194bab52fc8bbd33fb6
+      internalID: 899642195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_49
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 847
+        width: 36
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7023c605e11532419434e850b822e59
+      internalID: -1988960745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_50
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 781
+        width: 51
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0017908f6469f641a0d17bdaa05c20f
+      internalID: -809630647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_51
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 781
+        width: 39
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa0f4a00062cffa4cb9ddfc825b50ad8
+      internalID: -1147221636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_52
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 777
+        width: 53
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3c9e14695406fa48b5089ba2d678756
+      internalID: -139378787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_53
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 775
+        width: 36
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29a24473d2e21d545848f0dc0fb67ea3
+      internalID: 1863422710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_54
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 777
+        width: 52
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 842daed7b76c7f4498befd8d5bd04cac
+      internalID: 771223059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_55
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 772
+        width: 44
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8a70955ef0ac4b47b6639a548cf41f8
+      internalID: -459161902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_56
+      rect:
+        serializedVersion: 2
+        x: 418
+        y: 774
+        width: 52
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74577c60f3cddfe439e0e9c32707059d
+      internalID: 606703209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_57
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 773
+        width: 41
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11d102bab51560148852b35076c51605
+      internalID: 1329765737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_58
+      rect:
+        serializedVersion: 2
+        x: 547
+        y: 768
+        width: 57
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3df1b9ce4dfa49479ba00205c6fec69
+      internalID: -1635907306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_59
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 770
+        width: 44
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1fed8c895289e245b747e61ca6bdd3e
+      internalID: 1441480578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_60
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 699
+        width: 49
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99e9feef01edfa34e86d6c31b4e803a4
+      internalID: -504698088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_61
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 699
+        width: 50
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4afd1814a662249429846b0393ab3645
+      internalID: 1257694237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_62
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 699
+        width: 42
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e03acd5ad0cce84792ad7e128e09bfe
+      internalID: -509748389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_63
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 698
+        width: 58
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bb05bb4692f6f443be114dbae85bcf4
+      internalID: -1657456954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_64
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 695
+        width: 61
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13509c67211021e4a889015dc0b261bf
+      internalID: 2069548441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_65
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 696
+        width: 30
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f5830e668f379f439de73e3c00a9dad
+      internalID: 251216712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_66
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 696
+        width: 52
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b503bc4ffa916f0459b5fca00c3d0613
+      internalID: -1834034079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_67
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 695
+        width: 63
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42188985aecd18c40a638d8cfe2824d4
+      internalID: -1632131295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_68
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 695
+        width: 45
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 704c3af2bea61d849a7570f14869aed3
+      internalID: -1891433727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_69
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 695
+        width: 47
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e7a2c682c01ec344a8a38a096cf6098
+      internalID: 1297124231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_70
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 617
+        width: 55
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35a126c9fe14d3348b4293b181ea95a5
+      internalID: -1973557544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_71
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 621
+        width: 37
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90d4d24f9292e3c428643bf763fe6c30
+      internalID: 727829728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_72
+      rect:
+        serializedVersion: 2
+        x: 159
+        y: 617
+        width: 55
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9761d62ed10d604a96f034408153a1b
+      internalID: -235689648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_73
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 632
+        width: 49
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52088e7544c1af24891d9bbf534285ea
+      internalID: -584223472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_74
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 621
+        width: 60
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 698ca050edac4934093fdcc5317784a1
+      internalID: -806918269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_75
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 617
+        width: 55
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb0be14d89cfd094da5387061599407a
+      internalID: -1559181109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_76
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 617
+        width: 47
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f56319e726eab5c4eab27c496f9184ff
+      internalID: 490833985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_77
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 615
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de7d03260dd3028458a57f45956f57ed
+      internalID: -1641828391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_78
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 615
+        width: 46
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f4fc08f8b72e6041861d85beba47ef8
+      internalID: 1340740459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_79
+      rect:
+        serializedVersion: 2
+        x: 625
+        y: 615
+        width: 59
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6907d32da6d530e4d929eba551b89f93
+      internalID: -1054483408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_80
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 550
+        width: 33
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0eaf7fcf209ecfa4da8c212b7501156d
+      internalID: 1743625660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_81
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 545
+        width: 52
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a52320b9c573a0439cf28e4dbab4d39
+      internalID: -1828453025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_82
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 544
+        width: 47
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 244be7e11fdb5cc47825bb3ee78c3b40
+      internalID: 203987702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_83
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 544
+        width: 40
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7681a0dd4ed781409d0fa68bfaf8863
+      internalID: 163163004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_84
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 535
+        width: 64
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7965f1181aee814bb4114869e28272f
+      internalID: 112690839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_85
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 542
+        width: 48
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2c3f23a6bf5b3144b26ac0e73457983
+      internalID: 273782934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_86
+      rect:
+        serializedVersion: 2
+        x: 425
+        y: 543
+        width: 63
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca5640f625749be4a9eb75abc5de6570
+      internalID: -1862337216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_87
+      rect:
+        serializedVersion: 2
+        x: 503
+        y: 539
+        width: 40
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d17595ea34b7854986ee39f5465bc4c
+      internalID: 1372868623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_88
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 537
+        width: 64
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46235655f62943149bf55eb55fc882ae
+      internalID: -2009502789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_89
+      rect:
+        serializedVersion: 2
+        x: 637
+        y: 537
+        width: 34
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20a5c726a1c65154380775e87beb4815
+      internalID: -1525210480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_90
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 471
+        width: 60
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9364d34f21de7f4f89f9bce7178d003
+      internalID: -802136924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_91
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 468
+        width: 49
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67c995f6869fdcc4eb54b134e2f82ac1
+      internalID: 946275470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_92
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 471
+        width: 58
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15b5d284f9de4fc41b49e3e733b75473
+      internalID: -1426999780
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_93
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 468
+        width: 51
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bd93635fe380124e8a15e79971c9fd4
+      internalID: -199378432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_94
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 467
+        width: 55
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60907f37093576f49a6574f430306f14
+      internalID: -1569882464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_95
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 469
+        width: 44
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62a796b7dbd0c6c489a33828be025900
+      internalID: -2041212152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_96
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 467
+        width: 63
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba415adc9e27c6e4e9929867e0dea794
+      internalID: 1608306526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_97
+      rect:
+        serializedVersion: 2
+        x: 502
+        y: 467
+        width: 48
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae04634e1814bd644831ee65950cf6ed
+      internalID: -585489410
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_98
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 464
+        width: 64
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b2645798cc45d646a5eb7f01108a85c
+      internalID: 1043646301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_99
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 464
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47ee07da915f62f4c8304b82d7b377cb
+      internalID: 2112048684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_100
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 399
+        width: 36
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1152b03b211221428e27f7b0ef5dd24
+      internalID: 666433957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_101
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 396
+        width: 52
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5d57a4f39b4244438a212c3e97d9cef
+      internalID: 72067341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_102
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 394
+        width: 56
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47a774950abce8f4c87e8c7f2b8e4c9e
+      internalID: 1045827626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_103
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 391
+        width: 39
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 902db22757da4164fb8061348320f5eb
+      internalID: -168610933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_104
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 394
+        width: 57
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccb464cbe4e39aa468b9f3396f216c87
+      internalID: 302940298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_105
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 394
+        width: 52
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0872d7aae1be37649aa05bc9561581cf
+      internalID: 125360390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_106
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 394
+        width: 43
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a27138431cbedd946a2ea4b97548a5f0
+      internalID: -1519322374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_107
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 391
+        width: 61
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec31c7cf98d2ffa4a9228b51b69a5efe
+      internalID: -951306178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_108
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 394
+        width: 44
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0c2a64f13d0c704486ea5ad1cb8f6cd
+      internalID: -94424302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_109
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 423
+        width: 15
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d2f8b47081bc724b8cfa2e7720e189d
+      internalID: 884397285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_110
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 387
+        width: 60
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1c02e3ccef28a8479bf1b34172fe151
+      internalID: -1656723750
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_111
+      rect:
+        serializedVersion: 2
+        x: 608
+        y: 408
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbd60a1103260f241bd4a3f45745ca5b
+      internalID: -19186561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_112
+      rect:
+        serializedVersion: 2
+        x: 593
+        y: 391
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74de4fa4b0be19749b5cdf882d69db60
+      internalID: -1933510393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_113
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 319
+        width: 55
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e920fd72000858e46955273b736bc0f5
+      internalID: -61659697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_114
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 318
+        width: 60
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d636bca6d25a41f4c965c22701cf49b1
+      internalID: -272758344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_115
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 316
+        width: 51
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 860e66c94a626bc45b1a9a666313b28e
+      internalID: -1980066045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_116
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 315
+        width: 46
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90e906b63eb6af040aefa1d8bb35de97
+      internalID: -1151252195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_117
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 314
+        width: 59
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b32758d8de497c54ca21ca4104111d3d
+      internalID: -829321906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_118
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 326
+        width: 31
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e9f0bc3839132143987b497d53c4ee5
+      internalID: 258763151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_119
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 322
+        width: 52
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5452683d0bbd5a44854dc8bd1b902b6
+      internalID: -720228938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_120
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 321
+        width: 48
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d468093125c93d4c90320f0645801e0
+      internalID: -1034562182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_121
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 316
+        width: 53
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b04c1b193368eaf44ba00534c49afdde
+      internalID: 424213012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_122
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 321
+        width: 41
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12b8ffa2438032d47a76f7cd87ab7a54
+      internalID: 2146656386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_123
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 241
+        width: 48
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cd84ee754e6c9b488da232c781cdf4a
+      internalID: -2118904458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_124
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 242
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82e70649095ae2b468bdfb263e7331f2
+      internalID: 1628573893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_125
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 236
+        width: 54
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c71aa46c45dc29459132e5136cd8f17
+      internalID: 1446996320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_126
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 241
+        width: 48
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9802d95810f4012498701c21bd127ce9
+      internalID: -404489262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_127
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 238
+        width: 60
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81dcd18183ed9974da69054b175b91e5
+      internalID: 162262840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_128
+      rect:
+        serializedVersion: 2
+        x: 366
+        y: 238
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce806ce60eef62f4bb682b842ad7f3a8
+      internalID: 1029407945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_129
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 240
+        width: 54
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 844d94a8b8fad5646bae3888c05ca944
+      internalID: 305354929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_130
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 240
+        width: 58
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 82473dea51920324489b640d78d9f380
+      internalID: 1954006622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_131
+      rect:
+        serializedVersion: 2
+        x: 568
+        y: 247
+        width: 43
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09f8e233855d1df42a893e9fbd38c936
+      internalID: -6881383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_132
+      rect:
+        serializedVersion: 2
+        x: 626
+        y: 237
+        width: 60
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c8d0689c8b112a4e8fc9bd712ad802b
+      internalID: -2133702875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_133
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 169
+        width: 58
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 332072c65febcf246aa4369c6b70d550
+      internalID: -1945732198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_134
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 172
+        width: 35
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef896a5fc58006e4597057830237f48a
+      internalID: 24896283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_135
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 173
+        width: 39
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfc6e5087ac2e12428fb281486d8e9f2
+      internalID: -939465318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_136
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 166
+        width: 44
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e37978ef4e2ed24caf1a2ee35ec496d
+      internalID: -2022507673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_137
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 165
+        width: 43
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d34b9ffc9459dbf49a44e85ef86e2597
+      internalID: -1737782294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_138
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 166
+        width: 50
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30da5b4d2f5bb1a47ba433a9d2aad118
+      internalID: -1581805309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_139
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 164
+        width: 39
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad246107506b42f4e8a4bbffe12e67cd
+      internalID: -1887367553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_140
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 165
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 531d63dc9cba6784d84642e42ebf4501
+      internalID: -1254028429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_141
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 165
+        width: 48
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0693c20ab62a3f14eb2ef682ae04faf4
+      internalID: -1640689897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_142
+      rect:
+        serializedVersion: 2
+        x: 610
+        y: 167
+        width: 34
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65dcf4d2e93fc224081e63060eee4e86
+      internalID: -766270304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_143
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 91
+        width: 57
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e2a17a640039904e84259857bebd226
+      internalID: -1297075073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_144
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 91
+        width: 64
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1960f937cfa84434793b683750dd96a1
+      internalID: -159704713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_145
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 91
+        width: 64
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e4a8e086d1d2c446a31ad28cb60db30
+      internalID: -1239149542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_146
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 88
+        width: 62
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9165325b37aa5924d904813def76575b
+      internalID: 1768491833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_147
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 94
+        width: 64
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 481a606ce2fdff4478f6f6a766ee6801
+      internalID: 353334455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_148
+      rect:
+        serializedVersion: 2
+        x: 375
+        y: 91
+        width: 63
+        height: 58
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8d25f979208ea24ea8980dd845bc789
+      internalID: 1416736593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_149
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 100
+        width: 49
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 962ecf95f3503834386d842557a88af7
+      internalID: -172871400
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_150
+      rect:
+        serializedVersion: 2
+        x: 510
+        y: 89
+        width: 62
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26875eac5e1e7f04bb6869d3ea5a5cd4
+      internalID: -494567130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_151
+      rect:
+        serializedVersion: 2
+        x: 583
+        y: 88
+        width: 58
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af338c3a59a5c424abd9079ddd8ba5b6
+      internalID: 904536208
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_152
+      rect:
+        serializedVersion: 2
+        x: 651
+        y: 87
+        width: 57
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5456fcef9b5fbb418057c4f218bd20c
+      internalID: 709624223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Kanto Pokmon_153
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 8
+        width: 46
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c788c802b9d33b34e85f7b4dd639cabf
+      internalID: -201522868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 700e4ad86724ddb4c950843b4a9e5390
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Kanto Pokmon_0: 1871037518
+      Kanto Pokmon_1: -51697033
+      Kanto Pokmon_10: -2130328276
+      Kanto Pokmon_100: 666433957
+      Kanto Pokmon_101: 72067341
+      Kanto Pokmon_102: 1045827626
+      Kanto Pokmon_103: -168610933
+      Kanto Pokmon_104: 302940298
+      Kanto Pokmon_105: 125360390
+      Kanto Pokmon_106: -1519322374
+      Kanto Pokmon_107: -951306178
+      Kanto Pokmon_108: -94424302
+      Kanto Pokmon_109: 884397285
+      Kanto Pokmon_11: 1901114736
+      Kanto Pokmon_110: -1656723750
+      Kanto Pokmon_111: -19186561
+      Kanto Pokmon_112: -1933510393
+      Kanto Pokmon_113: -61659697
+      Kanto Pokmon_114: -272758344
+      Kanto Pokmon_115: -1980066045
+      Kanto Pokmon_116: -1151252195
+      Kanto Pokmon_117: -829321906
+      Kanto Pokmon_118: 258763151
+      Kanto Pokmon_119: -720228938
+      Kanto Pokmon_12: 1315207835
+      Kanto Pokmon_120: -1034562182
+      Kanto Pokmon_121: 424213012
+      Kanto Pokmon_122: 2146656386
+      Kanto Pokmon_123: -2118904458
+      Kanto Pokmon_124: 1628573893
+      Kanto Pokmon_125: 1446996320
+      Kanto Pokmon_126: -404489262
+      Kanto Pokmon_127: 162262840
+      Kanto Pokmon_128: 1029407945
+      Kanto Pokmon_129: 305354929
+      Kanto Pokmon_13: -897700412
+      Kanto Pokmon_130: 1954006622
+      Kanto Pokmon_131: -6881383
+      Kanto Pokmon_132: -2133702875
+      Kanto Pokmon_133: -1945732198
+      Kanto Pokmon_134: 24896283
+      Kanto Pokmon_135: -939465318
+      Kanto Pokmon_136: -2022507673
+      Kanto Pokmon_137: -1737782294
+      Kanto Pokmon_138: -1581805309
+      Kanto Pokmon_139: -1887367553
+      Kanto Pokmon_14: -1267963023
+      Kanto Pokmon_140: -1254028429
+      Kanto Pokmon_141: -1640689897
+      Kanto Pokmon_142: -766270304
+      Kanto Pokmon_143: -1297075073
+      Kanto Pokmon_144: -159704713
+      Kanto Pokmon_145: -1239149542
+      Kanto Pokmon_146: 1768491833
+      Kanto Pokmon_147: 353334455
+      Kanto Pokmon_148: 1416736593
+      Kanto Pokmon_149: -172871400
+      Kanto Pokmon_15: 111227650
+      Kanto Pokmon_150: -494567130
+      Kanto Pokmon_151: 904536208
+      Kanto Pokmon_152: 709624223
+      Kanto Pokmon_153: -201522868
+      Kanto Pokmon_16: 1128034920
+      Kanto Pokmon_17: -1883394112
+      Kanto Pokmon_18: -1228426831
+      Kanto Pokmon_19: 1022618061
+      Kanto Pokmon_2: 161057710
+      Kanto Pokmon_20: -830321916
+      Kanto Pokmon_21: -274039798
+      Kanto Pokmon_22: 335762935
+      Kanto Pokmon_23: 324645472
+      Kanto Pokmon_24: 402481435
+      Kanto Pokmon_25: 99486244
+      Kanto Pokmon_26: 915441195
+      Kanto Pokmon_27: -189359703
+      Kanto Pokmon_28: -1742333914
+      Kanto Pokmon_29: 939813857
+      Kanto Pokmon_3: 1670929333
+      Kanto Pokmon_30: -2066028933
+      Kanto Pokmon_31: -214725407
+      Kanto Pokmon_32: -145785087
+      Kanto Pokmon_33: 916108667
+      Kanto Pokmon_34: 1903813240
+      Kanto Pokmon_35: -1676817081
+      Kanto Pokmon_36: -1653536871
+      Kanto Pokmon_37: -489528908
+      Kanto Pokmon_38: 1903214494
+      Kanto Pokmon_39: -1757875508
+      Kanto Pokmon_4: -2146334182
+      Kanto Pokmon_40: -256358479
+      Kanto Pokmon_41: -2059335224
+      Kanto Pokmon_42: 1121420851
+      Kanto Pokmon_43: -160713851
+      Kanto Pokmon_44: 1984833680
+      Kanto Pokmon_45: 718383398
+      Kanto Pokmon_46: 739504211
+      Kanto Pokmon_47: 726441251
+      Kanto Pokmon_48: 899642195
+      Kanto Pokmon_49: -1988960745
+      Kanto Pokmon_5: 816821904
+      Kanto Pokmon_50: -809630647
+      Kanto Pokmon_51: -1147221636
+      Kanto Pokmon_52: -139378787
+      Kanto Pokmon_53: 1863422710
+      Kanto Pokmon_54: 771223059
+      Kanto Pokmon_55: -459161902
+      Kanto Pokmon_56: 606703209
+      Kanto Pokmon_57: 1329765737
+      Kanto Pokmon_58: -1635907306
+      Kanto Pokmon_59: 1441480578
+      Kanto Pokmon_6: -1801057663
+      Kanto Pokmon_60: -504698088
+      Kanto Pokmon_61: 1257694237
+      Kanto Pokmon_62: -509748389
+      Kanto Pokmon_63: -1657456954
+      Kanto Pokmon_64: 2069548441
+      Kanto Pokmon_65: 251216712
+      Kanto Pokmon_66: -1834034079
+      Kanto Pokmon_67: -1632131295
+      Kanto Pokmon_68: -1891433727
+      Kanto Pokmon_69: 1297124231
+      Kanto Pokmon_7: -1394459496
+      Kanto Pokmon_70: -1973557544
+      Kanto Pokmon_71: 727829728
+      Kanto Pokmon_72: -235689648
+      Kanto Pokmon_73: -584223472
+      Kanto Pokmon_74: -806918269
+      Kanto Pokmon_75: -1559181109
+      Kanto Pokmon_76: 490833985
+      Kanto Pokmon_77: -1641828391
+      Kanto Pokmon_78: 1340740459
+      Kanto Pokmon_79: -1054483408
+      Kanto Pokmon_8: 1156576058
+      Kanto Pokmon_80: 1743625660
+      Kanto Pokmon_81: -1828453025
+      Kanto Pokmon_82: 203987702
+      Kanto Pokmon_83: 163163004
+      Kanto Pokmon_84: 112690839
+      Kanto Pokmon_85: 273782934
+      Kanto Pokmon_86: -1862337216
+      Kanto Pokmon_87: 1372868623
+      Kanto Pokmon_88: -2009502789
+      Kanto Pokmon_89: -1525210480
+      Kanto Pokmon_9: 219750652
+      Kanto Pokmon_90: -802136924
+      Kanto Pokmon_91: 946275470
+      Kanto Pokmon_92: -1426999780
+      Kanto Pokmon_93: -199378432
+      Kanto Pokmon_94: -1569882464
+      Kanto Pokmon_95: -2041212152
+      Kanto Pokmon_96: 1608306526
+      Kanto Pokmon_97: -585489410
+      Kanto Pokmon_98: 1043646301
+      Kanto Pokmon_99: 2112048684
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
