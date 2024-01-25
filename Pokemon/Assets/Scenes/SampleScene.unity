@@ -666,7 +666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPokemonList:
-  - {fileID: 11400000, guid: 189946aeb680a714eb48adca4b8a392f, type: 2}
+  - {fileID: 11400000, guid: e1345d8e52a0dfb428dfe28da4607a66, type: 2}
   numberOfPokemonAlive: 1
   hasLost: 0
   isGymLeader: 0
@@ -1614,7 +1614,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPokemonList:
-  - {fileID: 11400000, guid: 189946aeb680a714eb48adca4b8a392f, type: 2}
+  - {fileID: 11400000, guid: e1345d8e52a0dfb428dfe28da4607a66, type: 2}
   numberOfPokemonAlive: 1
   hasLost: 0
   isGymLeader: 0
@@ -3602,8 +3602,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPokemonList:
-  - {fileID: 11400000, guid: 189946aeb680a714eb48adca4b8a392f, type: 2}
-  - {fileID: 11400000, guid: 189946aeb680a714eb48adca4b8a392f, type: 2}
+  - {fileID: 11400000, guid: e1345d8e52a0dfb428dfe28da4607a66, type: 2}
+  - {fileID: 11400000, guid: f68bb840ac55d8a4992e493ccbb7031b, type: 2}
   numberOfPokemonAlive: 2
   hasLost: 0
   isGymLeader: 0
@@ -6992,6 +6992,11 @@ PrefabInstance:
       propertyPath: fenetreStyleTMP
       value: 
       objectReference: {fileID: 1282041986}
+    - target: {fileID: 2474603480831738185, guid: e0bf2242205256b4586daa2fc9639b95,
+        type: 3}
+      propertyPath: menuActionPanel
+      value: 
+      objectReference: {fileID: 285613842}
     - target: {fileID: 4804164751249947409, guid: e0bf2242205256b4586daa2fc9639b95,
         type: 3}
       propertyPath: m_LocalPosition.x
