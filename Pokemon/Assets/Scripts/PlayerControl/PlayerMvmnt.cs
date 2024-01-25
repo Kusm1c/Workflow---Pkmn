@@ -166,6 +166,11 @@ public class PlayerMvmnt : MonoBehaviour
                 if (tileInteracted.npc.GetComponent<NonTrainer>())
                 {
                     NonTrainer aaa = tileInteracted.npc.GetComponent<NonTrainer>();
+                    if (aaa.firstTimeTalkItem != null)
+                    {
+                        GameManager.instance.SetPlayerItemQuantity(aaa.firstTimeTalkItem, 1);
+                        aaa.firstTimeTalkItem = null;
+                    }
                     Debug.Log(aaa.firstTimeTalk ? aaa.firstTimeTalkText : aaa.talkText);
                     aaa.firstTimeTalk = false;
                 }
@@ -199,6 +204,11 @@ public class PlayerMvmnt : MonoBehaviour
                 if (tileInteracted.npc.GetComponent<NonTrainer>())
                 {
                     NonTrainer aaa = tileInteracted.npc.GetComponent<NonTrainer>();
+                    if (aaa.firstTimeTalkItem != null)
+                    {
+                        GameManager.instance.SetPlayerItemQuantity(aaa.firstTimeTalkItem, 1);
+                        aaa.firstTimeTalkItem = null;
+                    }
                     Debug.Log(aaa.firstTimeTalk ? aaa.firstTimeTalkText : aaa.talkText);
                     aaa.firstTimeTalk = false;
                 }
@@ -232,6 +242,11 @@ public class PlayerMvmnt : MonoBehaviour
                 if (tileInteracted.npc.GetComponent<NonTrainer>())
                 {
                     NonTrainer aaa = tileInteracted.npc.GetComponent<NonTrainer>();
+                    if (aaa.firstTimeTalkItem != null)
+                    {
+                        GameManager.instance.SetPlayerItemQuantity(aaa.firstTimeTalkItem, 1);
+                        aaa.firstTimeTalkItem = null;
+                    }
                     Debug.Log(aaa.firstTimeTalk ? aaa.firstTimeTalkText : aaa.talkText);
                     aaa.firstTimeTalk = false;
                 }
@@ -265,6 +280,11 @@ public class PlayerMvmnt : MonoBehaviour
                 if (tileInteracted.npc.GetComponent<NonTrainer>())
                 {
                     NonTrainer aaa = tileInteracted.npc.GetComponent<NonTrainer>();
+                    if (aaa.firstTimeTalkItem != null)
+                    {
+                        GameManager.instance.SetPlayerItemQuantity(aaa.firstTimeTalkItem, 1);
+                        aaa.firstTimeTalkItem = null;
+                    }
                     Debug.Log(aaa.firstTimeTalk ? aaa.firstTimeTalkText : aaa.talkText);
                     aaa.firstTimeTalk = false;
                 }

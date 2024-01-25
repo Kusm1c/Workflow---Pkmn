@@ -76,4 +76,9 @@ public class GameManager : MonoBehaviour
     {
         return instance.playerItems;
     }
+    
+    public void SetPlayerItemQuantity(ItemSO itemSo, int quantity)
+    {
+        playerItems[Array.IndexOf(playerItems, itemSo)].quantity += quantity;
+    }
 }
