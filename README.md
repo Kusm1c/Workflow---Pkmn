@@ -20,7 +20,7 @@
 
 ## Bonus
 - animation d'introduction
-- dialogue avec chen
+- dialogue avec Pr.Chen
 - 1ere arene
 
 ### Controls
@@ -36,4 +36,6 @@
 - les attaques (on en a 6)
 - le son (on en a pas)
 - les sprites des npc (on en a qu'un)
+- Gestion du game over
+- les interactions avec les npc autres que les combats  (la possibilité existe, mais les dialogues ne sont pas implémentés)
 
