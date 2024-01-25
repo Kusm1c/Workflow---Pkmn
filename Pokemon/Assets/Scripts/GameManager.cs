@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     {
         if (!instance) instance = this;
         combatSystem = GetComponent<CombatSystem>();
-        OnFightStart(selectablePokemons);
+        //OnFightStart(selectablePokemons);
     }
 
     public void OnFightStart()
