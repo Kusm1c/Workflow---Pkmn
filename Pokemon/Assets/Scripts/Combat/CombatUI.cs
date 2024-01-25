@@ -18,6 +18,7 @@ public class CombatUI : MonoBehaviour
     [SerializeField] private GameObject[] pokemonSelectionButtons;
     [SerializeField] private GameObject[] itemButtons;
     [SerializeField] private GameObject pokemonSelectCancelButton;
+    [SerializeField] private GameObject[] moveButtons;
     
     [Header("Text")]
     [SerializeField] private TMP_Text TextBox;
@@ -135,9 +136,17 @@ public class CombatUI : MonoBehaviour
         }
 
         currentOpponentPokemonName = combatSystem.GetOpponentPokemonName();
-        
+
         for (int i = 0; i < playerMoveSet.Length; i++)
+        {
+            moveButtons[i].SetActive(true);
             MoveNames[i].text = playerMoveSet[i].Name;
+        }
+        for (int i = playerMoveSet.Length; i < 4; i++)
+        {
+            MoveNames[i].text = "";
+            moveButtons[i].SetActive(false);
+        }
         
         currentMenu = ActionPannel;
         
@@ -157,8 +166,7 @@ public class CombatUI : MonoBehaviour
     {
         SwitchMenu(MovePannel);
         playerMoveSet = combatSystem.GetPlayerMoveArray();
-        for (int i = 0; i < playerMoveSet.Length; i++)
-            MoveNames[i].text = playerMoveSet[i].Name;
+        ResetMoveButtons();
         TextBox.text = "Select a move.";
         GameManager.instance.combatSystem.ChoseNextPlayerAction(0);
     }
@@ -235,6 +243,8 @@ public class CombatUI : MonoBehaviour
     
     public void EnterHoverMove(int moveIndex)
     {
+        if (!moveButtons[moveIndex].activeSelf) return;
+        
         CurrentPP.text = $"{playerMoveSet[moveIndex].PP}";
         MaxPP.text = $"{playerMoveSet[moveIndex].MaxPP}";
         MoveType.text = $"{playerMoveSet[moveIndex].Type}";
@@ -300,6 +310,7 @@ public class CombatUI : MonoBehaviour
                 currentPokemonName = combatSystem.GetPlayerPokemonName();
                 UpdatePlayerSprite();
                 UpdatePlayerHealthBar();
+                UpdatePlayerInfoText();
                 UpdatePlayerXPBar();
                 break;
             
@@ -444,6 +455,7 @@ public class CombatUI : MonoBehaviour
                     menuState = MenuState.PlayerMissed;
                 else if(playerEfficiency < .75f || playerEfficiency > 1.5f)
                     menuState = MenuState.PlayerEfficiency;
+                Debug.Log(combatSystem.OpponentFainted());
                 if (combatSystem.OpponentFainted())
                 {
                     menuState = MenuState.OpponentFainted;
@@ -519,6 +531,8 @@ public class CombatUI : MonoBehaviour
             case MenuState.OpponentSwitchedNew:
                 menuState = MenuState.Default;
                 currentOpponentPokemonName = combatSystem.GetOpponentPokemonName();
+                combatSystem.UpdateOpponentStats();
+                UpdateOpponentHealthBar();
                 OpenActionPanel();
                 break;
             
@@ -592,9 +606,9 @@ public class CombatUI : MonoBehaviour
     {
         float hpRatio = (float)combatSystem.GetPlayerPokemonHp() / combatSystem.GetPlayerPokemonMaxHp();
         PlayerHealthBar.fillAmount = hpRatio;
-        if (hpRatio < .75) PlayerHealthBar.sprite = Green;
-        if (hpRatio < .5) PlayerHealthBar.sprite = Yellow;
-        if (hpRatio < .25) PlayerHealthBar.sprite = Red;
+        if (hpRatio > .5) OpponentHealthBar.sprite = Green;
+        else if (hpRatio < .5) OpponentHealthBar.sprite = Yellow;
+        else if (hpRatio < .25) OpponentHealthBar.sprite = Red;
     }
 
     private void UpdatePlayerXPBar()
@@ -604,32 +618,25 @@ public class CombatUI : MonoBehaviour
     
     private void UpdateOpponentHealthBar()
     {
-        float hpRatio = (float) combatSystem.GetOpponentPokemonHp() / combatSystem.GetOpponentPokemonMaxHp();
+         float hpRatio = (float) combatSystem.GetOpponentPokemonHp() / combatSystem.GetOpponentPokemonMaxHp();
+        Debug.Log(hpRatio);
         OpponentHealthBar.fillAmount = hpRatio;
-        if (hpRatio < .25) OpponentHealthBar.sprite = Red;
+        if (hpRatio > .5) OpponentHealthBar.sprite = Green;
         else if (hpRatio < .5) OpponentHealthBar.sprite = Yellow;
+        else if (hpRatio < .25) OpponentHealthBar.sprite = Red;
     }
     
     private void UpdatePlayerInfoText()
     {
         PlayerInfo.text = $"{combatSystem.GetPlayerPokemonName()}";
+        PlayerLevel.text = $"{combatSystem.GetPlayerPokemonLevel()}";
         PlayerHealth.text = $"{combatSystem.GetPlayerPokemonHp()}/{combatSystem.GetPlayerPokemonMaxHp()}";
     }
 
     private void UpdateOpponentInfoText()
     {
         OpponentInfo.text = $"{currentOpponentPokemonName}";
-    }
-
-    private void UpdateData()
-    {
-        UpdateOpponentHealthBar();
-        UpdateOpponentSprite();
-        UpdateOpponentInfoText();
-        UpdatePlayerHealthBar();
-        UpdatePlayerSprite();
-        UpdatePlayerInfoText();
-        UpdatePlayerXPBar();
+        OpponentLevel.text = $"{combatSystem.GetOpponentPokemonLevel()}";
     }
     
     private void UpdatePlayerSprite()
@@ -645,7 +652,15 @@ public class CombatUI : MonoBehaviour
     private void ResetMoveButtons()
     {
         for (int i = 0; i < playerMoveSet.Length; i++)
+        {
+            moveButtons[i].SetActive(true);
             MoveNames[i].text = playerMoveSet[i].Name;
+        }
+        for (int i = playerMoveSet.Length; i < 4; i++)
+        {
+            MoveNames[i].text = "";
+            moveButtons[i].SetActive(false);
+        }
     }
     
     private void ResetSelectButtons()
@@ -776,7 +791,7 @@ public class CombatUI : MonoBehaviour
         
         currentMenu = ActionPannel;
     }
-
+    
     public void SetTrainerName(string s)
     {
         // TODO : Set trainer name and display message **** wants to fight !

@@ -9505,6 +9505,11 @@ MonoBehaviour:
   - {fileID: 7819819560742231512}
   - {fileID: 4483982803304612605}
   pokemonSelectCancelButton: {fileID: 1168465798127914298}
+  moveButtons:
+  - {fileID: 6269502977760983086}
+  - {fileID: 6153801804971561314}
+  - {fileID: 7172705725722237130}
+  - {fileID: 2157864319292772697}
   TextBox: {fileID: 7612231558146075930}
   PlayerInfo: {fileID: 6490330220878759483}
   PlayerLevel: {fileID: 6154377852511441307}
@@ -9538,6 +9543,7 @@ MonoBehaviour:
   PlayerHealthBar: {fileID: 5274436118762551088}
   PlayerXPBar: {fileID: 3854746729329092494}
   OpponentHealthBar: {fileID: 6160902702140439684}
+  PlayerPokemonSelectHealthBars: []
   Green: {fileID: 21300000, guid: 4c10a38df92d7da4cb27f3a2dd435127, type: 3}
   Yellow: {fileID: 21300000, guid: f86a1b045af359d44a0d10a5a5da6b61, type: 3}
   Red: {fileID: 21300000, guid: f158675813fd05b448433b01b5d307f4, type: 3}
