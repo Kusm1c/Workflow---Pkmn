@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenuButtons.unity
     guid: ade172300425e1c43bd042c3c2f1dbe0
   - enabled: 1
+    path: Assets/Scenes/ChenDialogue.unity
+    guid: b0e569ff9047db044b78de0452d9d88a
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
